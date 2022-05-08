@@ -1,12 +1,15 @@
-import React, { Component } from "react";
-import { Button } from "react-bootstrap";
+import React, { Component, Fragment } from "react";
+import AppRoute from "./routes/AppRoute";
+import { BrowserRouter } from "react-router-dom";
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <Button variant="primary">Primary</Button>
-      </div>
+      <Fragment>
+        <BrowserRouter>
+          <AppRoute />
+        </BrowserRouter>
+      </Fragment>
     );
   }
 }

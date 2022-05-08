@@ -1,3 +1,15 @@
+@import "bigSlider.css";
+@import "button.css";
+@import "card.css";
+@import "footer.css";
+@import "megaMenu.css";
+@import "navMenuDesktop.css";
+@import "navMenuMobile.css";
+@import "typography.css";
+
+/* ========= ALL FONTS ========= */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 body {
   font-family: "Helvetica Neue", Helvetica, Tahoma, Arial, sans-serif;
 }
