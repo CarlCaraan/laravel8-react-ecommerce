@@ -1,0 +1,15 @@
+.next-button,
+.prev-button {
+  border: 1px solid var(--primary-app-color) !important;
+  color: var(--primary-app-color) !important;
+  border-radius: 0 !important;
+}
+.next-button:hover,
+.prev-button:hover {
+  background-color: #fff;
+}
+.next-button:focus,
+.prev-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

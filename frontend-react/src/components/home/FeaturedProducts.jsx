@@ -9,8 +9,8 @@ class FeaturedProducts extends Component {
         <Container>
           {/* Start Three Section Button */}
           <div className="my-4">
-            <Row>
-              <Col className="mb-1" xl={4} lg={6} md={6} sm={6} xs={12}>
+            <Row className="px-1">
+              <Col className="mb-1 px-2" xl={4} lg={6} md={6} sm={6} xs={12}>
                 <button className={`${classes["three-section-button"]} w-100`}>
                   <img
                     className="rounded-circle shadow-sm me-2"
@@ -21,7 +21,7 @@ class FeaturedProducts extends Component {
                   Load & eStore
                 </button>
               </Col>
-              <Col className="mb-1" xl={4} lg={6} md={6} sm={6} xs={12}>
+              <Col className="mb-1 px-2" xl={4} lg={6} md={6} sm={6} xs={12}>
                 <button className={`${classes["three-section-button"]} w-100`}>
                   <img
                     className="rounded-circle shadow-sm me-2"
@@ -32,7 +32,7 @@ class FeaturedProducts extends Component {
                   LazMall
                 </button>
               </Col>
-              <Col className="mb-1" xl={4} lg={6} md={6} sm={6} xs={12}>
+              <Col className="mb-1 px-2" xl={4} lg={6} md={6} sm={6} xs={12}>
                 <button className={`${classes["three-section-button"]} w-100`}>
                   <img
                     className="rounded-circle shadow-sm me-2"

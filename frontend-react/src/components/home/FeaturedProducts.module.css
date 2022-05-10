@@ -26,8 +26,8 @@
   background-color: #fff;
   font-size: 14px;
   font-family: "Roboto";
-  color: #f57224;
-  border: 1px solid #f57224;
+  color: var(--primary-app-color);
+  border: 1px solid var(--primary-app-color);
   border-radius: 0;
   float: right;
   padding: 0.4rem 0.6rem;
@@ -36,6 +36,6 @@
 .sale-button:focus {
   background-color: #fff;
   letter-spacing: normal;
-  color: #f57224;
-  border: 1px solid #f57224;
+  color: var(--primary-app-color);
+  border: 1px solid var(--primary-app-color);
 }

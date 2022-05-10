@@ -3,6 +3,7 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import classes from "./NewArrival.module.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -39,6 +40,18 @@ function SamplePrevArrow(props) {
 }
 
 class NewArrival extends Component {
+  constructor(props) {
+    super(props);
+    this.nextButtonHandler = this.nextButtonHandler.bind(this);
+    this.prevButtonHandler = this.prevButtonHandler.bind(this);
+  }
+  nextButtonHandler() {
+    this.slider.slickNext();
+  }
+  prevButtonHandler() {
+    this.slider.slickPrev();
+  }
+
   render() {
     var settings = {
       dots: false,
@@ -52,6 +65,7 @@ class NewArrival extends Component {
       cssEase: "linear",
       nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
+      arrows: false,
       responsive: [
         {
           breakpoint: 1024,
@@ -83,12 +97,26 @@ class NewArrival extends Component {
     return (
       <Fragment>
         <Container>
-          <h2 className="section-header">New Arrivals</h2>
+          <h2 className="section-header">
+            New Arrivals
+            <button
+              className={`${classes["next-button"]} btn btn-sm ms-2 float-end`}
+              onClick={this.nextButtonHandler}
+            >
+              <i className="fa fa-angle-right"></i>
+            </button>
+            <button
+              className={`${classes["prev-button"]} btn btn-sm ms-2 float-end`}
+              onClick={this.prevButtonHandler}
+            >
+              <i className="fa fa-angle-left"></i>
+            </button>
+          </h2>
 
           {/* Start New Arrival Product Card */}
           <div>
             <Row className="mb-2">
-              <Slider {...settings}>
+              <Slider ref={(c) => (this.slider = c)} {...settings}>
                 <Col
                   className="mb-2 p-1"
                   key={1}

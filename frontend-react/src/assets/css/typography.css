@@ -7,5 +7,5 @@
 .section-subheader {
   font-size: 14px;
   font-family: "Roboto";
-  color: #f57224;
+  color: var(--primary-app-color);
 }
