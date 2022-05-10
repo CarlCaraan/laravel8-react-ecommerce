@@ -174,6 +174,7 @@ class FeaturedProducts extends Component {
             {/* End Product Card */}
           </div>
         </Container>
+        <br />
       </Fragment>
     );
   }

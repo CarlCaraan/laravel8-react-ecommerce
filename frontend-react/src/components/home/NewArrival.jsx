@@ -363,6 +363,7 @@ class NewArrival extends Component {
 
           {/* End New Arrival Product Card */}
         </Container>
+        <br />
       </Fragment>
     );
   }

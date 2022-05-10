@@ -7,7 +7,7 @@ class Categories extends Component {
     return (
       <Fragment>
         <Container>
-          <h2 className="section-header">Categories</h2>
+          <span className="section-header">Categories</span>
           <Row className="m-0">
             <Col className="p-0" xl={6} lg={6} md={12} sm={12} xs={12}>
               <Row className="p-3">
@@ -396,6 +396,7 @@ class Categories extends Component {
             </Col>
           </Row>
         </Container>
+        <br />
       </Fragment>
     );
   }
