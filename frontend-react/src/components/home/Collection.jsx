@@ -118,7 +118,7 @@ class Collection extends Component {
                 lg={2}
                 md={2}
                 sm={4}
-                xs={6}
+                xs={5}
               >
                 <Card className="card-product">
                   <Card.Img
@@ -163,7 +163,7 @@ class Collection extends Component {
               </Col>
               <Col
                 className="mb-2 p-1"
-                key={1}
+                key={7}
                 xl={2}
                 lg={2}
                 md={2}
@@ -188,7 +188,7 @@ class Collection extends Component {
               </Col>
               <Col
                 className="mb-2 p-1"
-                key={2}
+                key={8}
                 xl={2}
                 lg={2}
                 md={2}
@@ -213,7 +213,7 @@ class Collection extends Component {
               </Col>
               <Col
                 className="mb-2 p-1"
-                key={3}
+                key={9}
                 xl={2}
                 lg={2}
                 md={2}
@@ -238,7 +238,7 @@ class Collection extends Component {
               </Col>
               <Col
                 className="mb-2 p-1"
-                key={4}
+                key={10}
                 xl={2}
                 lg={2}
                 md={2}
@@ -263,7 +263,7 @@ class Collection extends Component {
               </Col>
               <Col
                 className="mb-2 p-1"
-                key={5}
+                key={11}
                 xl={2}
                 lg={2}
                 md={2}
@@ -288,7 +288,7 @@ class Collection extends Component {
               </Col>
               <Col
                 className="mb-2 p-1"
-                key={6}
+                key={12}
                 xl={2}
                 lg={2}
                 md={2}

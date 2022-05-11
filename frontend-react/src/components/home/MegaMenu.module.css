@@ -1,0 +1,95 @@
+.menu {
+  width: 200px;
+  font-family: "Roboto";
+  font-size: 15px;
+  position: relative;
+  padding: 0.5rem 0rem 0.5rem 4px;
+  margin: 0;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+}
+.menu a,
+.menu a:link,
+.menu a:visited,
+.menu a:focus {
+  color: #757575;
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 13.8px;
+  letter-spacing: normal;
+  text-align: left !important;
+}
+.menu a:hover {
+  text-decoration: none;
+}
+.menu > li {
+  display: block;
+  padding-left: 0.5rem;
+  margin-left: -4px;
+  line-height: 1.6rem;
+  color: #757575;
+  font-size: 12px;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+.menu > li > a {
+  padding: 20px 18px;
+  display: block;
+}
+.menu > li:hover {
+  background: #eceff1 !important;
+  color: var(--primary-app-color) !important;
+}
+
+/* Megadrop width dropdown */
+.menu > li > .megadrop {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  top: 0px;
+  left: 200px;
+  width: 200px;
+  min-height: 100%;
+  text-align: left;
+  margin-top: 30px;
+  padding: 0.5rem 0rem 0.5rem 4px;
+  z-index: 99;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+}
+.menu > li:hover .megadrop {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0px;
+}
+.megadrop > ul {
+  list-style: none;
+}
+.megadrop > ul > li {
+  margin-left: -36px !important;
+  padding-left: 0.5rem;
+}
+.megadrop > ul > li:hover {
+  background: #eceff1;
+}
+.megadrop > ul > li:hover a {
+  color: var(--primary-app-color);
+}
+.menu > li:hover .left-icon {
+  visibility: visible;
+  opacity: 1 !important;
+}
+.left-icon {
+  color: var(--primary-app-color);
+  font-size: 0.9rem;
+  float: right;
+  margin-right: 5px !important;
+  margin-top: 4.5px;
+  opacity: 0;
+  visibility: hidden;
+}

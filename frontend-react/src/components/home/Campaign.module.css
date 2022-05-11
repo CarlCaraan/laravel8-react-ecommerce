@@ -1,0 +1,13 @@
+.campaign-button {
+  position: absolute;
+  margin-left: -25px;
+  margin-top: 5px;
+  background-color: transparent !important;
+  border: 0 !important;
+  color: #fff !important;
+  cursor: pointer;
+}
+.campaign-button:focus {
+  outline: 0 !important;
+  box-shadow: none;
+}
