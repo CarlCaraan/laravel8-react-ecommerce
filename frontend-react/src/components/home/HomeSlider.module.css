@@ -7,7 +7,6 @@
 .slick-span:active {
   color: #fff;
 }
-
-.slick-active:nth-child(2) {
+.slick-active > .slick-span {
   color: #000 !important;
 }
