@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import Slider from "react-slick/lib/slider";
 import MegaMenu from "./MegaMenu";
+import HomeSlider from "./HomeSlider";
 import classes from "./Herosection.module.css";
 
 class Herosection extends Component {
@@ -10,12 +10,12 @@ class Herosection extends Component {
       <Fragment>
         <div className={`${classes["herosection-container"]}`}>
           <Container>
-            <Row>
-              <Col lg={2} md={2} sm={12}>
+            <Row className="mx-0">
+              <Col className="px-0" xl={2} lg={12} md={12} sm={12}>
                 <MegaMenu />
               </Col>
-              <Col lg={10} md={10} sm={12}>
-                <Slider />
+              <Col className="px-0" xl={10} lg={12} md={12} sm={12}>
+                <HomeSlider />
               </Col>
             </Row>
           </Container>

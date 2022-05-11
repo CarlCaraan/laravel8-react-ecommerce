@@ -1,0 +1,13 @@
+.slick-span {
+  margin-top: -25px !important;
+  position: absolute;
+  color: #dddddd;
+  font-size: 0.6rem;
+}
+.slick-span:active {
+  color: #fff;
+}
+
+.slick-active:nth-child(2) {
+  color: #000 !important;
+}

@@ -9,7 +9,6 @@ class Campaign extends Component {
 
   closeBtnHandler = () => {
     this.setState({ isCloseBtnClick: false });
-    console.log("test");
   };
 
   render() {
@@ -30,6 +29,7 @@ class Campaign extends Component {
                 <i className="fas fa-times"></i>
               </span>
             </Container>
+            <br />
           </div>
         )}
       </Fragment>
