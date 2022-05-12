@@ -20,20 +20,20 @@ class NavMenuDesktop extends Component {
           <div className={`${classes["nav-mini"]} w-100`}>
             <Navbar className="py-0" expand="lg">
               <Container>
-                <div className="ms-auto">
-                  <Link className={`${classes["first-link"]}`} to="">
+                <div className={`${classes["mini-nav-link-wrapper"]} ms-auto`}>
+                  <Link className={`${classes["first-link"]}`} to="/">
                     save more on app
                   </Link>
-                  <Link className={`${classes["second-link"]}`} to="">
+                  <Link className={`${classes["second-link"]}`} to="/">
                     sell on lazapee
                   </Link>
-                  <Link className={`${classes["mini-nav-link"]}`} to="">
+                  <Link className={`${classes["mini-nav-link"]}`} to="/">
                     customer care
                   </Link>
-                  <Link className={`${classes["mini-nav-link"]}`} to="">
+                  <Link className={`${classes["mini-nav-link"]}`} to="/">
                     notifications
                   </Link>
-                  <Link className={`${classes["mini-nav-link"]}`} to="">
+                  <Link className={`${classes["mini-nav-link"]}`} to="/">
                     login
                   </Link>
                 </div>
@@ -48,15 +48,13 @@ class NavMenuDesktop extends Component {
                 <Container className="px-0" fluid>
                   <Navbar.Brand
                     className={`${classes["navbar-logo"]} mt-2`}
-                    href="#"
+                    href="/"
                   >
-                    <Link to="/">
-                      <img
-                        src={require("../../assets/images/common/lazapee.png")}
-                        width="125"
-                        alt="lazapee"
-                      />
-                    </Link>
+                    <img
+                      src={require("../../assets/images/common/lazapee.png")}
+                      width="125"
+                      alt="lazapee"
+                    />
                   </Navbar.Brand>
                   <Navbar.Toggle aria-controls="navbarScroll" />
                   <Navbar.Collapse id="navbarScroll">

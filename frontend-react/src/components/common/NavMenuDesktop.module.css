@@ -108,4 +108,8 @@
     float: right;
     margin-top: 1rem;
   }
+  .mini-nav-link-wrapper {
+    text-align: center;
+    margin: auto;
+  }
 }
