@@ -8,56 +8,98 @@ import {
   Button,
   InputGroup,
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import classes from "./NavMenuDesktop.module.css";
 
 class NavMenuDesktop extends Component {
   render() {
     return (
       <Fragment>
-        <div className="bg-white w-100">
-          <Container>
-            {/* Small Navigation */}
-
-            {/* Start Large Navigation */}
-            <Navbar className="pb-4" expand="lg">
-              <Container className="px-0" fluid>
-                <Navbar.Brand className={`${classes["navbar-logo"]}`} href="#">
-                  <img
-                    src={require("../../assets/images/common/lazapee.png")}
-                    width="125"
-                    alt=""
-                  />
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                  <Nav
-                    className="my-2 my-lg-0"
-                    style={{ maxHeight: "100px" }}
-                    navbarScroll
-                  ></Nav>
-                  <Form className="d-flex">
-                    <InputGroup>
-                      <FormControl
-                        type="search"
-                        placeholder="Search in Lazapee"
-                        className={`${classes["search-input"]}`}
-                        aria-label="Search"
-                        aria-describedby="basic-addon1"
-                      />
-                      <Button
-                        id="button-addon1"
-                        className={`${classes["search-button"]}`}
-                        variant="outline-success"
-                      >
-                        <i class="fas fa-search"></i>
-                      </Button>
-                    </InputGroup>
-                  </Form>
-                </Navbar.Collapse>
+        <div className={`${classes["sticky"]}`}>
+          {/* Small Navigation */}
+          <div className={`${classes["nav-mini"]} w-100`}>
+            <Navbar className="py-0" expand="lg">
+              <Container>
+                <div className="ms-auto">
+                  <Link className={`${classes["first-link"]}`} to="">
+                    save more on app
+                  </Link>
+                  <Link className={`${classes["second-link"]}`} to="">
+                    sell on lazada
+                  </Link>
+                  <Link className={`${classes["mini-nav-link"]}`} to="">
+                    customer care
+                  </Link>
+                  <Link className={`${classes["mini-nav-link"]}`} to="">
+                    notifications
+                  </Link>
+                  <Link className={`${classes["mini-nav-link"]}`} to="">
+                    login
+                  </Link>
+                </div>
               </Container>
             </Navbar>
-            {/* End Large Navigation */}
-          </Container>
+          </div>
+
+          {/* Start Large Navigation */}
+          <div className={`${classes["nav-large"]} bg-white w-100`}>
+            <Container>
+              <Navbar expand="lg">
+                <Container className="px-0" fluid>
+                  <Navbar.Brand
+                    className={`${classes["navbar-logo"]} mt-2`}
+                    href="#"
+                  >
+                    <Link to="/">
+                      <img
+                        src={require("../../assets/images/common/lazapee.png")}
+                        width="125"
+                        alt="lazapee"
+                      />
+                    </Link>
+                  </Navbar.Brand>
+                  <Navbar.Toggle aria-controls="navbarScroll" />
+                  <Navbar.Collapse id="navbarScroll">
+                    <Nav
+                      className="my-2 my-lg-0"
+                      style={{ maxHeight: "100px" }}
+                      navbarScroll
+                    ></Nav>
+                    <Form className="d-flex">
+                      <InputGroup>
+                        <FormControl
+                          type="search"
+                          placeholder="Search in Lazapee"
+                          className={`${classes["search-input"]}`}
+                          aria-label="Search"
+                          aria-describedby="basic-addon1"
+                        />
+                        <Button
+                          id="button-addon1"
+                          className={`${classes["search-button"]}`}
+                          variant="outline-success"
+                        >
+                          <i className="fas fa-search"></i>
+                        </Button>
+                      </InputGroup>
+                    </Form>
+                    <div className={`${classes["nav-cart"]}`}>
+                      <i className="fas fa-shopping-cart"></i>
+                    </div>
+                    <div className={`${classes["nav-cash-in"]}`}>
+                      <img
+                        className="img-fluid"
+                        src={require("../../assets/images/common/cash-in.png")}
+                        width="187px"
+                        alt="cash-in"
+                      />
+                    </div>
+                  </Navbar.Collapse>
+                </Container>
+              </Navbar>
+              {/* End Large Navigation */}
+            </Container>
+          </div>
         </div>
       </Fragment>
     );

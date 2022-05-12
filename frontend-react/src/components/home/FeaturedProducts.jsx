@@ -106,7 +106,7 @@ class FeaturedProducts extends Component {
                 <Card className="card-product">
                   <Card.Img
                     variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/35f1bfaa1d8c001450cc6634f455ff92.jpg_200x200q80.jpg_.webp"
+                    src="https://lzd-img-global.slatic.net/g/ff/kf/S0e8462b2c95f4590b8dece87880fd539T.jpg_200x200q80.jpg_.webp"
                     alt="3b-button-3"
                   />
                   <Card.Body>
@@ -123,7 +123,7 @@ class FeaturedProducts extends Component {
                 <Card className="card-product">
                   <Card.Img
                     variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/35f1bfaa1d8c001450cc6634f455ff92.jpg_200x200q80.jpg_.webp"
+                    src="https://lzd-img-global.slatic.net/g/p/6f27c70a8a2c988ba14ff4d1ca2103e3.jpg_200x200q80.jpg_.webp"
                     alt="3b-button-3"
                   />
                   <Card.Body>
@@ -140,7 +140,7 @@ class FeaturedProducts extends Component {
                 <Card className="card-product">
                   <Card.Img
                     variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/35f1bfaa1d8c001450cc6634f455ff92.jpg_200x200q80.jpg_.webp"
+                    src="https://lzd-img-global.slatic.net/g/p/97616e115b45dbd325a6184fb8981661.jpg_200x200q80.jpg_.webp"
                     alt="3b-button-3"
                   />
                   <Card.Body>
@@ -157,7 +157,7 @@ class FeaturedProducts extends Component {
                 <Card className="card-product">
                   <Card.Img
                     variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/35f1bfaa1d8c001450cc6634f455ff92.jpg_200x200q80.jpg_.webp"
+                    src="https://lzd-img-global.slatic.net/g/p/3c4ea214b8b55d272155a6da7092b359.jpg_200x200q80.jpg_.webp"
                     alt="3b-button-3"
                   />
                   <Card.Body>

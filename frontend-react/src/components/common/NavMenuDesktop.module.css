@@ -1,3 +1,14 @@
+/* ========= LARGE NAVBAR ========= */
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.nav-large {
+  padding-bottom: 1.3rem;
+  margin-bottom: 1px;
+}
 .navbar-logo {
   width: 200px;
 }
@@ -37,4 +48,64 @@
 .search-button:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+.nav-cart {
+  color: var(--secondary-app-color);
+  margin-left: 2rem;
+  font-size: 1.7rem;
+}
+.nav-cash-in {
+  margin-left: 3rem;
+}
+/* ========= MINI NAVBAR ========= */
+.nav-mini {
+  background-color: #f7f7f7;
+}
+.mini-nav-link {
+  font-size: 12px;
+  font-family: "Roboto";
+  letter-spacing: -0.1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-inline: 1rem;
+  color: #9e9e9e;
+}
+.mini-nav-link:hover {
+  color: var(--primary-app-color);
+}
+.first-link,
+.second-link {
+  color: var(--secondary-app-color);
+  font-size: 12px;
+  font-family: "Roboto";
+  letter-spacing: -0.1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-inline: 1rem;
+}
+.first-link:hover,
+.second-link:hover {
+  color: var(--primary-app-color);
+}
+
+/* CSS BREAKPOINTS */
+@media only screen and (max-width: 1399px) {
+  .search-input {
+    width: 300px !important;
+  }
+}
+@media only screen and (max-width: 980px) {
+  .search-input {
+    width: 70% !important;
+  }
+}
+@media only screen and (max-width: 991px) {
+  .nav-cart {
+    float: left;
+    margin-top: 1rem;
+  }
+  .nav-cash-in {
+    float: right;
+    margin-top: 1rem;
+  }
 }
