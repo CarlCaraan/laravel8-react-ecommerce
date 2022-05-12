@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import NavMenuDesktop from "../components/common/NavMenuDesktop";
 import Campaign from "../components/home/Campaign";
 import Categories from "../components/home/Categories";
 import Collection from "../components/home/Collection";
@@ -11,6 +12,7 @@ class HomePage extends Component {
     return (
       <Fragment>
         <Campaign />
+        <NavMenuDesktop />
         <Herosection />
         <FeaturedProducts />
         <Categories />

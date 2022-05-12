@@ -1,7 +1,6 @@
 .menu {
   width: 100%;
   font-family: "Roboto";
-  font-size: 15px;
   position: relative;
   padding: 0.5rem 0rem 0.5rem 4px;
   margin: 0;
@@ -16,7 +15,8 @@
 .menu a:focus {
   color: #757575;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 13px;
+  letter-spacing: -0.1px;
   line-height: 13.8px;
   letter-spacing: normal;
   text-align: left !important;
@@ -30,8 +30,8 @@
   margin-left: -4px;
   line-height: 1.6rem;
   color: #757575;
-  font-size: 12px;
-  letter-spacing: normal;
+  font-size: 13px;
+  letter-spacing: -0.1px;
   cursor: pointer;
 }
 .menu > li > a {

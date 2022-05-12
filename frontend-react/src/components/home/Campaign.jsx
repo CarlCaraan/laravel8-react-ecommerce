@@ -29,7 +29,6 @@ class Campaign extends Component {
                 <i className="fas fa-times"></i>
               </span>
             </Container>
-            <br />
           </div>
         )}
       </Fragment>

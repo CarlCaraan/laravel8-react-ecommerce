@@ -17,10 +17,11 @@ class HomeSlider extends Component {
       initialSlide: 0,
       cssEase: "linear",
       arrows: false,
+      dotsClass: `${classes["slick-dots-thumb"]}`,
       customPaging: function (i) {
         return (
-          <span className={`${classes["slick-span"]}`}>
-            <i class="fas fa-circle"></i>
+          <span>
+            <i className="fas fa-circle"></i>
           </span>
         );
       },
@@ -42,6 +43,11 @@ class HomeSlider extends Component {
           <img
             className="img-fluid"
             src="https://lzd-img-global.slatic.net/g/icms/images/ims-web/5c3e46db-e075-4e2d-92f7-05f69e037997.jpg_1200x1200q90.jpg_.webp"
+            alt=""
+          />
+          <img
+            className="img-fluid"
+            src="https://lzd-img-global.slatic.net/g/icms/images/ims-web/90831fb5-fb26-4550-bfad-6a1ebef50261.jpg_1200x1200q90.jpg_.webp"
             alt=""
           />
         </Slider>
