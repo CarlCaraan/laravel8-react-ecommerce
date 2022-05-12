@@ -25,7 +25,7 @@ class NavMenuDesktop extends Component {
                     save more on app
                   </Link>
                   <Link className={`${classes["second-link"]}`} to="">
-                    sell on lazada
+                    sell on lazapee
                   </Link>
                   <Link className={`${classes["mini-nav-link"]}`} to="">
                     customer care
