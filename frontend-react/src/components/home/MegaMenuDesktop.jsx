@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import classes from "./MegaMenu.module.css";
+import classes from "./MegaMenuDesktop.module.css";
 
 class MegaMenu extends Component {
   render() {
