@@ -38,7 +38,7 @@ function MegaMenuMobile({ name, ...props }) {
               eventKey="0"
             >
               <Accordion.Header>
-                <span className={`${classes["accordion-header-custom"]}`}>
+                <span className={`${classes["accordion-button"]}`}>
                   Electronic Device
                 </span>
               </Accordion.Header>
