@@ -96,9 +96,6 @@
 
 /* CSS BREAKPOINTS */
 @media only screen and (max-width: 1200px) {
-  .menu {
-    width: 50%;
-  }
   .menu > li > .megadrop {
     left: 100%;
     width: 100%;

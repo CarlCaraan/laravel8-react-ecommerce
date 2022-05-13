@@ -32,7 +32,7 @@ function MegaMenuMobile({ name, ...props }) {
         </Offcanvas.Header>
         <Offcanvas.Body>
           {/* Start Accordion */}
-          <Accordion defaultActiveKey="0">
+          <Accordion>
             <Accordion.Item
               className={`${classes["off-canvas-body"]}`}
               eventKey="0"
@@ -42,7 +42,7 @@ function MegaMenuMobile({ name, ...props }) {
                   Electronic Device
                 </span>
               </Accordion.Header>
-              <Accordion.Body className="p-0">
+              <Accordion.Body className="px-0 pb-0">
                 <div className={`${classes["megadrop"]}`}>
                   <ul>
                     <li>
@@ -53,6 +53,33 @@ function MegaMenuMobile({ name, ...props }) {
                     </li>
                     <li>
                       <Link to="#">Laptop</Link>
+                    </li>
+                  </ul>
+                </div>
+              </Accordion.Body>
+            </Accordion.Item>
+          </Accordion>
+          <Accordion>
+            <Accordion.Item
+              className={`${classes["off-canvas-body"]}`}
+              eventKey="0"
+            >
+              <Accordion.Header>
+                <span className={`${classes["accordion-button"]}`}>
+                  Electronic Accessories
+                </span>
+              </Accordion.Header>
+              <Accordion.Body className="px-0 pb-0">
+                <div className={`${classes["megadrop"]}`}>
+                  <ul>
+                    <li>
+                      <Link to="#">Mobile Accessories</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Audio</Link>
+                    </li>
+                    <li>
+                      <Link to="#">Computer Accessories</Link>
                     </li>
                   </ul>
                 </div>
