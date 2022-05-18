@@ -1,6 +1,5 @@
 /* ========= LARGE NAVBAR ========= */
 .sticky {
-  position: -webkit-sticky;
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -111,5 +110,10 @@
   .mini-nav-link-wrapper {
     text-align: center;
     margin: auto;
+  }
+}
+@media (max-width: 575.98px) {
+  .sticky {
+    position: static;
   }
 }
