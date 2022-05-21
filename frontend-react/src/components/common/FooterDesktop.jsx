@@ -6,7 +6,8 @@ class FooterDesktop extends Component {
   render() {
     return (
       <Fragment>
-        <div className={classes.footer}>
+        {/* Start Footer One */}
+        <div className={`${classes["footer-one"]}`}>
           <Container>
             <Row>
               <Col className="mb-5" xl={6} lg={6} md={12}>
@@ -131,6 +132,15 @@ class FooterDesktop extends Component {
             </Row>
           </Container>
         </div>
+        {/* End Footer One */}
+
+        {/* Start Footer Two */}
+
+        {/* End Footer Two */}
+
+        {/* Start Footer Three */}
+
+        {/* End Footer Three */}
       </Fragment>
     );
   }
