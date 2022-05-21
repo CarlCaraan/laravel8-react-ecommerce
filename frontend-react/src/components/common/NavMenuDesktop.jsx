@@ -51,7 +51,7 @@ class NavMenuDesktop extends Component {
                     href="/"
                   >
                     <img
-                      src={require("../../assets/images/common/lazapee.png")}
+                      src={require("../../assets/images/common/header/lazapee.png")}
                       width="125"
                       alt="lazapee"
                     />
@@ -87,7 +87,7 @@ class NavMenuDesktop extends Component {
                     <div className={`${classes["nav-cash-in"]}`}>
                       <img
                         className="img-fluid"
-                        src={require("../../assets/images/common/cash-in.png")}
+                        src={require("../../assets/images/common/header/cash-in.png")}
                         width="187px"
                         alt="cash-in"
                       />

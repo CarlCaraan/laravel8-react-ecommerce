@@ -5,7 +5,7 @@ class Collection extends Component {
   render() {
     return (
       <Fragment>
-        <Container>
+        <Container className="mb-5">
           <h2 className="section-header">Just For You</h2>
 
           {/* Start Product Card */}
@@ -315,6 +315,7 @@ class Collection extends Component {
           </div>
           {/* End Product Card */}
         </Container>
+        <br />
       </Fragment>
     );
   }
