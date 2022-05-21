@@ -13,7 +13,7 @@ class FooterDesktop extends Component {
                 <h4 className={`${classes["footer-title"]}`}>
                   Payment Methods
                 </h4>
-                <Row className="me-5">
+                <Row>
                   <Col>
                     <img
                       src={require("../../assets/images/common/footer/payment/payment-method-1.png")}
@@ -56,6 +56,8 @@ class FooterDesktop extends Component {
                       width="45px"
                     />
                   </Col>
+                  <Col></Col>
+                  <Col></Col>
                 </Row>
               </Col>
               <Col xl={6} lg={6} md={12}>
