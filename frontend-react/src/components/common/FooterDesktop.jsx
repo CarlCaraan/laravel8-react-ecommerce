@@ -360,9 +360,6 @@ class FooterDesktop extends Component {
                   width="30px"
                 />
                 {/* End Map Grid */}
-                <h4 className={`${classes["footer-copyright"]}`}>
-                  &copy; Lazapee 2022
-                </h4>
               </Col>
               <Col className="mt-5" xl={7} lg={7} md={12} sm={12}>
                 <Row>
@@ -454,6 +451,9 @@ class FooterDesktop extends Component {
                   </Col>
                 </Row>
               </Col>
+              <h4 className={`${classes["footer-copyright"]}`}>
+                &copy; Lazapee 2022
+              </h4>
             </Row>
           </Container>
         </div>

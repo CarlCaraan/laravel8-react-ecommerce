@@ -40,12 +40,11 @@
 /* ========= Footer Three ========= */
 .footer-three {
   background-color: #fff;
-  padding-bottom: 3rem;
+  padding-bottom: 1.5rem;
 }
 .footer-copyright {
   color: #606060;
   font-size: 14px;
-  margin-top: 2.4rem;
 }
 .footer-three-title {
   font-family: "Roboto";
@@ -96,6 +95,11 @@
   }
   .responsive-download-wrapper {
     justify-content: center;
+  }
+  .footer-copyright {
+    color: #606060;
+    font-size: 14px;
+    padding-top: 2rem;
   }
 }
 
