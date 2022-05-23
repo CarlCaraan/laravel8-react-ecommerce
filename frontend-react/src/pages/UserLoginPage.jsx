@@ -8,7 +8,6 @@ class HomePage extends Component {
   render() {
     return (
       <Fragment>
-        <Campaign />
         <NavMenuDesktop />
         <UserLogin />
         <FooterDesktop />
