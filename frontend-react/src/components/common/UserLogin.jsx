@@ -25,26 +25,17 @@ class UserLogin extends Component {
                 <Card className={`${classes["custom-card"]}`}>
                   <Card.Body>
                     <Row>
-                      <Col xl={6} lg={12} md={12} sm={12}>
+                      <Col></Col>
+                      <Col xl={6}>
                         <Form>
-                          <Form.Group className="mb-3" controlId="email">
+                          <Form.Group className="mb-3" controlId="phone">
                             <Form.Label className={`${classes["form-label"]}`}>
-                              Phone Number or Email*
+                              Phone Number*
                             </Form.Label>
                             <Form.Control
                               className={`${classes["form-inputs"]}`}
-                              type="email"
-                              placeholder="Please enter your Phone Number or Email"
-                            />
-                          </Form.Group>
-                          <Form.Group className="mb-3" controlId="password">
-                            <Form.Label className={`${classes["form-label"]}`}>
-                              Password*
-                            </Form.Label>
-                            <Form.Control
-                              className={`${classes["form-inputs"]}`}
-                              type="password"
-                              placeholder="Please enter your password"
+                              type="text"
+                              placeholder="Please enter your Phone Number"
                             />
                           </Form.Group>
                           <Form.Text>
@@ -55,19 +46,12 @@ class UserLogin extends Component {
                               Forgot Password?
                             </Link>
                           </Form.Text>
+                          <Button className={`${classes["login-button"]}`}>
+                            LOGIN
+                          </Button>
                         </Form>
                       </Col>
-                      <Col
-                        xl={6}
-                        lg={12}
-                        md={12}
-                        sm={12}
-                        className="text-center"
-                      >
-                        <Button className={`${classes["login-button"]}`}>
-                          LOGIN
-                        </Button>
-                      </Col>
+                      <Col></Col>
                     </Row>
                   </Card.Body>
                 </Card>
