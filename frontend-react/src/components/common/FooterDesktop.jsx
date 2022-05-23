@@ -414,7 +414,7 @@ class FooterDesktop extends Component {
                   </Col>
                   <Col xl={6} lg={6} md={12} sm={12}>
                     <div
-                      class={`${classes["responsive-download-wrapper"]} hstack gap-1`}
+                      className={`${classes["responsive-download-wrapper"]} hstack gap-1`}
                     >
                       <img
                         className={`${classes["responsive-lazada-icon"]} img-fluid me-1`}
