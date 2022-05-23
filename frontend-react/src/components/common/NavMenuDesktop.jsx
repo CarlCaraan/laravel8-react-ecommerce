@@ -31,6 +31,9 @@ class NavMenuDesktop extends Component {
                     customer care
                   </Link>
                   <Link className={`${classes["mini-nav-link"]}`} to="/">
+                    wishlist
+                  </Link>
+                  <Link className={`${classes["mini-nav-link"]}`} to="/">
                     notifications
                   </Link>
                   <Link className={`${classes["mini-nav-link"]}`} to="/">
