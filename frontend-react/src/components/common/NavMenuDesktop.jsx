@@ -27,7 +27,7 @@ class NavMenuDesktop extends Component {
                   <Link className={`${classes["second-link"]}`} to="/">
                     sell on lazapee
                   </Link>
-                  <Link className={`${classes["mini-nav-link"]}`} to="/">
+                  <Link className={`${classes["mini-nav-link"]}`} to="/contact">
                     customer care
                   </Link>
                   <Link className={`${classes["mini-nav-link"]}`} to="/">

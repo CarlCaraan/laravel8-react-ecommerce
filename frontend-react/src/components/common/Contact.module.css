@@ -1,0 +1,112 @@
+.custom-breadcrumb {
+  font-family: "Roboto";
+  font-size: 13px;
+  line-height: 16.7142px;
+  letter-spacing: normal;
+  text-align: start;
+  margin-top: 1rem;
+}
+.breadcrumb-item a {
+  text-decoration: none !important;
+  color: #999999;
+}
+.breadcrumb-item a:hover {
+  color: #5b98fb;
+}
+.breadcrumb-item {
+  color: #000 !important;
+  cursor: default;
+}
+.contact-title {
+  font-size: 20px;
+  font-family: "Roboto";
+  line-height: 28.8px;
+  text-align: start;
+  letter-spacing: normal;
+  color: #303030;
+}
+.custom-card {
+  border: 1px solid #929292 !important;
+  border-radius: 3px !important;
+  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  cursor: pointer;
+}
+.custom-card:hover {
+  opacity: 0.8;
+}
+.card-title {
+  color: #202020;
+  font-family: "Roboto";
+  text-align: start;
+  letter-spacing: normal;
+  line-height: 19.5px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.card-body-text {
+  color: #202020;
+  font-family: "Roboto";
+  font-size: 14px;
+  line-height: 19.6px;
+  text-align: start;
+  letter-spacing: normal;
+}
+.custom-icon {
+  color: #1a71ff;
+  margin-right: 5px;
+}
+.custom-icon-phone {
+  color: #1a71ff;
+  margin-right: 5px;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+/* ========= CONTACT FORM ========= */
+.form-label {
+  font-family: "Roboto";
+  color: #424242 !important;
+  font-size: 12px;
+  text-align: start;
+  letter-spacing: normal;
+  line-height: 15px;
+}
+.form-inputs {
+  font-family: "Arial" !important;
+  font-size: 14px !important;
+  text-align: start !important;
+  letter-spacing: normal !important;
+  line-height: 16.1px !important;
+  border-radius: 0 !important;
+  padding-block: 0.7rem !important;
+  color: #a9a9a9 !important;
+}
+.form-inputs::placeholder {
+  color: #a9a9a9 !important;
+}
+.form-inputs:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  color: #000 !important;
+  border: 1px solid #a9a9a9 !important;
+}
+.send-button {
+  border-radius: 2px !important;
+  border: none !important;
+  background: var(--primary-app-color) !important;
+  color: #fff !important;
+  font-family: "Roboto" !important;
+  font-size: 14px !important;
+  line-height: 46px !important;
+  width: 100%;
+  padding: 0 !important;
+}
+.send-button:hover {
+  background: #d0611e !important;
+}
+.send-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
