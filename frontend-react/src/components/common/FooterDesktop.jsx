@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import classes from "./FooterDesktop.module.css";
+import { Link } from "react-router-dom";
 
 class FooterDesktop extends Component {
   render() {
@@ -306,6 +307,14 @@ class FooterDesktop extends Component {
                   </span>
                   ! Grab the best deals and free shipping vouchers from the fun
                   campaigns, and you get much of your money's worth online!
+                  <hr />
+                  <Link className={`${classes["custom-link"]}`} to="/about">
+                    About
+                  </Link>
+                  <br />
+                  <Link className={`${classes["custom-link"]}`} to="/privacy">
+                    Privacy Policy
+                  </Link>
                 </p>
               </Col>
             </Row>

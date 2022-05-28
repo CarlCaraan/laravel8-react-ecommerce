@@ -36,6 +36,13 @@
 .footer-link-text {
   color: #199cb7;
 }
+.custom-link {
+  color: #888888;
+  text-decoration: none;
+}
+.custom-link:hover {
+  color: #5b98fb;
+}
 
 /* ========= Footer Three ========= */
 .footer-three {
