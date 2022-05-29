@@ -307,15 +307,25 @@ class FooterDesktop extends Component {
                   </span>
                   ! Grab the best deals and free shipping vouchers from the fun
                   campaigns, and you get much of your money's worth online!
-                  <hr />
-                  <Link className={`${classes["custom-link"]}`} to="/about">
-                    About
-                  </Link>
-                  <br />
-                  <Link className={`${classes["custom-link"]}`} to="/privacy">
-                    Privacy Policy
-                  </Link>
                 </p>
+                <div>
+                  <hr />
+                  <ul className={`${classes["ul-links"]}`}>
+                    <li>
+                      <Link className={`${classes["custom-link"]}`} to="/about">
+                        About
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className={`${classes["custom-link"]}`}
+                        to="/privacy"
+                      >
+                        Privacy Policy
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
               </Col>
             </Row>
           </Container>

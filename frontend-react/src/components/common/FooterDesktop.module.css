@@ -39,9 +39,21 @@
 .custom-link {
   color: #888888;
   text-decoration: none;
+  font-family: "Roboto";
+  font-size: 12px;
+  padding-right: 4.7rem;
+  line-height: 14px;
 }
 .custom-link:hover {
   color: #5b98fb;
+}
+.ul-links {
+  list-style: none;
+  padding: 0 !important;
+}
+.ul-links > li {
+  margin: 0;
+  line-height: 1;
 }
 
 /* ========= Footer Three ========= */
