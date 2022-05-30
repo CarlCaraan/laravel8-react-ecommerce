@@ -47,7 +47,7 @@ class ProductDetails extends Component {
         <div className={`${classes["product-container"]} py-5`}>
           <Container>
             <Card className={`${classes["custom-card"]}`}>
-              <Card.Body className={`${classes["card-body"]} py-0`}>
+              <Card.Body className={`${classes["card-body"]}`}>
                 <Row>
                   {/* Start Left Card */}
                   <Col
@@ -55,7 +55,7 @@ class ProductDetails extends Component {
                     lg={9}
                     md={12}
                     sm={12}
-                    className={`${classes["left-card"]} p-1`}
+                    className={`${classes["left-card"]} py-2`}
                   >
                     <Row>
                       {/* Start Image Section */}
@@ -193,7 +193,7 @@ class ProductDetails extends Component {
                     lg={3}
                     md={12}
                     sm={12}
-                    className={`${classes["right-card"]} p-1`}
+                    className={`${classes["right-card"]} py-2`}
                   >
                     asd
                   </Col>
