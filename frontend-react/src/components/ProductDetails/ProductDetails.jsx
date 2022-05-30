@@ -44,7 +44,7 @@ class ProductDetails extends Component {
         {/* End Breadcrumb */}
 
         {/* Start Product Details */}
-        <div className={`${classes["product-container"]} py-5`}>
+        <div className={`${classes["product-container"]}`}>
           <Container>
             <Card className={`${classes["custom-card"]}`}>
               <Card.Body className={`${classes["card-body"]}`}>
