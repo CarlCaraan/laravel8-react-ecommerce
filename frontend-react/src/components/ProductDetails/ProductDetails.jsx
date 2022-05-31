@@ -13,6 +13,7 @@ import Product1 from "../../assets/images/product/product1.png";
 import Product2 from "../../assets/images/product/product2.png";
 import Product3 from "../../assets/images/product/product3.png";
 import Product4 from "../../assets/images/product/product4.png";
+import SuggestedProduct from "./SuggestedProduct";
 
 class ProductDetails extends Component {
   render() {
@@ -237,7 +238,9 @@ class ProductDetails extends Component {
                         Return & Warranty
                       </span>
                       <div className="hstack gap-3 mt-2">
-                        <i class={`${classes["custom-icon"]} fas fa-undo`}></i>
+                        <i
+                          className={`${classes["custom-icon"]} fas fa-undo`}
+                        ></i>
                         <span className={`${classes["right-card-body"]}`}>
                           7 Days Money Back Guarantee
                           <br />
@@ -248,7 +251,7 @@ class ProductDetails extends Component {
                       </div>
                       <div className="hstack gap-3 mt-3">
                         <i
-                          class={`${classes["custom-icon"]} fas fa-shield-alt`}
+                          className={`${classes["custom-icon"]} fas fa-shield-alt`}
                         ></i>
                         <span className={`${classes["right-card-body"]}`}>
                           7 Days Local Supplier Refund Warranty
@@ -260,7 +263,9 @@ class ProductDetails extends Component {
                         Sold by
                       </span>
                       <div className="hstack gap-3">
-                        <i class={`${classes["custom-icon"]} fas fa-store`}></i>
+                        <i
+                          className={`${classes["custom-icon"]} fas fa-store`}
+                        ></i>
                         <span className={`${classes["right-card-body"]}`}>
                           Jelly House
                         </span>
@@ -271,6 +276,8 @@ class ProductDetails extends Component {
                 </Row>
               </Card.Body>
             </Card>
+
+            {/* Start Product Description */}
             <Card className={`${classes["custom-card"]}`}>
               <Card.Body className={`${classes["card-body"]}`}>
                 <Row className="bg-white">
@@ -301,6 +308,9 @@ class ProductDetails extends Component {
                 </Row>
               </Card.Body>
             </Card>
+            {/* End Product Description */}
+
+            {/* Start Product Rating */}
             <Card className={`${classes["custom-card"]}`}>
               <Card.Body className={`${classes["card-body"]}`}>
                 <Row className="bg-white">
@@ -310,11 +320,11 @@ class ProductDetails extends Component {
                 </Row>
                 <Row>
                   <Col className={`${classes["review-body"]}`}>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
-                    <i class="fas fa-star text-warning"></i>
+                    <i className="fas fa-star text-warning"></i>
+                    <i className="fas fa-star text-warning"></i>
+                    <i className="fas fa-star text-warning"></i>
+                    <i className="fas fa-star text-warning"></i>
+                    <i className="fas fa-star text-warning"></i>
                     <div>
                       <span className={`${classes["review-name"]}`}>
                         Carl Caraan{" "}
@@ -336,6 +346,7 @@ class ProductDetails extends Component {
                 </Row>
               </Card.Body>
             </Card>
+            {/* End Product Rating */}
           </Container>
         </div>
         {/* End Product Details */}
