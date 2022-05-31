@@ -81,102 +81,136 @@ class ProductDetails extends Component {
 
                       {/* Start Product Specifications */}
                       <Col xl={7} lg={7} md={12} sm={12}>
-                        <h1>Product Name</h1>
-                        <hr />
-                        <span className={`${classes["discounted-price"]}`}>
-                          ₱27.00
-                        </span>
-                        <br />
-                        <span className={`${classes["original-price"]}`}>
-                          ₱27.00
-                        </span>
-                        <span className={`${classes["discount-percent"]}`}>
-                          ₱27.00
-                        </span>
-                        <hr />
-                        <Form.Label>Choose Color</Form.Label>
-                        <br />
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio1"
-                            value="option1"
-                          ></input>
-                          <label
-                            className="form-check-label"
-                            htmlFor="inlineRadio1"
-                          >
-                            Black
-                          </label>
+                        <h1 className={`${classes["product-name"]}`}>
+                          Product Name
+                        </h1>
+                        <div className={`${classes["price-wrapper"]}`}>
+                          <span className={`${classes["discounted-price"]}`}>
+                            ₱27.00
+                          </span>
+                          <br />
+                          <span className={`${classes["original-price"]}`}>
+                            ₱27.00
+                          </span>
+                          <span className={`${classes["discount-percent"]}`}>
+                            -29%
+                          </span>
                         </div>
-                        <div className="form-check form-check-inline">
+
+                        <Form.Group
+                          className={`${classes["choose-color-wrapper"]}`}
+                        >
+                          <Form.Label className={`${classes["form-label"]}`}>
+                            Choose Color
+                          </Form.Label>
+                          <br />
+                          <div className="form-check form-check-inline">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="inlineRadioOptions"
+                              id="inlineRadio1"
+                              value="option1"
+                            ></input>
+                            <label
+                              className="form-check-label"
+                              htmlFor="inlineRadio1"
+                            >
+                              Black
+                            </label>
+                          </div>
+                          <div className="form-check form-check-inline">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="inlineRadioOptions"
+                              id="inlineRadio2"
+                              value="option2"
+                            ></input>
+                            <label
+                              className="form-check-label"
+                              htmlFor="inlineRadio2"
+                            >
+                              Green
+                            </label>
+                          </div>
+                        </Form.Group>
+
+                        <Form.Group
+                          className={`${classes["choose-color-wrapper"]}`}
+                        >
+                          <Form.Label className={`${classes["form-label"]}`}>
+                            Choose Size
+                          </Form.Label>
+                          <br />
+                          <div className="form-check form-check-inline">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="inlineRadioOptions"
+                              id="inlineRadio1"
+                              value="option1"
+                            ></input>
+                            <label
+                              className="form-check-label"
+                              htmlFor="inlineRadio1"
+                            >
+                              XL
+                            </label>
+                          </div>
+                          <div className="form-check form-check-inline">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="inlineRadioOptions"
+                              id="inlineRadio2"
+                              value="option2"
+                            ></input>
+                            <label
+                              className="form-check-label"
+                              htmlFor="inlineRadio2"
+                            >
+                              L
+                            </label>
+                          </div>
+                        </Form.Group>
+
+                        <Form.Group
+                          className={`${classes["choose-color-wrapper"]}`}
+                        >
+                          <Form.Label className={`${classes["form-label"]}`}>
+                            Quantity
+                          </Form.Label>
                           <input
-                            className="form-check-input"
-                            type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio2"
-                            value="option2"
+                            type="number"
+                            className={`${classes["quantity-input"]} form-control`}
+                            placeholder="0"
+                            min="0"
                           ></input>
-                          <label
-                            className="form-check-label"
-                            htmlFor="inlineRadio2"
+                        </Form.Group>
+
+                        <Row className={`${classes["button-wrapper"]}`}>
+                          <Col
+                            xl={6}
+                            lg={6}
+                            md={6}
+                            sm={12}
+                            className="px-1 mb-2"
                           >
-                            Green
-                          </label>
-                        </div>
-                        <br />
-                        <br />
-                        <Form.Label>Choose Size</Form.Label>
-                        <br />
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio1"
-                            value="option1"
-                          ></input>
-                          <label
-                            className="form-check-label"
-                            htmlFor="inlineRadio1"
-                          >
-                            XL
-                          </label>
-                        </div>
-                        <div className="form-check form-check-inline">
-                          <input
-                            className="form-check-input"
-                            type="radio"
-                            name="inlineRadioOptions"
-                            id="inlineRadio2"
-                            value="option2"
-                          ></input>
-                          <label
-                            className="form-check-label"
-                            htmlFor="inlineRadio2"
-                          >
-                            L
-                          </label>
-                        </div>
-                        <br />
-                        <br />
-                        <Form.Label>Quantity</Form.Label>
-                        <input
-                          type="number"
-                          className="form-control w-25"
-                          min="0"
-                        ></input>
-                        <hr />
-                        <Row>
-                          <Col>
-                            <Button className="btn btn-warning w-100">
+                            <Button className={`${classes["buy-button"]}`}>
                               Buy Now
                             </Button>
                           </Col>
-                          <Col>
-                            <Button className="btn btn-warning w-100">
+                          <Col
+                            xl={6}
+                            lg={6}
+                            md={6}
+                            sm={12}
+                            className="px-1 mb-2"
+                          >
+                            <Button
+                              className={`${classes["addtocart-button"]}`}
+                            >
                               Add to Cart
                             </Button>
                           </Col>
