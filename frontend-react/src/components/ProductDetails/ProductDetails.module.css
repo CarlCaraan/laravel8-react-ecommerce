@@ -19,6 +19,7 @@
 }
 .product-container {
   background: #eff0f5;
+  padding-bottom: 5rem;
 }
 .custom-card {
   border-radius: 0 !important;
@@ -140,4 +141,94 @@
 }
 .addtocart-button:hover {
   background-color: #d0611e !important;
+}
+.custom-icon {
+  color: #9e9e9e;
+  font-size: 14px;
+  padding: 2px;
+}
+/* ========= RIGHT CARD SECTION ========= */
+.right-card-headings {
+  font-family: "Roboto";
+  text-align: start;
+  letter-spacing: normal;
+  line-height: 13.8px;
+  font-size: 12px;
+  color: #757575;
+  font-weight: 600;
+}
+.right-card-wrapper {
+  border-bottom: 1px solid #eff0f5;
+  padding-bottom: 1rem;
+}
+.right-card-body {
+  font-size: 14px;
+  color: #212121;
+  font-family: "Roboto";
+  letter-spacing: normal;
+  line-height: 1;
+}
+.right-card-sub-body {
+  font-size: 12px;
+  color: #9e9e9e;
+  font-family: "Roboto";
+  letter-spacing: normal;
+}
+/* ========= DESCRIPTION SECTION ========= */
+.description-header {
+  background-color: #fafafa;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  font-weight: 600;
+  line-height: 3;
+}
+.description-body {
+  background-color: #fff;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+/* ========= REVIEW SECTION ========= */
+.review-header {
+  background-color: #fafafa;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  font-weight: 600;
+  line-height: 3;
+}
+.review-body {
+  background-color: #fff;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+.review-name {
+  font-family: "Roboto";
+  font-size: 12px;
+  line-height: 13.8px;
+  color: #808080;
+}
+.review-text-body {
+  margin-top: 1rem;
+  font-family: "Roboto";
+  font-size: 14px;
+  line-height: 16.1px;
+  color: #212121;
+}
+.text-verified {
+  color: #4caf50;
 }

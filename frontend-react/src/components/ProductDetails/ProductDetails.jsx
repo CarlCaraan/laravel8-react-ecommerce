@@ -83,6 +83,9 @@ class ProductDetails extends Component {
                       <Col xl={7} lg={7} md={12} sm={12}>
                         <h1 className={`${classes["product-name"]}`}>
                           Product Name
+                          <i
+                            className={`${classes["custom-icon"]} fas fa-heart float-end`}
+                          ></i>
                         </h1>
                         <div className={`${classes["price-wrapper"]}`}>
                           <span className={`${classes["discounted-price"]}`}>
@@ -108,7 +111,7 @@ class ProductDetails extends Component {
                             <input
                               className="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
+                              name="color"
                               id="inlineRadio1"
                               value="option1"
                             ></input>
@@ -123,7 +126,7 @@ class ProductDetails extends Component {
                             <input
                               className="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
+                              name="color"
                               id="inlineRadio2"
                               value="option2"
                             ></input>
@@ -147,7 +150,7 @@ class ProductDetails extends Component {
                             <input
                               className="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
+                              name="size"
                               id="inlineRadio1"
                               value="option1"
                             ></input>
@@ -162,7 +165,7 @@ class ProductDetails extends Component {
                             <input
                               className="form-check-input"
                               type="radio"
-                              name="inlineRadioOptions"
+                              name="size"
                               id="inlineRadio2"
                               value="option2"
                             ></input>
@@ -229,9 +232,107 @@ class ProductDetails extends Component {
                     sm={12}
                     className={`${classes["right-card"]} py-2`}
                   >
-                    asd
+                    <div className={`${classes["right-card-wrapper"]} mt-2`}>
+                      <span className={`${classes["right-card-headings"]}`}>
+                        Return & Warranty
+                      </span>
+                      <div className="hstack gap-3 mt-2">
+                        <i class={`${classes["custom-icon"]} fas fa-undo`}></i>
+                        <span className={`${classes["right-card-body"]}`}>
+                          7 Days Money Back Guarantee
+                          <br />
+                          <span className={`${classes["right-card-sub-body"]}`}>
+                            Change of mind is not applicable
+                          </span>
+                        </span>
+                      </div>
+                      <div className="hstack gap-3 mt-3">
+                        <i
+                          class={`${classes["custom-icon"]} fas fa-shield-alt`}
+                        ></i>
+                        <span className={`${classes["right-card-body"]}`}>
+                          7 Days Local Supplier Refund Warranty
+                        </span>
+                      </div>
+                    </div>
+                    <div className={`${classes["right-card-wrapper"]} mt-2`}>
+                      <span className={`${classes["right-card-headings"]}`}>
+                        Sold by
+                      </span>
+                      <div className="hstack gap-3">
+                        <i class={`${classes["custom-icon"]} fas fa-store`}></i>
+                        <span className={`${classes["right-card-body"]}`}>
+                          Jelly House
+                        </span>
+                      </div>
+                    </div>
                   </Col>
                   {/* End Right Card */}
+                </Row>
+              </Card.Body>
+            </Card>
+            <Card className={`${classes["custom-card"]}`}>
+              <Card.Body className={`${classes["card-body"]}`}>
+                <Row className="bg-white">
+                  <Col className={`${classes["description-header"]}`}>
+                    Product Details of{" "}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className={`${classes["description-body"]}`}>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Iste tenetur maiores fuga praesentium modi magni quos
+                    ducimus! Labore deleniti nobis, incidunt eius eligendi
+                    repellendus minus dignissimos voluptatum aperiam recusandae
+                    maxime? Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Iste tenetur maiores fuga praesentium modi magni quos
+                    ducimus! Labore deleniti nobis, incidunt eius eligendi
+                    repellendus minus dignissimos voluptatum aperiam recusandae
+                    maxime? Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Iste tenetur maiores fuga praesentium modi magni quos
+                    ducimus! Labore deleniti nobis, incidunt eius eligendi
+                    repellendus minus dignissimos voluptatum aperiam recusandae
+                    maxime? Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Iste tenetur maiores fuga praesentium modi magni quos
+                    ducimus! Labore deleniti nobis, incidunt eius eligendi
+                    repellendus minus dignissimos voluptatum aperiam recusandae
+                    maxime?
+                  </Col>
+                </Row>
+              </Card.Body>
+            </Card>
+            <Card className={`${classes["custom-card"]}`}>
+              <Card.Body className={`${classes["card-body"]}`}>
+                <Row className="bg-white">
+                  <Col className={`${classes["review-header"]}`}>
+                    Ratings & Review of{" "}
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className={`${classes["review-body"]}`}>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <i class="fas fa-star text-warning"></i>
+                    <div>
+                      <span className={`${classes["review-name"]}`}>
+                        Carl Caraan{" "}
+                        <span className={`${classes["text-verified"]}`}>
+                          <i className="fas fa-check-circle"></i> Verified
+                          Purchase
+                        </span>
+                      </span>
+                    </div>
+                    <div className={`${classes["review-text-body"]}`}>
+                      This is my first custom keyboard and I had fun building
+                      it! The build quality is solid and it is beginner
+                      friendly. It doesn’t include the tools needed to assemble
+                      it though. Make sure you have philips screwdriver and hex
+                      keys for the small screws. I also recommend buying other
+                      tools like a switch puller.
+                    </div>
+                  </Col>
                 </Row>
               </Card.Body>
             </Card>
