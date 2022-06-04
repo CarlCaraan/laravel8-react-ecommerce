@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
-import Contact from "../components/common/Contact";
 import FooterDesktop from "../components/common/FooterDesktop";
 import NavMenuDesktop from "../components/common/NavMenuDesktop";
+import Contact from "../components/common/Contact";
 
 class ContactPage extends Component {
   componentDidMount() {
