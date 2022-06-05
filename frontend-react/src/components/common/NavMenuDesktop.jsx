@@ -33,7 +33,10 @@ class NavMenuDesktop extends Component {
                   <Link className={`${classes["mini-nav-link"]}`} to="/">
                     wishlist
                   </Link>
-                  <Link className={`${classes["mini-nav-link"]}`} to="/">
+                  <Link
+                    className={`${classes["mini-nav-link"]}`}
+                    to="/notification"
+                  >
                     notifications
                   </Link>
                   <Link className={`${classes["mini-nav-link"]}`} to="/login">
