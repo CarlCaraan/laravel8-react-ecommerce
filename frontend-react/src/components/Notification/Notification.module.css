@@ -17,3 +17,75 @@
   color: #000 !important;
   cursor: default;
 }
+.notification-headings {
+  font-size: 20px;
+  font-family: "Roboto";
+  line-height: 28.8px;
+  text-align: start;
+  letter-spacing: normal;
+  color: #303030;
+}
+.custom-card {
+  border: 1px solid #929292 !important;
+  border-radius: 3px !important;
+  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.15);
+  -webkit-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.15);
+  height: 100%;
+  cursor: pointer;
+}
+.custom-card:hover {
+  opacity: 0.8;
+}
+.notification-title {
+  color: #202020;
+  font-family: "Roboto";
+  font-size: 14px;
+  line-height: 19.6px;
+  text-align: start;
+  letter-spacing: normal;
+}
+.notification-date-status {
+  color: #0275d8;
+  font-family: "Roboto";
+  font-size: 14px;
+  line-height: 19.6px;
+  text-align: start;
+  letter-spacing: normal;
+}
+/* ========= MODAL ========= */
+.modal-header {
+  font-family: "Roboto";
+  font-size: 13px;
+  color: #888888;
+  margin-block: 5px;
+  margin-bottom: 0px;
+  padding: 0;
+}
+.modal-title {
+  font-family: "Roboto";
+  font-size: 15px;
+}
+.modal-body {
+  font-family: "Roboto";
+  font-size: 14px;
+}
+.modal-button {
+  border-radius: 2px !important;
+  color: #fff;
+  background-color: var(--primary-app-color) !important;
+  border: none !important;
+  font-family: "Roboto";
+  font-size: 13px !important;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: normal;
+  transition: all 0.3s linear;
+}
+.modal-button:hover {
+  background-color: #cf611e !important;
+}
+.modal-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
