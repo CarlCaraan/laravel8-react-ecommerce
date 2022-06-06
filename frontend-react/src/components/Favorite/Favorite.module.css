@@ -1,0 +1,31 @@
+.custom-breadcrumb {
+  font-family: "Roboto";
+  font-size: 13px;
+  line-height: 16.7142px;
+  letter-spacing: normal;
+  text-align: start;
+  margin-top: 1rem;
+}
+.breadcrumb-item a {
+  text-decoration: none !important;
+  color: #999999;
+}
+.breadcrumb-item a:hover {
+  color: #5b98fb;
+}
+.breadcrumb-item {
+  color: #000 !important;
+  cursor: default;
+}
+.custom-button {
+  background-color: #f7f7f7 !important;
+  color: var(--primary-app-color) !important;
+  border: none !important;
+}
+.custom-button:hover {
+  color: gray !important;
+}
+.custom-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}

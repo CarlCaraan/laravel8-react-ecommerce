@@ -25,7 +25,6 @@ class Notification extends Component {
   render() {
     return (
       <Fragment>
-        {" "}
         {/* Start Breadcrumb */}
         <Container>
           <Breadcrumb className={`${classes["custom-breadcrumb"]}`}>

@@ -8,6 +8,7 @@ import PrivacyPage from "../pages/PrivacyPage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import NotFoundPage from "../pages/NotFoundPage";
 import NotificationPage from "../pages/NotificationPage";
+import FavoritePage from "../pages/FavoritePage";
 
 class AppRoute extends Component {
   render() {
@@ -22,6 +23,7 @@ class AppRoute extends Component {
           <Route path="/privacy" element={<PrivacyPage />} />
           <Route path="/productdetails" element={<ProductDetailsPage />} />
           <Route path="/notification" element={<NotificationPage />} />
+          <Route path="/favourite" element={<FavoritePage />} />
         </Routes>
       </Fragment>
     );
