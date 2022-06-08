@@ -87,9 +87,9 @@ class NavMenuDesktop extends Component {
                         </Button>
                       </InputGroup>
                     </Form>
-                    <div className={`${classes["nav-cart"]}`}>
+                    <Link to="/cart" className={`${classes["nav-cart"]}`}>
                       <i className="fas fa-shopping-cart"></i>
-                    </div>
+                    </Link>
                     <div className={`${classes["nav-cash-in"]}`}>
                       <img
                         className="img-fluid"

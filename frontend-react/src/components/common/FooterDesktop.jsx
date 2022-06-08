@@ -340,7 +340,6 @@ class FooterDesktop extends Component {
                 <h4 className={`${classes["footer-three-title"]}`}>
                   Lazada Southeast Asia
                 </h4>
-
                 {/* Start Map Grid */}
                 <img
                   className={`${classes["footer-icon"]} img-fluid`}
@@ -378,6 +377,9 @@ class FooterDesktop extends Component {
                   alt="vietnam.png"
                   width="30px"
                 />
+                {/* Google Translate Api */}
+                <div className="mt-3" id="google_translate_element"></div>
+
                 {/* End Map Grid */}
               </Col>
               <Col className="mt-5" xl={7} lg={7} md={12} sm={12}>
