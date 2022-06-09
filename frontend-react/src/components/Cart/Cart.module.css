@@ -17,6 +17,9 @@
   color: #000 !important;
   cursor: default;
 }
+.orange-text {
+  color: var(--primary-app-color);
+}
 .cart-container {
   background-color: #eff0f5;
 }
@@ -36,12 +39,10 @@
   font-family: "Roboto";
   font-size: 14px;
 }
-.product-quantity {
-  font-family: "Roboto";
-  font-size: 12px;
-  color: #757575;
-}
-.product-price {
+.product-price,
+.product-quantity,
+.product-total-items,
+.product-total-price {
   font-family: "Roboto";
   font-size: 12px;
   color: #757575;
@@ -72,6 +73,30 @@
 }
 .product-image {
   float: right;
+}
+.vat-text {
+  float: right;
+  font-family: "Roboto";
+  font-size: 12px;
+  color: #424242 !important;
+}
+.checkout-button {
+  border-radius: 2px !important;
+  border: none !important;
+  background: var(--primary-app-color) !important;
+  color: #fff !important;
+  font-family: "Roboto" !important;
+  font-size: 14px !important;
+  line-height: 46px !important;
+  width: 100%;
+  padding: 0 !important;
+}
+.checkout-button:hover {
+  background: #d0611e !important;
+}
+.checkout-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
 
 /* ========= BOOTSTRAP BREAKPOINTS ========= */
