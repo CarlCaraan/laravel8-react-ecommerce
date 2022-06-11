@@ -9,8 +9,72 @@ import {
   Form,
   Button,
 } from "react-bootstrap";
+import Validation from "../../validation/Validation";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class Contact extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "",
+      email: "",
+      message: "",
+    };
+  }
+
+  nameOnChange = (event) => {
+    let enteredName = event.target.value;
+    // alert(name);
+    this.setState({ name: enteredName });
+  };
+  emailOnChange = (event) => {
+    let enteredEmail = event.target.value;
+    // alert(email);
+    this.setState({ email: enteredEmail });
+  };
+  messageOnChange = (event) => {
+    let enteredMessage = event.target.value;
+    // alert(message);
+    this.setState({ message: enteredMessage });
+  };
+
+  contactFormHandler = (event) => {
+    event.preventDefault();
+    let enteredName = this.state.name;
+    let enteredEmail = this.state.email;
+    let enteredMessage = this.state.message;
+
+    // Validation
+    if (enteredMessage.length === 0) {
+      alert("Please Write your Message");
+    } else if (enteredName.length === 0) {
+      alert("Please Write your Name");
+    } else if (enteredEmail.length === 0) {
+      alert("Please Write your Email");
+    } else if (!Validation.NameRegex.test(enteredName)) {
+      alert("Invalid Name Characters");
+    } else {
+      let ContactFormData = new FormData();
+      ContactFormData.append("name", enteredName);
+      ContactFormData.append("email", enteredEmail);
+      ContactFormData.append("message", enteredMessage);
+
+      axios
+        .post(AppURL.PostContact, ContactFormData)
+        .then(function (response) {
+          if (response.status === 200 && response.data === 1) {
+            alert("Message sent successfully");
+          } else {
+            alert("error");
+          }
+        })
+        .catch(function (error) {
+          alert(error);
+        });
+    }
+  };
+
   render() {
     return (
       <Fragment>
@@ -97,15 +161,16 @@ class Contact extends Component {
             <Row>
               <Col className="mb-4" xl={4}>
                 <h1 className={`${classes["contact-title"]}`}>Stay In Touch</h1>
-                <Form>
-                  <Form.Group className="mb-3" controlId="phone">
+                <Form onSubmit={this.contactFormHandler}>
+                  <Form.Group className="mb-3" controlId="name">
                     <Form.Label className={`${classes["form-label"]}`}>
-                      Please Enter Your Mobile Number
+                      Please Enter Your Full Name
                     </Form.Label>
                     <Form.Control
                       className={`${classes["form-inputs"]}`}
                       type="text"
-                      placeholder="Enter Mobile Number"
+                      placeholder="Enter Name"
+                      onChange={this.nameOnChange}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="email">
@@ -116,6 +181,7 @@ class Contact extends Component {
                       className={`${classes["form-inputs"]}`}
                       type="email"
                       placeholder="Enter Email Address"
+                      onChange={this.emailOnChange}
                     />
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="message">
@@ -124,11 +190,15 @@ class Contact extends Component {
                     </Form.Label>
                     <Form.Control
                       className={`${classes["form-inputs"]}`}
-                      type="text"
+                      as="textarea"
+                      rows={3}
                       placeholder="Enter Message"
+                      onChange={this.messageOnChange}
                     />
                   </Form.Group>
-                  <Button className={`${classes["send-button"]}`}>Send</Button>
+                  <Button type="submit" className={`${classes["send-button"]}`}>
+                    Send
+                  </Button>
                 </Form>
               </Col>
               <Col className="mb-4">

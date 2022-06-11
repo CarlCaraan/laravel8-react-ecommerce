@@ -58,7 +58,7 @@
   line-height: 16.1px !important;
   border-radius: 0 !important;
   padding-block: 0.7rem !important;
-  color: #a9a9a9 !important;
+  color: #000 !important;
 }
 .form-inputs::placeholder {
   color: #a9a9a9 !important;
