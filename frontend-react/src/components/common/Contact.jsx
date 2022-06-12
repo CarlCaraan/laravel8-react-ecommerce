@@ -12,6 +12,8 @@ import {
 import Validation from "../../validation/Validation";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class Contact extends Component {
   constructor() {
@@ -44,33 +46,49 @@ class Contact extends Component {
     let enteredName = this.state.name;
     let enteredEmail = this.state.email;
     let enteredMessage = this.state.message;
+    let sendBtn = document.getElementById("sendBtn");
+    let contactForm = document.getElementById("contactForm");
 
     // Validation
     if (enteredMessage.length === 0) {
-      alert("Please Write your Message");
+      toast.error("Message field is Required!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+      // alert("Please Write your Message");
     } else if (enteredName.length === 0) {
-      alert("Please Write your Name");
+      toast.error("Name field is Required!");
     } else if (enteredEmail.length === 0) {
-      alert("Please Write your Email");
+      toast.error("Email field is Required");
     } else if (!Validation.NameRegex.test(enteredName)) {
-      alert("Invalid Name Characters");
+      toast.error("Invalid Name Characters");
     } else {
+      // Inserting Data
       let ContactFormData = new FormData();
       ContactFormData.append("name", enteredName);
       ContactFormData.append("email", enteredEmail);
       ContactFormData.append("message", enteredMessage);
+      sendBtn.innerHTML = "Sending...";
 
       axios
         .post(AppURL.PostContact, ContactFormData)
         .then(function (response) {
           if (response.status === 200 && response.data === 1) {
-            alert("Message sent successfully");
+            toast.success("Message sent successfully");
+            sendBtn.innerHTML = "Sent";
+            contactForm.reset();
           } else {
-            alert("error");
+            toast.error("error");
           }
         })
         .catch(function (error) {
-          alert(error);
+          toast.error(error);
+          sendBtn.innerHTML = "Sent";
         });
     }
   };
@@ -161,7 +179,7 @@ class Contact extends Component {
             <Row>
               <Col className="mb-4" xl={4}>
                 <h1 className={`${classes["contact-title"]}`}>Stay In Touch</h1>
-                <Form onSubmit={this.contactFormHandler}>
+                <Form id="contactForm" onSubmit={this.contactFormHandler}>
                   <Form.Group className="mb-3" controlId="name">
                     <Form.Label className={`${classes["form-label"]}`}>
                       Please Enter Your Full Name
@@ -196,7 +214,11 @@ class Contact extends Component {
                       onChange={this.messageOnChange}
                     />
                   </Form.Group>
-                  <Button type="submit" className={`${classes["send-button"]}`}>
+                  <Button
+                    id="sendBtn"
+                    type="submit"
+                    className={`${classes["send-button"]}`}
+                  >
                     Send
                   </Button>
                 </Form>
@@ -217,6 +239,20 @@ class Contact extends Component {
           </Container>
         </div>
         {/* End Contact Us */}
+
+        {/* Start React Toastify */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        {/* End React Toastify */}
       </Fragment>
     );
   }
