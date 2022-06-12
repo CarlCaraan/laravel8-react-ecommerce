@@ -3,6 +3,7 @@ import { Card, Container, Breadcrumb, Row, Col } from "react-bootstrap";
 import classes from "./About.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import ReactHtmlParser from "react-html-parser";
 
 class About extends Component {
   constructor() {
@@ -57,7 +58,8 @@ class About extends Component {
                 <Card className={`${classes["custom-card"]}`}>
                   <Card.Body>
                     <p className={`${classes["card-body-text"]} mt-1`}>
-                      {this.state.about}
+                      {ReactHtmlParser(this.state.about)}
+                      {/* {this.state.about} */}
                     </p>
                   </Card.Body>
                 </Card>
