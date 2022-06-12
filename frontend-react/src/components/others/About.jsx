@@ -1,8 +1,32 @@
 import React, { Component, Fragment } from "react";
 import { Card, Container, Breadcrumb, Row, Col } from "react-bootstrap";
 import classes from "./About.module.css";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class About extends Component {
+  constructor() {
+    super();
+    this.state = {
+      about: "",
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(AppURL.SiteInfo)
+      .then((response) => {
+        let StatusCode = response.status;
+        if (StatusCode === 200) {
+          let JsonData = response.data[0]["about"];
+          this.setState({
+            about: JsonData,
+          });
+        }
+      })
+      .catch((error) => {});
+  }
+
   render() {
     return (
       <Fragment>
@@ -33,16 +57,16 @@ class About extends Component {
                 <Card className={`${classes["custom-card"]}`}>
                   <Card.Body>
                     <p className={`${classes["card-body-text"]} mt-1`}>
-                      A 22-year-old Full Stack Web Developer based in Laguna,
-                      Philippines with background knowledge mostly in React and
-                      Laravel. Skilled in Frontend technologies such as Html,
-                      CSS, Javascript, Bootstrap, and Backend technologies such
-                      as Php, Python, NodeJs, and MySQL. Learning a variety of
-                      scripting languages and technology stacks is one of my
-                      strengths. I am also a hard worker and a team player. I am
-                      looking for a challenging opportunity that will enable me
-                      to use my skills and abilities to achieve a challenging
-                      goal.
+                      {/* {this.state.about} */}A 22-year-old Full Stack Web
+                      Developer based in Laguna, Philippines with background
+                      knowledge mostly in React and Laravel. Skilled in Frontend
+                      technologies such as Html, CSS, Javascript, Bootstrap, and
+                      Backend technologies such as Php, Python, NodeJs, and
+                      MySQL. Learning a variety of scripting languages and
+                      technology stacks is one of my strengths. I am also a hard
+                      worker and a team player. I am looking for a challenging
+                      opportunity that will enable me to use my skills and
+                      abilities to achieve a challenging goal.
                     </p>
                   </Card.Body>
                 </Card>
