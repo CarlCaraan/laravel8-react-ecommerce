@@ -10,6 +10,8 @@ class About extends Component {
     super();
     this.state = {
       about: "",
+      loaderDiv: "",
+      mainDiv: "d-none",
     };
   }
 
@@ -22,6 +24,8 @@ class About extends Component {
           let JsonData = response.data[0]["about"];
           this.setState({
             about: JsonData,
+            loaderDiv: "d-none",
+            mainDiv: "",
           });
         }
       })
@@ -55,7 +59,29 @@ class About extends Component {
             <h1 className={`${classes["contact-title"]}`}>About Us</h1>
             <Row>
               <Col xl={6}>
-                <Card className={`${classes["custom-card"]}`}>
+                {/* Start Skeletal Loading Div */}
+                <div className={this.state.loaderDiv}>
+                  <div className="ph-item">
+                    <div className="ph-col-12">
+                      <div className="ph-row">
+                        <div className="ph-col-2"></div>
+                        <div className="ph-col-10 empty"></div>
+                        <div className="ph-col-4"></div>
+                        <div className="ph-col-8 empty"></div>
+                        <div className="ph-col-12"></div>
+                        <div className="ph-col-12"></div>
+                        <div className="ph-col-12"></div>
+                        <div className="ph-col-12"></div>
+                        <div className="ph-col-12"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* End Skeletal Loading Div */}
+
+                <Card
+                  className={`${classes["custom-card"]} ${this.state.mainDiv}`}
+                >
                   <Card.Body>
                     <p className={`${classes["card-body-text"]} mt-1`}>
                       {ReactHtmlParser(this.state.about)}
