@@ -2,8 +2,49 @@ import React, { Component, Fragment } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import classes from "./FooterDesktop.module.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
+import ReactHtmlParser from "react-html-parser";
 
 class FooterDesktop extends Component {
+  constructor() {
+    super();
+    this.state = {
+      address: "",
+      android_app_link: "",
+      ios_app_link: "",
+      facebook_link: "",
+      twitter_link: "",
+      instagram_link: "",
+      copyright_text: "",
+      loaderDiv: "",
+      mainDiv: "d-none",
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(AppURL.SiteInfo)
+      .then((response) => {
+        let StatusCode = response.status;
+        if (StatusCode === 200) {
+          let JsonData = response.data[0];
+          this.setState({
+            address: JsonData["address"],
+            android_app_link: JsonData["android_app_link"],
+            ios_app_link: JsonData["ios_app_link"],
+            facebook_link: JsonData["facebook_link"],
+            twitter_link: JsonData["twitter_link"],
+            instagram_link: JsonData["instagram_link"],
+            copyright_text: JsonData["copyright_text"],
+            loaderDiv: "d-none",
+            mainDiv: "",
+          });
+        }
+      })
+      .catch((error) => {});
+  }
+
   render() {
     return (
       <Fragment>
@@ -337,8 +378,21 @@ class FooterDesktop extends Component {
           <Container className={`${classes["responsive-footer"]}`}>
             <Row>
               <Col className="mt-5" xl={5} lg={5} md={12} sm={12}>
-                <h4 className={`${classes["footer-three-title"]}`}>
-                  Lazada Southeast Asia
+                {/* Start Skeletal Loading Div */}
+                <div className={this.state.loaderDiv}>
+                  <div className="ph-col-12 mb-2">
+                    <div className="ph-row">
+                      <div className="ph-col-6"></div>
+                      <div className="ph-col-6 empty"></div>
+                    </div>
+                  </div>
+                </div>
+                {/* End Skeletal Loading Div */}
+
+                <h4
+                  className={`${classes["footer-three-title"]} ${this.state.mainDiv}`}
+                >
+                  {ReactHtmlParser(this.state.address)}
                 </h4>
                 {/* Start Map Grid */}
                 <img
@@ -389,42 +443,66 @@ class FooterDesktop extends Component {
                       Follow Us
                     </h4>
                     {/* Start Social Icon Grid */}
-                    <img
-                      className={`${classes["social-icon"]} img-fluid me-1`}
-                      src={require("../../assets/images/common/footer/social/facebook.png")}
-                      alt="facebook.png"
-                      width="30px"
-                    />
-                    <img
-                      className={`${classes["social-icon"]} img-fluid me-1`}
-                      src={require("../../assets/images/common/footer/social/twitter.png")}
-                      alt="twitter.png"
-                      width="30px"
-                    />
+                    <a
+                      href={this.state.facebook_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        className={`${classes["social-icon"]} img-fluid me-1`}
+                        src={require("../../assets/images/common/footer/social/facebook.png")}
+                        alt="facebook.png"
+                        width="30px"
+                      />
+                    </a>
+
+                    <a
+                      href={this.state.twitter_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        className={`${classes["social-icon"]} img-fluid me-1`}
+                        src={require("../../assets/images/common/footer/social/twitter.png")}
+                        alt="twitter.png"
+                        width="30px"
+                      />
+                    </a>
+
                     <img
                       className={`${classes["social-icon"]} img-fluid me-1`}
                       src={require("../../assets/images/common/footer/social/google-plus.png")}
                       alt="google-plus.png"
                       width="30px"
                     />
-                    <img
-                      className={`${classes["social-icon"]} img-fluid me-1`}
-                      src={require("../../assets/images/common/footer/social/instagram.png")}
-                      alt="instagram.png"
-                      width="30px"
-                    />
+
+                    <a
+                      href={this.state.instagram_link}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        className={`${classes["social-icon"]} img-fluid me-1`}
+                        src={require("../../assets/images/common/footer/social/instagram.png")}
+                        alt="instagram.png"
+                        width="30px"
+                      />
+                    </a>
+
                     <img
                       className={`${classes["social-icon"]} img-fluid me-1`}
                       src={require("../../assets/images/common/footer/social/youtube.png")}
                       alt="youtube.png"
                       width="30px"
                     />
+
                     <img
                       className={`${classes["social-icon"]} img-fluid me-1`}
                       src={require("../../assets/images/common/footer/social/pinterest.png")}
                       alt="pinterest.png"
                       width="30px"
                     />
+
                     <img
                       className={`${classes["social-icon"]} img-fluid me-1`}
                       src={require("../../assets/images/common/footer/social/blogger.png")}
@@ -456,24 +534,48 @@ class FooterDesktop extends Component {
                     </div>
 
                     <div className="mt-2">
-                      <img
-                        className={`${classes["download-icon"]} me-2`}
-                        src={require("../../assets/images/common/footer/appstore.png")}
-                        alt="appstore.png"
-                        width="130px"
-                      />
-                      <img
-                        className={`${classes["download-icon"]}`}
-                        src={require("../../assets/images/common/footer/googleplay.png")}
-                        alt="googleplay.png"
-                        width="135px"
-                      />
+                      <a
+                        href={this.state.ios_app_link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          className={`${classes["download-icon"]} me-2`}
+                          src={require("../../assets/images/common/footer/appstore.png")}
+                          alt="appstore.png"
+                          width="130px"
+                        />
+                      </a>
+                      <a
+                        href={this.state.android_app_link}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <img
+                          className={`${classes["download-icon"]}`}
+                          src={require("../../assets/images/common/footer/googleplay.png")}
+                          alt="googleplay.png"
+                          width="135px"
+                        />
+                      </a>
                     </div>
                   </Col>
                 </Row>
               </Col>
-              <h4 className={`${classes["footer-copyright"]}`}>
-                &copy; Lazapee 2022
+              {/* Start Skeletal Loading Div */}
+              <div className={this.state.loaderDiv}>
+                <div className="ph-col-12">
+                  <div className="ph-row">
+                    <div className="ph-col-2"></div>
+                    <div className="ph-col-10 empty"></div>
+                  </div>
+                </div>
+              </div>
+              {/* End Skeletal Loading Div */}
+              <h4
+                className={`${classes["footer-copyright"]} ${this.state.mainDiv}`}
+              >
+                {ReactHtmlParser(this.state.copyright_text)}
               </h4>
             </Row>
           </Container>
