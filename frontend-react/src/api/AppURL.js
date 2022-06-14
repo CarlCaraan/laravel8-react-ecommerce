@@ -3,6 +3,7 @@ class AppURL {
   static VisitorDetails = this.BaseURL + "/getvisitor";
   static PostContact = this.BaseURL + "/postcontact";
   static SiteInfo = this.BaseURL + "/getsiteinfo";
+  static AllCategoryDetails = this.BaseURL + "/getcategory";
 }
 
 export default AppURL;

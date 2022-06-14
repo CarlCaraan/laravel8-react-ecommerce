@@ -4,8 +4,28 @@ import MegaMenuDesktop from "./MegaMenuDesktop";
 import HomeSlider from "./HomeSlider";
 import classes from "./Herosection.module.css";
 import MegaMenuMobile from "./MegaMenuMobile";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class Herosection extends Component {
+  constructor() {
+    super();
+    this.state = {
+      MenuData: [],
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(AppURL.AllCategoryDetails)
+      .then((response) => {
+        this.setState({
+          MenuData: response.data,
+        });
+      })
+      .catch((error) => {});
+  }
+
   render() {
     return (
       <Fragment>
@@ -14,7 +34,7 @@ class Herosection extends Component {
             <Row className="mx-0">
               <Col className="px-0" xl={2} lg={12} md={12} sm={12}>
                 <div className={`${classes["Desktop"]}`}>
-                  <MegaMenuDesktop />
+                  <MegaMenuDesktop data={this.state.MenuData} />
                 </div>
                 <div className={`${classes["Mobile"]}`}>
                   <MegaMenuMobile />
