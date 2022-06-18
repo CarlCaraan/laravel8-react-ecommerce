@@ -37,15 +37,13 @@ function MegaMenuMobile({ name, ...props }) {
         <Accordion.Body className="px-0 pb-0">
           <div className={`${classes["megadrop"]}`}>
             <ul>
-              <li>
-                <Link to="#">Mobiles</Link>
-              </li>
-              <li>
-                <Link to="#">Desktop</Link>
-              </li>
-              <li>
-                <Link to="#">Laptop</Link>
-              </li>
+              {CategoryList.subcategory_name.map((SubcategoryList, i) => {
+                return (
+                  <li key={i.toString()}>
+                    <Link to="#">{SubcategoryList.subcategory_name}</Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </Accordion.Body>
