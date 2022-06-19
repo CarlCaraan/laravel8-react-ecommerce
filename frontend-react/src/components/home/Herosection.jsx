@@ -12,6 +12,8 @@ class Herosection extends Component {
     super();
     this.state = {
       MenuData: [],
+      loaderDiv: "",
+      mainDiv: "d-none",
     };
   }
 
@@ -21,6 +23,8 @@ class Herosection extends Component {
       .then((response) => {
         this.setState({
           MenuData: response.data,
+          loaderDiv: "d-none",
+          mainDiv: "",
         });
       })
       .catch((error) => {});
@@ -34,7 +38,11 @@ class Herosection extends Component {
             <Row className="mx-0">
               <Col className="px-0" xl={2} lg={12} md={12} sm={12}>
                 <div className={`${classes["Desktop"]}`}>
-                  <MegaMenuDesktop data={this.state.MenuData} />
+                  <MegaMenuDesktop
+                    data={this.state.MenuData}
+                    loaderDiv={this.state.loaderDiv}
+                    mainDiv={this.state.mainDiv}
+                  />
                 </div>
                 <div className={`${classes["Mobile"]}`}>
                   <MegaMenuMobile />

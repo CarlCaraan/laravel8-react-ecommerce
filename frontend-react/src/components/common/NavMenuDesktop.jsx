@@ -52,15 +52,14 @@ class NavMenuDesktop extends Component {
             <Container>
               <Navbar expand="lg">
                 <Container className="px-0" fluid>
-                  <Navbar.Brand
-                    className={`${classes["navbar-logo"]} mt-2`}
-                    href="/"
-                  >
-                    <img
-                      src={require("../../assets/images/common/header/lazapee.png")}
-                      width="125"
-                      alt="lazapee"
-                    />
+                  <Navbar.Brand className={`${classes["navbar-logo"]} mt-2`}>
+                    <Link to="/">
+                      <img
+                        src={require("../../assets/images/common/header/lazapee.png")}
+                        width="125"
+                        alt="lazapee"
+                      />
+                    </Link>
                   </Navbar.Brand>
                   <Navbar.Toggle aria-controls="navbarScroll" />
                   <Navbar.Collapse id="navbarScroll">
