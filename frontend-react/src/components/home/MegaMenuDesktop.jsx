@@ -52,8 +52,6 @@ class MegaMenu extends Component {
                   <div className="ph-col-12"></div>
                   <div className="ph-col-12"></div>
                   <div className="ph-col-12"></div>
-                  <div className="ph-col-12"></div>
-                  <div className="ph-col-12"></div>
                 </div>
               </div>
             </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\VisitorController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\SiteInfoController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductListController;
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
@@ -21,5 +22,8 @@ Route::post('/postcontact', [ContactController::class, 'PostContactDetails']);
 // Site Info Route
 Route::get('/getsiteinfo', [SiteInfoController::class, 'GetSiteInfo']);
 
-// Category Route
+// All Category Route
 Route::get('/getcategory', [CategoryController::class, 'GetCategory']);
+
+// ProductList Route
+Route::get('/productlistbyremark/{remark}', [ProductListController::class, 'ProductListByRemark']);
