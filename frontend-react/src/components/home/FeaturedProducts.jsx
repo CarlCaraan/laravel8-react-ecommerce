@@ -1,9 +1,52 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import classes from "./FeaturedProducts.module.css";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class FeaturedProducts extends Component {
+  constructor() {
+    super();
+    this.state = {
+      ProductData: [],
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(AppURL.ProductListByRemark("SALE"))
+      .then((response) => {
+        this.setState({
+          ProductData: response.data,
+        });
+      })
+      .catch((error) => {});
+  }
+
   render() {
+    const FeaturedList = this.state.ProductData;
+    const MyView = FeaturedList.map((FeaturedList, i) => {
+      return (
+        <Col key={i.toString()} xl={2} lg={2} md={2} sm={4} xs={6}>
+          <Card className="card-product">
+            <Card.Img
+              variant="top"
+              src="https://lzd-img-global.slatic.net/g/p/35f1bfaa1d8c001450cc6634f455ff92.jpg_200x200q80.jpg_.webp"
+              alt="3b-button-3"
+            />
+            <Card.Body>
+              <span className="card-product-title">{FeaturedList.title}</span>
+              <br />
+              <span className="card-product-price">₱2.00</span>
+              <br />
+              <strike className="card-product-discount">₱799.00</strike>
+              <span className="card-product-discount-percent"> -71%</span>
+            </Card.Body>
+          </Card>
+        </Col>
+      );
+    });
+
     return (
       <Fragment>
         <Container>
@@ -48,8 +91,8 @@ class FeaturedProducts extends Component {
           {/* End Three Section Button */}
 
           <h2 className="section-header">Flash Sale</h2>
-          {/* Start Flash Sale Product Headings */}
           <div className="bg-white">
+            {/* Start Flash Sale Product Headings */}
             <div className="px-3 pt-2">
               <Row>
                 <Col>
@@ -67,110 +110,7 @@ class FeaturedProducts extends Component {
             <hr className="mt-0" />
 
             {/* Start Product Card */}
-            <Row className="mb-3 pb-3">
-              <Col key={1} xl={2} lg={2} md={2} sm={4} xs={6}>
-                <Card className="card-product">
-                  <Card.Img
-                    variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/35f1bfaa1d8c001450cc6634f455ff92.jpg_200x200q80.jpg_.webp"
-                    alt="3b-button-3"
-                  />
-                  <Card.Body>
-                    <span className="card-product-title">Spiderman Gloves</span>
-                    <br />
-                    <span className="card-product-price">₱2.00</span>
-                    <br />
-                    <strike className="card-product-discount">₱799.00</strike>
-                    <span className="card-product-discount-percent"> -71%</span>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col key={2} xl={2} lg={2} md={2} sm={4} xs={6}>
-                <Card className="card-product">
-                  <Card.Img
-                    variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/8126efc945c1d305acefcb33349bf8ae.jpg_200x200q80.jpg_.webp"
-                    alt="3b-button-3"
-                  />
-                  <Card.Body>
-                    <span className="card-product-title">Spiderman Gloves</span>
-                    <br />
-                    <span className="card-product-price">₱2.00</span>
-                    <br />
-                    <strike className="card-product-discount">₱799.00</strike>
-                    <span className="card-product-discount-percent"> -71%</span>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col key={3} xl={2} lg={2} md={2} sm={4} xs={6}>
-                <Card className="card-product">
-                  <Card.Img
-                    variant="top"
-                    src="https://lzd-img-global.slatic.net/g/ff/kf/S0e8462b2c95f4590b8dece87880fd539T.jpg_200x200q80.jpg_.webp"
-                    alt="3b-button-3"
-                  />
-                  <Card.Body>
-                    <span className="card-product-title">Spiderman Gloves</span>
-                    <br />
-                    <span className="card-product-price">₱2.00</span>
-                    <br />
-                    <strike className="card-product-discount">₱799.00</strike>
-                    <span className="card-product-discount-percent"> -71%</span>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col key={4} xl={2} lg={2} md={2} sm={4} xs={6}>
-                <Card className="card-product">
-                  <Card.Img
-                    variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/6f27c70a8a2c988ba14ff4d1ca2103e3.jpg_200x200q80.jpg_.webp"
-                    alt="3b-button-3"
-                  />
-                  <Card.Body>
-                    <span className="card-product-title">Spiderman Gloves</span>
-                    <br />
-                    <span className="card-product-price">₱2.00</span>
-                    <br />
-                    <strike className="card-product-discount">₱799.00</strike>
-                    <span className="card-product-discount-percent"> -71%</span>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col key={5} xl={2} lg={2} md={2} sm={4} xs={6}>
-                <Card className="card-product">
-                  <Card.Img
-                    variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/97616e115b45dbd325a6184fb8981661.jpg_200x200q80.jpg_.webp"
-                    alt="3b-button-3"
-                  />
-                  <Card.Body>
-                    <span className="card-product-title">Spiderman Gloves</span>
-                    <br />
-                    <span className="card-product-price">₱2.00</span>
-                    <br />
-                    <strike className="card-product-discount">₱799.00</strike>
-                    <span className="card-product-discount-percent"> -71%</span>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col key={6} xl={2} lg={2} md={2} sm={4} xs={6}>
-                <Card className="card-product">
-                  <Card.Img
-                    variant="top"
-                    src="https://lzd-img-global.slatic.net/g/p/3c4ea214b8b55d272155a6da7092b359.jpg_200x200q80.jpg_.webp"
-                    alt="3b-button-3"
-                  />
-                  <Card.Body>
-                    <span className="card-product-title">Spiderman Gloves</span>
-                    <br />
-                    <span className="card-product-price">₱2.00</span>
-                    <br />
-                    <strike className="card-product-discount">₱799.00</strike>
-                    <span className="card-product-discount-percent"> -71%</span>
-                  </Card.Body>
-                </Card>
-              </Col>
-            </Row>
+            <Row className="mb-3 pb-3">{MyView}</Row>
             {/* End Product Card */}
           </div>
         </Container>
