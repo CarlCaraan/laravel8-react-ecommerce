@@ -11,7 +11,7 @@ class ProductListController extends Controller
     public function ProductListByRemark(Request $request)
     {
         $remark = $request->remark;
-        $productlist = ProductList::where('remark', $remark)->get();
+        $productlist = ProductList::where('remark', $remark)->limit(8)->get();
 
         return $productlist;
     } // End Method
