@@ -50,6 +50,7 @@ class Collection extends Component {
                 <span className="card-product-price">
                   ₱{CollectionList.price}
                 </span>
+                <br /> <br />
               </Card.Body>
             </Card>
           </Col>

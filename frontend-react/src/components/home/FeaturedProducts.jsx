@@ -41,6 +41,7 @@ class FeaturedProducts extends Component {
                 <span className="card-product-price">
                   ₱{FeaturedList.price}
                 </span>
+                <br /> <br />
               </Card.Body>
             </Card>
           </Col>
