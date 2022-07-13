@@ -3,6 +3,7 @@ import { Container, Col, Row, Card } from "react-bootstrap";
 import classes from "./Categories.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import { Link } from "react-router-dom";
 
 class Categories extends Component {
   constructor() {
@@ -36,23 +37,25 @@ class Categories extends Component {
           className="p-0"
           key={i.toString()}
         >
-          <Card
-            className={`${classes["card-categories"]} py-3 border border-top-0 border-start-0`}
-          >
-            <Container>
-              <Card.Img
-                className="img-fluid"
-                variant="top"
-                src={CategoryList.category_image}
-                alt="category-1"
-              />
-            </Container>
-            <Card.Body className="text-center px-0 pt-2 pb-0">
-              <span className="card-product-title">
-                {CategoryList.category_name}
-              </span>
-            </Card.Body>
-          </Card>
+          <Link to={"/productcategory/" + CategoryList.category_name}>
+            <Card
+              className={`${classes["card-categories"]} py-3 border border-top-0 border-start-0`}
+            >
+              <Container>
+                <Card.Img
+                  className="img-fluid"
+                  variant="top"
+                  src={CategoryList.category_image}
+                  alt="category-1"
+                />
+              </Container>
+              <Card.Body className="text-center px-0 pt-2 pb-0">
+                <span className="card-product-title">
+                  {CategoryList.category_name}
+                </span>
+              </Card.Body>
+            </Card>
+          </Link>
         </Col>
       );
     });

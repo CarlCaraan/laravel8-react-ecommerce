@@ -17,17 +17,22 @@ class AppRoute extends Component {
     return (
       <Fragment>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="*" element={<NotFoundPage />} />
-          <Route path="/login" element={<UserLoginPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/privacy" element={<PrivacyPage />} />
-          <Route path="/productdetails" element={<ProductDetailsPage />} />
-          <Route path="/notification" element={<NotificationPage />} />
-          <Route path="/favourite" element={<FavoritePage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route exact path="/" element={<HomePage />} />
+          <Route exact path="*" element={<NotFoundPage />} />
+          <Route exact path="/login" element={<UserLoginPage />} />
+          <Route exact path="/contact" element={<ContactPage />} />
+          <Route exact path="/about" element={<AboutPage />} />
+          <Route exact path="/privacy" element={<PrivacyPage />} />
           <Route
+            exact
+            path="/productdetails"
+            element={<ProductDetailsPage />}
+          />
+          <Route exact path="/notification" element={<NotificationPage />} />
+          <Route exact path="/favourite" element={<FavoritePage />} />
+          <Route exact path="/cart" element={<CartPage />} />
+          <Route
+            exact
             path="/productcategory/:category"
             element={<ProductCategoryPage />}
           />
