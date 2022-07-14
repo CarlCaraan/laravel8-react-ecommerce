@@ -4,7 +4,7 @@ import NavMenuDesktop from "../components/common/NavMenuDesktop";
 import Category from "../components/ProductDetails/Category";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import AppURL from "../../api/AppURL";
+import AppURL from "../api/AppURL";
 
 export function withRouter(Children) {
   return (props) => {
