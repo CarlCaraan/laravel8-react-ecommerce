@@ -3,9 +3,9 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 
 class Category extends Component {
   render() {
-    const CategoryList = this.props.ProductData;
+    const CategoryLists = this.props.ProductData;
     const Category = this.props.Category;
-    const MyView = CategoryList.map((CategoryList, i) => {
+    const MyView = CategoryLists.map((CategoryList, i) => {
       if (CategoryList.special_price === "na") {
         return (
           <Col
