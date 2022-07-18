@@ -11,6 +11,7 @@ import NotificationPage from "../pages/NotificationPage";
 import FavoritePage from "../pages/FavoritePage";
 import CartPage from "../pages/CartPage";
 import ProductCategoryPage from "../pages/ProductCategoryPage";
+import ProductSubCategoryPage from "../pages/ProductSubCategoryPage";
 
 class AppRoute extends Component {
   render() {
@@ -35,6 +36,11 @@ class AppRoute extends Component {
             exact
             path="/productcategory/:category"
             element={<ProductCategoryPage />}
+          />
+          <Route
+            exact
+            path="/productsubcategory/:category/:subcategory"
+            element={<ProductSubCategoryPage />}
           />
         </Routes>
       </Fragment>

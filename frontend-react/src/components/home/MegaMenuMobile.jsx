@@ -40,7 +40,16 @@ function MegaMenuMobile({ name, ...props }) {
               {CategoryList.subcategory_name.map((SubcategoryList, i) => {
                 return (
                   <li key={i.toString()}>
-                    <Link to="#">{SubcategoryList.subcategory_name}</Link>
+                    <Link
+                      to={
+                        "/productsubcategory/" +
+                        CategoryList.category_name +
+                        "/" +
+                        SubcategoryList.subcategory_name
+                      }
+                    >
+                      {SubcategoryList.subcategory_name}
+                    </Link>
                   </li>
                 );
               })}

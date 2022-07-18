@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import FooterDesktop from "../components/common/FooterDesktop";
 import NavMenuDesktop from "../components/common/NavMenuDesktop";
-import Category from "../components/ProductDetails/Category";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import AppURL from "../api/AppURL";
+import SubCategory from "../components/ProductDetails/SubCategory";
 import Herosection from "../components/home/Herosection";
 
 export function withRouter(Children) {
@@ -14,19 +14,26 @@ export function withRouter(Children) {
   };
 }
 
-class ProductCategoryPage extends Component {
+class ProductSubCategoryPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       Category: this.props.match.params.category,
+      SubCategory: this.props.match.params.subcategory,
       ProductData: [],
     };
   }
   componentDidMount() {
     window.scroll(0, 0);
     // alert(this.state.Category);
+    // alert(this.state.SubCategory);
     axios
-      .get(AppURL.ProductListByCategory(this.state.Category))
+      .get(
+        AppURL.ProductListBySubCategory(
+          this.state.Category,
+          this.state.SubCategory
+        )
+      )
       .then((response) => {
         this.setState({
           ProductData: response.data,
@@ -40,8 +47,9 @@ class ProductCategoryPage extends Component {
       <Fragment>
         <NavMenuDesktop />
         <Herosection />
-        <Category
+        <SubCategory
           Category={this.state.Category}
+          SubCategory={this.state.SubCategory}
           ProductData={this.state.ProductData}
         />
         <FooterDesktop />
@@ -50,4 +58,4 @@ class ProductCategoryPage extends Component {
   }
 }
 
-export default withRouter(ProductCategoryPage);
+export default withRouter(ProductSubCategoryPage);
