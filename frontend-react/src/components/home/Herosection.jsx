@@ -12,8 +12,11 @@ class Herosection extends Component {
     super();
     this.state = {
       MenuData: [],
+      SliderData: [],
       loaderDiv: "",
       mainDiv: "d-none",
+      loaderDivSlider: "",
+      mainDivSlider: "d-none",
     };
   }
 
@@ -25,6 +28,17 @@ class Herosection extends Component {
           MenuData: response.data,
           loaderDiv: "d-none",
           mainDiv: "",
+        });
+      })
+      .catch((error) => {});
+
+    axios
+      .get(AppURL.AllSlider)
+      .then((response) => {
+        this.setState({
+          SliderData: response.data,
+          loaderDivSlider: "d-none",
+          mainDivSlider: "",
         });
       })
       .catch((error) => {});
@@ -49,7 +63,11 @@ class Herosection extends Component {
                 </div>
               </Col>
               <Col className="px-0" xl={10} lg={12} md={12} sm={12}>
-                <HomeSlider />
+                <HomeSlider
+                  data={this.state.SliderData}
+                  loaderDivSlider={this.state.loaderDivSlider}
+                  mainDivSlider={this.state.mainDivSlider}
+                />
               </Col>
             </Row>
           </Container>
