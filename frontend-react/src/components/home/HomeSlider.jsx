@@ -32,7 +32,7 @@ class HomeSlider extends Component {
       return (
         <img
           key={i.toString()}
-          className={`${this.props.mainDivSlider} img-fluid`}
+          className="img-fluid"
           src={SliderList.slider_image}
           alt={SliderList.id}
           loading="lazy"
@@ -42,14 +42,6 @@ class HomeSlider extends Component {
 
     return (
       <Fragment>
-        {/* Start Skeletal Loading Div */}
-        <div className={this.props.loaderDivSlider}>
-          <div className="ph-item">
-            <div className="ph-picture"></div>
-            <div className="ph-picture"></div>
-          </div>
-        </div>
-        {/* End Skeletal Loading Div */}
         <Slider {...settings}>{MyView}</Slider>
       </Fragment>
     );

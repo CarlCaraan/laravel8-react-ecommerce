@@ -6,6 +6,7 @@ import classes from "./Herosection.module.css";
 import MegaMenuMobile from "./MegaMenuMobile";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import SliderLoading from "../PlaceHolder/SliderLoading";
 
 class Herosection extends Component {
   constructor() {
@@ -13,10 +14,8 @@ class Herosection extends Component {
     this.state = {
       MenuData: [],
       SliderData: [],
-      loaderDiv: "",
+      isLoading: "",
       mainDiv: "d-none",
-      loaderDivSlider: "",
-      mainDivSlider: "d-none",
     };
   }
 
@@ -26,8 +25,6 @@ class Herosection extends Component {
       .then((response) => {
         this.setState({
           MenuData: response.data,
-          loaderDiv: "d-none",
-          mainDiv: "",
         });
       })
       .catch((error) => {});
@@ -37,8 +34,8 @@ class Herosection extends Component {
       .then((response) => {
         this.setState({
           SliderData: response.data,
-          loaderDivSlider: "d-none",
-          mainDivSlider: "",
+          isLoading: "d-none",
+          mainDiv: "",
         });
       })
       .catch((error) => {});
@@ -47,30 +44,28 @@ class Herosection extends Component {
   render() {
     return (
       <Fragment>
-        <div className={`${classes["herosection-container"]}`}>
-          <Container>
-            <Row className="mx-0">
-              <Col className="px-0" xl={2} lg={12} md={12} sm={12}>
-                <div className={`${classes["Desktop"]}`}>
-                  <MegaMenuDesktop
-                    data={this.state.MenuData}
-                    loaderDiv={this.state.loaderDiv}
-                    mainDiv={this.state.mainDiv}
-                  />
-                </div>
-                <div className={`${classes["Mobile"]}`}>
-                  <MegaMenuMobile />
-                </div>
-              </Col>
-              <Col className="px-0" xl={10} lg={12} md={12} sm={12}>
-                <HomeSlider
-                  data={this.state.SliderData}
-                  loaderDivSlider={this.state.loaderDivSlider}
-                  mainDivSlider={this.state.mainDivSlider}
-                />
-              </Col>
-            </Row>
-          </Container>
+        {/* Start Skeleton Loading PlaceHolder */}
+        <SliderLoading isLoading={this.state.isLoading} />
+        {/* End Skeleton Loading PlaceHolder */}
+
+        <div className={this.state.mainDiv}>
+          <div className={`${classes["herosection-container"]}`}>
+            <Container>
+              <Row className="mx-0">
+                <Col className="px-0" xl={2} lg={12} md={12} sm={12}>
+                  <div className={`${classes["Desktop"]}`}>
+                    <MegaMenuDesktop data={this.state.MenuData} />
+                  </div>
+                  <div className={`${classes["Mobile"]}`}>
+                    <MegaMenuMobile />
+                  </div>
+                </Col>
+                <Col className="px-0" xl={10} lg={12} md={12} sm={12}>
+                  <HomeSlider data={this.state.SliderData} />
+                </Col>
+              </Row>
+            </Container>
+          </div>
         </div>
       </Fragment>
     );
