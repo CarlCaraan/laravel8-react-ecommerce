@@ -4,12 +4,15 @@ import classes from "./Categories.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
 import { Link } from "react-router-dom";
+import CategoryLoading from "../PlaceHolder/CategoryLoading";
 
 class Categories extends Component {
   constructor() {
     super();
     this.state = {
       MenuData: [],
+      isLoading: "",
+      mainDiv: "d-none",
     };
   }
 
@@ -19,6 +22,8 @@ class Categories extends Component {
       .then((response) => {
         this.setState({
           MenuData: response.data,
+          isLoading: "d-none",
+          mainDiv: "",
         });
       })
       .catch((error) => {});
@@ -34,7 +39,7 @@ class Categories extends Component {
           md={4}
           sm={6}
           xs={12}
-          className="p-0"
+          className={`${this.state.mainDiv} p-0`}
           key={i.toString()}
         >
           <Link to={"/productcategory/" + CategoryList.category_name}>
@@ -66,7 +71,13 @@ class Categories extends Component {
           <span className="section-header">Categories</span>
           <Row className="m-0">
             <Col className="p-0" xl={12} lg={12} md={12} sm={12} xs={12}>
-              <Row className="p-3">{MyView}</Row>
+              <Row className="p-3">
+                {/* Start Skeleton Loading PlaceHolder */}
+                <CategoryLoading isLoading={this.state.isLoading} />
+                {/* End Skeleton Loading PlaceHolder */}
+
+                {MyView}
+              </Row>
             </Col>
           </Row>
         </Container>

@@ -3,12 +3,15 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import classes from "./FeaturedProducts.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import FeaturedLoading from "../PlaceHolder/FeaturedLoading";
 
 class FeaturedProducts extends Component {
   constructor() {
     super();
     this.state = {
       ProductData: [],
+      isLoading: "",
+      mainDiv: "d-none",
     };
   }
 
@@ -18,6 +21,8 @@ class FeaturedProducts extends Component {
       .then((response) => {
         this.setState({
           ProductData: response.data,
+          isLoading: "d-none",
+          mainDiv: "",
         });
       })
       .catch((error) => {});
@@ -28,7 +33,15 @@ class FeaturedProducts extends Component {
     const MyView = FeaturedList.map((FeaturedList, i) => {
       if (FeaturedList.special_price === "na") {
         return (
-          <Col key={i.toString()} xl={2} lg={2} md={2} sm={4} xs={6}>
+          <Col
+            key={i.toString()}
+            xl={2}
+            lg={2}
+            md={2}
+            sm={4}
+            xs={6}
+            className={this.state.mainDiv}
+          >
             <Card className="card-product">
               <Card.Img
                 variant="top"
@@ -48,7 +61,15 @@ class FeaturedProducts extends Component {
         );
       } else {
         return (
-          <Col key={i.toString()} xl={2} lg={2} md={2} sm={4} xs={6}>
+          <Col
+            key={i.toString()}
+            xl={2}
+            lg={2}
+            md={2}
+            sm={4}
+            xs={6}
+            className={this.state.mainDiv}
+          >
             <Card className="card-product">
               <Card.Img
                 variant="top"
@@ -136,7 +157,12 @@ class FeaturedProducts extends Component {
             <hr className="mt-0" />
 
             {/* Start Product Card */}
-            <Row className="mb-3 pb-3">{MyView}</Row>
+            <Row className="mb-3 pb-3">
+              {/* Start Skeleton Loading PlaceHolder */}
+              <FeaturedLoading isLoading={this.state.isLoading} />
+              {/* Start Skeleton Loading PlaceHolder */}
+              {MyView}
+            </Row>
             {/* End Product Card */}
           </div>
         </Container>
