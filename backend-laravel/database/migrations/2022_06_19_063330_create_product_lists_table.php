@@ -25,7 +25,6 @@ class CreateProductListsTable extends Migration
             $table->string('brand');
             $table->string('star');
             $table->string('product_code');
-            $table->string('seller');
             $table->timestamps();
         });
     }
