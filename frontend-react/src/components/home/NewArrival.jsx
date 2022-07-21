@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import classes from "./NewArrival.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import NewArrivalLoading from "../PlaceHolder/NewArrivalLoading";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -46,6 +47,8 @@ class NewArrival extends Component {
     super(props);
     this.state = {
       ProductData: [],
+      isLoading: "",
+      mainDiv: "d-none",
     };
     this.nextButtonHandler = this.nextButtonHandler.bind(this);
     this.prevButtonHandler = this.prevButtonHandler.bind(this);
@@ -63,6 +66,8 @@ class NewArrival extends Component {
       .then((response) => {
         this.setState({
           ProductData: response.data,
+          isLoading: "d-none",
+          mainDiv: "",
         });
       })
       .catch((error) => {});
@@ -118,7 +123,7 @@ class NewArrival extends Component {
         return (
           <Col
             key={i.toString()}
-            className="mb-2 p-1"
+            className={`${this.state.mainDiv} mb-2 p-1`}
             xl={2}
             lg={2}
             md={2}
@@ -141,7 +146,7 @@ class NewArrival extends Component {
         return (
           <Col
             key={i.toString()}
-            className="mb-2 p-1"
+            className={`${this.state.mainDiv} mb-2 p-1`}
             xl={2}
             lg={2}
             md={2}
@@ -190,6 +195,9 @@ class NewArrival extends Component {
           {/* Start New Arrival Product Card */}
           <div>
             <Row className="mb-2">
+              {/* Start Skeleton Loading PlaceHolder */}
+              <NewArrivalLoading isLoading={this.state.isLoading} />
+              {/* Start Skeleton Loading PlaceHolder */}
               <Slider ref={(c) => (this.slider = c)} {...settings}>
                 {MyView}
               </Slider>
