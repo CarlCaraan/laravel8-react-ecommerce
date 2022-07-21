@@ -2,12 +2,15 @@ import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import CollectionLoading from "../PlaceHolder/CollectionLoading";
 
 class Collection extends Component {
   constructor() {
     super();
     this.state = {
       ProductData: [],
+      isLoading: "",
+      mainDiv: "d-none",
     };
   }
 
@@ -17,6 +20,8 @@ class Collection extends Component {
       .then((response) => {
         this.setState({
           ProductData: response.data,
+          isLoading: "d-none",
+          mainDiv: "",
         });
       })
       .catch((error) => {});
@@ -29,7 +34,7 @@ class Collection extends Component {
         return (
           <Col
             key={i.toString()}
-            className="mb-2 p-1"
+            className={`${this.state.mainDiv} mb-2 p-1`}
             xl={2}
             lg={2}
             md={2}
@@ -59,7 +64,7 @@ class Collection extends Component {
         return (
           <Col
             key={i.toString()}
-            className="mb-2 p-1"
+            className={`${this.state.mainDiv} mb-2 p-1`}
             xl={2}
             lg={2}
             md={2}
@@ -99,7 +104,13 @@ class Collection extends Component {
 
           {/* Start Product Card */}
           <div className="mx-2">
-            <Row>{MyView}</Row>
+            <Row>
+              {/* Start Skeleton Loading PlaceHolder */}
+              <CollectionLoading isLoading={this.state.isLoading} />
+              {/* Start Skeleton Loading PlaceHolder */}
+
+              {MyView}
+            </Row>
           </div>
           {/* End Product Card */}
         </Container>
