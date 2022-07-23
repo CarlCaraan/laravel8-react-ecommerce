@@ -26,7 +26,7 @@ class AppRoute extends Component {
           <Route exact path="/privacy" element={<PrivacyPage />} />
           <Route
             exact
-            path="/productdetails"
+            path="/productdetails/:code"
             element={<ProductDetailsPage />}
           />
           <Route exact path="/notification" element={<NotificationPage />} />

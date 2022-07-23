@@ -32,3 +32,7 @@ body {
 body {
   top: 0px !important;
 }
+.custom-links {
+  text-decoration: none;
+  color: #212121;
+}

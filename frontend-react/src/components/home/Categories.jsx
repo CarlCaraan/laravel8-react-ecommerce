@@ -42,7 +42,10 @@ class Categories extends Component {
           className={`${this.state.mainDiv} p-0`}
           key={i.toString()}
         >
-          <Link to={"/productcategory/" + CategoryList.category_name}>
+          <Link
+            className="custom-links"
+            to={"/productcategory/" + CategoryList.category_name}
+          >
             <Card
               className={`${classes["card-categories"]} py-3 border border-top-0 border-start-0`}
             >

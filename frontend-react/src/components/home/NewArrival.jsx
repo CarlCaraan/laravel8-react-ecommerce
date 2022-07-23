@@ -7,6 +7,7 @@ import classes from "./NewArrival.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
 import NewArrivalLoading from "../PlaceHolder/NewArrivalLoading";
+import { Link } from "react-router-dom";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
@@ -130,16 +131,18 @@ class NewArrival extends Component {
             sm={4}
             xs={6}
           >
-            <Card className="card-product">
-              <Card.Img variant="top" src={NewList.image} alt="3b-button-3" />
-              <Card.Body>
-                <span className="card-product-title">{NewList.title}</span>
-                <br />
-                <span className="card-product-price">₱{NewList.price}</span>
-                <br />
-                <br />
-              </Card.Body>
-            </Card>
+            <Link className="custom-links" to={"/productdetails/" + NewList.id}>
+              <Card className="card-product">
+                <Card.Img variant="top" src={NewList.image} alt="3b-button-3" />
+                <Card.Body>
+                  <span className="card-product-title">{NewList.title}</span>
+                  <br />
+                  <span className="card-product-price">₱{NewList.price}</span>
+                  <br />
+                  <br />
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       } else {
@@ -153,21 +156,23 @@ class NewArrival extends Component {
             sm={4}
             xs={6}
           >
-            <Card className="card-product">
-              <Card.Img variant="top" src={NewList.image} alt="3b-button-3" />
-              <Card.Body>
-                <span className="card-product-title">{NewList.title}</span>
-                <br />
-                <span className="card-product-price">
-                  ₱{NewList.special_price}
-                </span>
-                <br />
-                <strike className="card-product-discount">
-                  ₱{NewList.price}
-                </strike>
-                <span className="card-product-discount-percent"> -71%</span>
-              </Card.Body>
-            </Card>
+            <Link className="custom-links" to={"/productdetails/" + NewList.id}>
+              <Card className="card-product">
+                <Card.Img variant="top" src={NewList.image} alt="3b-button-3" />
+                <Card.Body>
+                  <span className="card-product-title">{NewList.title}</span>
+                  <br />
+                  <span className="card-product-price">
+                    ₱{NewList.special_price}
+                  </span>
+                  <br />
+                  <strike className="card-product-discount">
+                    ₱{NewList.price}
+                  </strike>
+                  <span className="card-product-discount-percent"> -71%</span>
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       }

@@ -4,6 +4,7 @@ import classes from "./FeaturedProducts.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
 import FeaturedLoading from "../PlaceHolder/FeaturedLoading";
+import { Link } from "react-router-dom";
 
 class FeaturedProducts extends Component {
   constructor() {
@@ -42,21 +43,28 @@ class FeaturedProducts extends Component {
             xs={6}
             className={this.state.mainDiv}
           >
-            <Card className="card-product">
-              <Card.Img
-                variant="top"
-                src={FeaturedList.image}
-                alt="3b-button-3"
-              />
-              <Card.Body>
-                <span className="card-product-title">{FeaturedList.title}</span>
-                <br />
-                <span className="card-product-price">
-                  ₱{FeaturedList.price}
-                </span>
-                <br /> <br />
-              </Card.Body>
-            </Card>
+            <Link
+              className="custom-links"
+              to={"/productdetails/" + FeaturedList.id}
+            >
+              <Card className="card-product">
+                <Card.Img
+                  variant="top"
+                  src={FeaturedList.image}
+                  alt="3b-button-3"
+                />
+                <Card.Body>
+                  <span className="card-product-title">
+                    {FeaturedList.title}
+                  </span>
+                  <br />
+                  <span className="card-product-price">
+                    ₱{FeaturedList.price}
+                  </span>
+                  <br /> <br />
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       } else {
@@ -70,25 +78,32 @@ class FeaturedProducts extends Component {
             xs={6}
             className={this.state.mainDiv}
           >
-            <Card className="card-product">
-              <Card.Img
-                variant="top"
-                src={FeaturedList.image}
-                alt="3b-button-3"
-              />
-              <Card.Body>
-                <span className="card-product-title">{FeaturedList.title}</span>
-                <br />
-                <span className="card-product-price">
-                  ₱{FeaturedList.special_price}
-                </span>
-                <br />
-                <strike className="card-product-discount">
-                  ₱{FeaturedList.price}
-                </strike>
-                <span className="card-product-discount-percent"> -71%</span>
-              </Card.Body>
-            </Card>
+            <Link
+              className="custom-links"
+              to={"/productdetails/" + FeaturedList.id}
+            >
+              <Card className="card-product">
+                <Card.Img
+                  variant="top"
+                  src={FeaturedList.image}
+                  alt="3b-button-3"
+                />
+                <Card.Body>
+                  <span className="card-product-title">
+                    {FeaturedList.title}
+                  </span>
+                  <br />
+                  <span className="card-product-price">
+                    ₱{FeaturedList.special_price}
+                  </span>
+                  <br />
+                  <strike className="card-product-discount">
+                    ₱{FeaturedList.price}
+                  </strike>
+                  <span className="card-product-discount-percent"> -71%</span>
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       }
