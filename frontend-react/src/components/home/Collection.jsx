@@ -3,6 +3,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
 import CollectionLoading from "../PlaceHolder/CollectionLoading";
+import { Link } from "react-router-dom";
 
 class Collection extends Component {
   constructor() {
@@ -41,23 +42,28 @@ class Collection extends Component {
             sm={4}
             xs={6}
           >
-            <Card className="card-product">
-              <Card.Img
-                variant="top"
-                src={CollectionList.image}
-                alt="3b-button-3"
-              />
-              <Card.Body>
-                <span className="card-product-title">
-                  {CollectionList.title}
-                </span>
-                <br />
-                <span className="card-product-price">
-                  ₱{CollectionList.price}
-                </span>
-                <br /> <br />
-              </Card.Body>
-            </Card>
+            <Link
+              className="custom-links"
+              to={"/productdetails/" + CollectionList.id}
+            >
+              <Card className="card-product">
+                <Card.Img
+                  variant="top"
+                  src={CollectionList.image}
+                  alt="3b-button-3"
+                />
+                <Card.Body>
+                  <span className="card-product-title">
+                    {CollectionList.title}
+                  </span>
+                  <br />
+                  <span className="card-product-price">
+                    ₱{CollectionList.price}
+                  </span>
+                  <br /> <br />
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       } else {
@@ -71,27 +77,32 @@ class Collection extends Component {
             sm={4}
             xs={6}
           >
-            <Card className="card-product">
-              <Card.Img
-                variant="top"
-                src={CollectionList.image}
-                alt="3b-button-3"
-              />
-              <Card.Body>
-                <span className="card-product-title">
-                  {CollectionList.title}
-                </span>
-                <br />
-                <span className="card-product-price">
-                  ₱{CollectionList.special_price}
-                </span>
-                <br />
-                <strike className="card-product-discount">
-                  ₱{CollectionList.price}
-                </strike>
-                <span className="card-product-discount-percent"> -71%</span>
-              </Card.Body>
-            </Card>
+            <Link
+              className="custom-links"
+              to={"/productdetails/" + CollectionList.id}
+            >
+              <Card className="card-product">
+                <Card.Img
+                  variant="top"
+                  src={CollectionList.image}
+                  alt="3b-button-3"
+                />
+                <Card.Body>
+                  <span className="card-product-title">
+                    {CollectionList.title}
+                  </span>
+                  <br />
+                  <span className="card-product-price">
+                    ₱{CollectionList.special_price}
+                  </span>
+                  <br />
+                  <strike className="card-product-discount">
+                    ₱{CollectionList.price}
+                  </strike>
+                  <span className="card-product-discount-percent"> -71%</span>
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       }

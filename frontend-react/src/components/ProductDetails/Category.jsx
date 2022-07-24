@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class Category extends Component {
   render() {
@@ -17,21 +18,28 @@ class Category extends Component {
             sm={4}
             xs={6}
           >
-            <Card className="card-product">
-              <Card.Img
-                variant="top"
-                src={CategoryList.image}
-                alt="3b-button-3"
-              />
-              <Card.Body>
-                <span className="card-product-title">{CategoryList.title}</span>
-                <br />
-                <span className="card-product-price">
-                  ₱{CategoryList.price}
-                </span>
-                <br /> <br />
-              </Card.Body>
-            </Card>
+            <Link
+              className="custom-links"
+              to={"/productdetails/" + CategoryList.id}
+            >
+              <Card className="card-product">
+                <Card.Img
+                  variant="top"
+                  src={CategoryList.image}
+                  alt="3b-button-3"
+                />
+                <Card.Body>
+                  <span className="card-product-title">
+                    {CategoryList.title}
+                  </span>
+                  <br />
+                  <span className="card-product-price">
+                    ₱{CategoryList.price}
+                  </span>
+                  <br /> <br />
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       } else {
@@ -45,25 +53,32 @@ class Category extends Component {
             sm={4}
             xs={6}
           >
-            <Card className="card-product">
-              <Card.Img
-                variant="top"
-                src={CategoryList.image}
-                alt="3b-button-3"
-              />
-              <Card.Body>
-                <span className="card-product-title">{CategoryList.title}</span>
-                <br />
-                <span className="card-product-price">
-                  ₱{CategoryList.special_price}
-                </span>
-                <br />
-                <strike className="card-product-discount">
-                  ₱{CategoryList.price}
-                </strike>
-                <span className="card-product-discount-percent"> -71%</span>
-              </Card.Body>
-            </Card>
+            <Link
+              className="custom-links"
+              to={"/productdetails/" + CategoryList.id}
+            >
+              <Card className="card-product">
+                <Card.Img
+                  variant="top"
+                  src={CategoryList.image}
+                  alt="3b-button-3"
+                />
+                <Card.Body>
+                  <span className="card-product-title">
+                    {CategoryList.title}
+                  </span>
+                  <br />
+                  <span className="card-product-price">
+                    ₱{CategoryList.special_price}
+                  </span>
+                  <br />
+                  <strike className="card-product-discount">
+                    ₱{CategoryList.price}
+                  </strike>
+                  <span className="card-product-discount-percent"> -71%</span>
+                </Card.Body>
+              </Card>
+            </Link>
           </Col>
         );
       }
