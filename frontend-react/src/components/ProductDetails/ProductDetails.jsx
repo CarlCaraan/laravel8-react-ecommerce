@@ -9,13 +9,51 @@ import {
   Button,
 } from "react-bootstrap";
 import classes from "./ProductDetails.module.css";
-import Product1 from "../../assets/images/product/product1.png";
-import Product2 from "../../assets/images/product/product2.png";
-import Product3 from "../../assets/images/product/product3.png";
-import Product4 from "../../assets/images/product/product4.png";
+import ReactDOM from "react-dom";
 
 class ProductDetails extends Component {
+  // constructor() {
+  //   super();
+  // }
+  imageOnHover(event) {
+    let imageSrc = event.target.getAttribute("src");
+    let previewImage = document.getElementById("previewImage");
+    ReactDOM.findDOMNode(previewImage).setAttribute("src", imageSrc);
+  }
+
   render() {
+    let ProductAllData = this.props.data;
+
+    // Get Product List
+    let title = ProductAllData["productList"][0]["title"];
+    let brand = ProductAllData["productList"][0]["brand"];
+    let category = ProductAllData["productList"][0]["category"];
+    let subcategory = ProductAllData["productList"][0]["subcategory"];
+    let image = ProductAllData["productList"][0]["image"];
+    let price = ProductAllData["productList"][0]["price"];
+    let remark = ProductAllData["productList"][0]["remark"];
+    let special_price = ProductAllData["productList"][0]["special_price"];
+    let star = ProductAllData["productList"][0]["star"];
+    let product_code = ProductAllData["productList"][0]["product_code"];
+
+    // Get Product Details
+    let short_description =
+      ProductAllData["productDetails"][0]["short_description"];
+    let long_description =
+      ProductAllData["productDetails"][0]["long_description"];
+    let image_one = ProductAllData["productDetails"][0]["image_one"];
+    let image_two = ProductAllData["productDetails"][0]["image_two"];
+    let image_three = ProductAllData["productDetails"][0]["image_three"];
+    let color = ProductAllData["productDetails"][0]["color"];
+    let size = ProductAllData["productDetails"][0]["size"];
+    let seller = ProductAllData["productDetails"][0]["seller"];
+
+    // Color Div
+    var ColorDiv = "d-none";
+    if (color != "na") {
+    } else {
+    }
+
     return (
       <Fragment>
         {/* Start Breadcrumb */}
@@ -29,15 +67,21 @@ class ProductDetails extends Component {
             </Breadcrumb.Item>
             <Breadcrumb.Item
               className={`${classes["breadcrumb-item"]}`}
-              href="/"
+              href={"/productcategory/" + category}
             >
-              Category Name
+              {category}
+            </Breadcrumb.Item>
+            <Breadcrumb.Item
+              className={`${classes["breadcrumb-item"]}`}
+              href={"/productsubcategory/" + category + "/" + subcategory}
+            >
+              {subcategory}
             </Breadcrumb.Item>
             <Breadcrumb.Item
               className={`${classes["breadcrumb-item"]} active`}
               active
             >
-              Product Name
+              {title}
             </Breadcrumb.Item>
           </Breadcrumb>
         </Container>
@@ -61,19 +105,35 @@ class ProductDetails extends Component {
                       {/* Start Image Section */}
                       <Col xl={5} lg={5} md={12} sm={12}>
                         <img
+                          id="previewImage"
                           className="img-fluid w-100"
-                          src={Product1}
-                          alt=""
+                          src={image}
+                          alt="image_main"
                         />
                         <Row className="pt-1 px-3">
                           <Col className="p-0 m-0">
-                            <img className="img-fluid" src={Product2} alt="" />
+                            <img
+                              onMouseOver={this.imageOnHover}
+                              className={`${classes["small-image"]} img-fluid`}
+                              src={image_one}
+                              alt="image_one"
+                            />
                           </Col>
                           <Col className="p-0 m-0">
-                            <img className="img-fluid" src={Product3} alt="" />
+                            <img
+                              onMouseOver={this.imageOnHover}
+                              className={`${classes["small-image"]} img-fluid`}
+                              src={image_two}
+                              alt="image_two"
+                            />
                           </Col>
                           <Col className="p-0 m-0">
-                            <img className="img-fluid" src={Product4} alt="" />
+                            <img
+                              onMouseOver={this.imageOnHover}
+                              className={`${classes["small-image"]} img-fluid`}
+                              src={image_three}
+                              alt="image_three"
+                            />
                           </Col>
                         </Row>
                       </Col>
@@ -81,19 +141,26 @@ class ProductDetails extends Component {
 
                       {/* Start Product Specifications */}
                       <Col xl={7} lg={7} md={12} sm={12}>
-                        <h1 className={`${classes["product-name"]}`}>
-                          Product Name
+                        <div className={`${classes["product-name"]}`}>
+                          {title}
                           <i
                             className={`${classes["custom-icon"]} fas fa-heart float-end`}
                           ></i>
-                        </h1>
+                          <br />
+                          <div className={`${classes["brand-wrapper"]} mt-2`}>
+                            Brand:{" "}
+                            <span className={`${classes["brand-text"]}`}>
+                              {brand} | {product_code}
+                            </span>
+                          </div>
+                        </div>
                         <div className={`${classes["price-wrapper"]}`}>
                           <span className={`${classes["discounted-price"]}`}>
-                            ₱27.00
+                            ₱{special_price}
                           </span>
                           <br />
                           <span className={`${classes["original-price"]}`}>
-                            ₱27.00
+                            ₱{price}
                           </span>
                           <span className={`${classes["discount-percent"]}`}>
                             -29%
@@ -266,7 +333,21 @@ class ProductDetails extends Component {
                           className={`${classes["custom-icon"]} fas fa-store`}
                         ></i>
                         <span className={`${classes["right-card-body"]}`}>
-                          Jelly House
+                          {seller}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className={`${classes["right-card-wrapper"]} mt-2`}>
+                      <span className={`${classes["right-card-headings"]}`}>
+                        About
+                      </span>
+                      <div className="hstack gap-3">
+                        <i
+                          className={`${classes["custom-icon"]} fas fa-info ms-1 me-2`}
+                        ></i>
+                        <span className={`${classes["right-card-body"]}`}>
+                          {short_description}
                         </span>
                       </div>
                     </div>
@@ -281,28 +362,12 @@ class ProductDetails extends Component {
               <Card.Body className={`${classes["card-body"]}`}>
                 <Row className="bg-white">
                   <Col className={`${classes["description-header"]}`}>
-                    Product Details of{" "}
+                    Product Details of {title}
                   </Col>
                 </Row>
                 <Row>
                   <Col className={`${classes["description-body"]}`}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Iste tenetur maiores fuga praesentium modi magni quos
-                    ducimus! Labore deleniti nobis, incidunt eius eligendi
-                    repellendus minus dignissimos voluptatum aperiam recusandae
-                    maxime? Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste tenetur maiores fuga praesentium modi magni quos
-                    ducimus! Labore deleniti nobis, incidunt eius eligendi
-                    repellendus minus dignissimos voluptatum aperiam recusandae
-                    maxime? Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste tenetur maiores fuga praesentium modi magni quos
-                    ducimus! Labore deleniti nobis, incidunt eius eligendi
-                    repellendus minus dignissimos voluptatum aperiam recusandae
-                    maxime? Lorem ipsum dolor sit amet consectetur adipisicing
-                    elit. Iste tenetur maiores fuga praesentium modi magni quos
-                    ducimus! Labore deleniti nobis, incidunt eius eligendi
-                    repellendus minus dignissimos voluptatum aperiam recusandae
-                    maxime?
+                    {long_description}
                   </Col>
                 </Row>
               </Card.Body>
@@ -314,7 +379,7 @@ class ProductDetails extends Component {
               <Card.Body className={`${classes["card-body"]}`}>
                 <Row className="bg-white">
                   <Col className={`${classes["review-header"]}`}>
-                    Ratings & Review of{" "}
+                    Ratings & Review of {title}
                   </Col>
                 </Row>
                 <Row>
