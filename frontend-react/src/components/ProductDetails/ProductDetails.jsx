@@ -48,10 +48,10 @@ class ProductDetails extends Component {
     let subcategory = ProductAllData["productList"][0]["subcategory"];
     let image = ProductAllData["productList"][0]["image"];
     let price = ProductAllData["productList"][0]["price"];
-    let remark = ProductAllData["productList"][0]["remark"];
     let special_price = ProductAllData["productList"][0]["special_price"];
-    let star = ProductAllData["productList"][0]["star"];
     let product_code = ProductAllData["productList"][0]["product_code"];
+    // let remark = ProductAllData["productList"][0]["remark"];
+    // let star = ProductAllData["productList"][0]["star"];
 
     // Get Product Details
     let short_description =
