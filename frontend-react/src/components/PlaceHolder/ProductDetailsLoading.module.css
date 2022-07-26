@@ -1,0 +1,55 @@
+.custom-breadcrumb {
+  font-family: "Roboto";
+  font-size: 13px;
+  line-height: 16.7142px;
+  letter-spacing: normal;
+  text-align: start;
+  margin-top: 1rem;
+}
+.breadcrumb-item a {
+  text-decoration: none !important;
+  color: #999999;
+}
+.breadcrumb-item a:hover {
+  color: #5b98fb;
+}
+.breadcrumb-item {
+  color: #000 !important;
+  cursor: default;
+}
+.product-container {
+  background: #eff0f5;
+}
+.custom-card {
+  border-radius: 0 !important;
+  border: 0 !important;
+}
+.left-card {
+  background: #fff !important;
+}
+.right-card {
+  background: #fafafa !important;
+}
+.card-body {
+  background: #eff0f5 !important;
+}
+.review-body {
+  background-color: #fff;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+.description-body {
+  background-color: #fff;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}

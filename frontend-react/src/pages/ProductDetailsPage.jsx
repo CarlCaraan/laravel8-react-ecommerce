@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import AppURL from "../api/AppURL";
 import SliderLoading from "../components/PlaceHolder/SliderLoading";
+import ProductDetailsLoading from "../components/PlaceHolder/ProductDetailsLoading";
 
 export function withRouter(Children) {
   return (props) => {
@@ -44,7 +45,7 @@ class ProductDetailsPage extends Component {
       return (
         <Fragment>
           <NavMenuDesktop />
-          <SliderLoading isLoading={this.state.isLoading} />
+          <ProductDetailsLoading isLoading={this.state.isLoading} />
           <FooterDesktop />
         </Fragment>
       );

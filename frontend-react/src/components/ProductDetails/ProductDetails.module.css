@@ -99,6 +99,14 @@
   font-size: 14px;
   font-family: "Roboto";
 }
+.custom-select {
+  border-radius: 0 !important;
+}
+.custom-select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid #ced4da !important;
+}
 .form-label {
   font-family: "Roboto";
   font-size: 14px;
