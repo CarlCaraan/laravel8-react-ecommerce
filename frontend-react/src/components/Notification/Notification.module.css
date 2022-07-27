@@ -45,6 +45,14 @@
   text-align: start;
   letter-spacing: normal;
 }
+.notification-message {
+  color: #888888;
+  font-family: "Roboto";
+  font-size: 12px;
+  line-height: 19.6px;
+  text-align: start;
+  letter-spacing: normal;
+}
 .notification-date-status {
   color: #0275d8;
   font-family: "Roboto";
@@ -63,12 +71,20 @@
   padding: 0;
 }
 .modal-title {
-  font-family: "Roboto";
-  font-size: 15px;
-}
-.modal-body {
+  color: #202020;
   font-family: "Roboto";
   font-size: 14px;
+  line-height: 19.6px;
+  text-align: start;
+  letter-spacing: normal;
+}
+.modal-body {
+  color: #888888;
+  font-family: "Roboto";
+  font-size: 12px;
+  line-height: 19.6px;
+  text-align: start;
+  letter-spacing: normal;
 }
 .modal-button {
   border-radius: 2px !important;

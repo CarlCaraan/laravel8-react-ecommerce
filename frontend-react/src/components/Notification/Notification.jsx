@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component, Fragment } from "react";
 import {
   Container,
@@ -8,21 +9,84 @@ import {
   Modal,
   Button,
 } from "react-bootstrap";
+import AppURL from "../../api/AppURL";
+import NotificationLoading from "../PlaceHolder/NotificationLoading";
 import classes from "./Notification.module.css";
 
 class Notification extends Component {
   constructor() {
     super();
-    this.state = { show: false };
+    this.state = {
+      show: false,
+      NotificationData: [],
+      isLoading: "",
+      mainDiv: "d-none",
+      notificationTitle: "",
+      notificationMessage: "",
+      notificationDate: "",
+    };
   }
+
+  componentDidMount() {
+    axios
+      .get(AppURL.NotificationHistory)
+      .then((response) => {
+        this.setState({
+          NotificationData: response.data,
+          isLoading: "d-none",
+          mainDiv: "",
+        });
+      })
+      .catch((error) => {});
+  }
+
   handleClose = () => {
     this.setState({ show: false });
   };
-  handleShow = () => {
+  handleShow = (event) => {
     this.setState({ show: true });
+    let nTitle = event.target.getAttribute("data-title");
+    let nMessage = event.target.getAttribute("data-message");
+    let nDate = event.target.getAttribute("data-date");
+    this.setState({
+      notificationTitle: nTitle,
+      notificationMessage: nMessage,
+      notificationDate: nDate,
+    });
   };
 
   render() {
+    const NotificationLists = this.state.NotificationData;
+    const MyView = NotificationLists.map((NotificationList, i) => {
+      return (
+        <Col key={i.toString()} className={`${this.state.mainDiv} mb-2`} xl={6}>
+          <Card className={`${classes["custom-card"]}`}>
+            <Card.Body>
+              <p className={`${classes["notification-title"]}`}>
+                {NotificationList.title}
+              </p>
+              <p className={`${classes["notification-message"]}`}>
+                {NotificationList.message}
+              </p>
+              <p className={`${classes["notification-date-status"]}`}>
+                <i className="fas fa-bell"></i> Date: {NotificationList.date} |
+                Status: Unread
+              </p>
+              <Button
+                className={`${classes["modal-button"]}`}
+                data-title={NotificationList.title}
+                data-message={NotificationList.message}
+                data-date={NotificationList.date}
+                onClick={this.handleShow}
+              >
+                View Details
+              </Button>
+            </Card.Body>
+          </Card>
+        </Col>
+      );
+    });
+
     return (
       <Fragment>
         {/* Start Breadcrumb */}
@@ -49,59 +113,30 @@ class Notification extends Component {
               Notifications
             </h1>
             <Row>
-              <Col className="mb-2" xl={6}>
-                <Card
-                  onClick={this.handleShow}
-                  className={`${classes["custom-card"]}`}
-                >
-                  <Card.Body>
-                    <p className={`${classes["notification-title"]}`}>
-                      Lorem Ipsum
-                    </p>
-                    <p className={`${classes["notification-date-status"]}`}>
-                      <i className="fas fa-bell"></i> Date: 06/05/22 | Status:
-                      Unread
-                    </p>
-                  </Card.Body>
-                </Card>
-              </Col>
-              <Col className="mb-2" xl={6}>
-                <Card
-                  onClick={this.handleShow}
-                  className={`${classes["custom-card"]}`}
-                >
-                  <Card.Body>
-                    <p className={`${classes["notification-title"]}`}>
-                      Lorem Ipsum
-                    </p>
-                    <p className={`${classes["notification-date-status"]}`}>
-                      <i className="fas fa-bell"></i> Date: 06/05/22 | Status:
-                      Unread
-                    </p>
-                  </Card.Body>
-                </Card>
-              </Col>
+              <div className={this.state.isLoading}>
+                <NotificationLoading />
+              </div>
+              {MyView}
             </Row>
           </Container>
           <br />
           <br />
         </div>
+
         {/* Start Modal */}
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <h6 className={`${classes["modal-header"]}`}>
-              <i className="fa fa-bell"></i> Date: 06/05/22
+              <i className="fa fa-bell"></i> Date:
+              {this.state.notificationDate}
             </h6>
           </Modal.Header>
           <Modal.Body>
             <h6 className={`${classes["modal-title"]}`}>
-              Woohoo, you're reading this text in a modal!
+              {this.state.notificationTitle}
             </h6>
             <p className={`${classes["modal-body"]}`}>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil
-              necessitatibus quas molestiae quod quos est incidunt aut eligendi
-              id veniam? Enim commodi nemo nisi possimus blanditiis quidem,
-              maiores dolore voluptas!
+              {this.state.notificationMessage}
             </p>
           </Modal.Body>
           <Modal.Footer>
