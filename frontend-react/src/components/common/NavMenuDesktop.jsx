@@ -8,13 +8,44 @@ import {
   Button,
   InputGroup,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import classes from "./NavMenuDesktop.module.css";
 
 class NavMenuDesktop extends Component {
+  constructor() {
+    super();
+    this.state = {
+      SearchKey: "",
+      SearchRedirectStatus: false,
+    };
+    this.SearchOnChange = this.SearchOnChange.bind(this);
+    this.searchButtonHandler = this.searchButtonHandler.bind(this);
+    this.searchRedirect = this.searchRedirect.bind(this);
+  }
+
+  SearchOnChange(event) {
+    let enteredSearchKey = event.target.value;
+    // alert(enteredSearchKey);
+    this.setState({
+      SearchKey: enteredSearchKey,
+    });
+  }
+  searchButtonHandler() {
+    if (this.state.SearchKey.length >= 2) {
+      this.setState({ SearchRedirectStatus: true });
+    }
+  }
+  searchRedirect() {
+    if (this.state.SearchRedirectStatus === true) {
+      return <Navigate to={"/productbysearch/" + this.state.SearchKey} />;
+    }
+  }
+
   render() {
     return (
       <Fragment>
+        {this.searchRedirect()}
+
         <div className={`${classes["sticky"]}`}>
           {/* Small Navigation */}
           <div className={`${classes["nav-mini"]} w-100`}>
@@ -71,16 +102,18 @@ class NavMenuDesktop extends Component {
                     <Form className="d-flex">
                       <InputGroup>
                         <FormControl
-                          type="search"
+                          type="text"
                           placeholder="Search in Lazapee"
                           className={`${classes["search-input"]}`}
                           aria-label="Search"
                           aria-describedby="basic-addon1"
+                          onChange={this.SearchOnChange}
                         />
                         <Button
                           id="button-addon1"
                           className={`${classes["search-button"]}`}
                           variant="outline-success"
+                          onClick={this.searchButtonHandler}
                         >
                           <i className="fas fa-search"></i>
                         </Button>

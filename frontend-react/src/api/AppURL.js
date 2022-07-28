@@ -35,6 +35,11 @@ class AppURL {
 
   // Notification History
   static NotificationHistory = this.BaseURL + "/notification";
+
+  // Search
+  static ProductBySearch(searchKey) {
+    return this.BaseURL + "/search/" + searchKey;
+  }
 }
 
 export default AppURL;
