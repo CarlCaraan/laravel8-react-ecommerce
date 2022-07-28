@@ -10,6 +10,8 @@ import {
 } from "react-bootstrap";
 import { Link, Navigate } from "react-router-dom";
 import classes from "./NavMenuDesktop.module.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class NavMenuDesktop extends Component {
   constructor() {
@@ -33,6 +35,16 @@ class NavMenuDesktop extends Component {
   searchButtonHandler() {
     if (this.state.SearchKey.length >= 2) {
       this.setState({ SearchRedirectStatus: true });
+    } else {
+      toast.error("Search field must be greater than 2 characters!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
   searchRedirect() {
@@ -44,6 +56,19 @@ class NavMenuDesktop extends Component {
   render() {
     return (
       <Fragment>
+        {/* Start React Toastify */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+        {/* End React Toastify */}
         {this.searchRedirect()}
 
         <div className={`${classes["sticky"]}`}>
