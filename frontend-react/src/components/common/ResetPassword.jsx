@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card, Form, Button } from "react-bootstrap";
-import classes from "./UserLogin.module.css";
+import classes from "./ForgotPassword.module.css";
 import { Link } from "react-router-dom";
 
-class UserLogin extends Component {
+class ResetPassword extends Component {
   render() {
     return (
       <Fragment>
@@ -12,15 +12,12 @@ class UserLogin extends Component {
             <Row>
               <Col className="mx-auto py-5" xl={8} lg={8} md={8} sm={12}>
                 <h4 className={`${classes["auth-header-title"]}`}>
-                  Welcome to Lazapee! Please Login.
+                  Reset Password.
                 </h4>
                 <h6 className={`${classes["auth-subheader-title"]}`}>
-                  New member?{" "}
-                  <Link
-                    to="/register"
-                    className={`${classes["register-link"]}`}
-                  >
-                    Register
+                  Already member?{" "}
+                  <Link to="/login" className={`${classes["register-link"]}`}>
+                    Login
                   </Link>{" "}
                   here.
                 </h6>
@@ -29,8 +26,18 @@ class UserLogin extends Component {
                   <Card.Body>
                     <Row>
                       <Col></Col>
-                      <Col xl={6}>
+                      <Col xl={8}>
                         <Form>
+                          <Form.Group className="mb-3" controlId="phone">
+                            <Form.Label className={`${classes["form-label"]}`}>
+                              Pin Code*
+                            </Form.Label>
+                            <Form.Control
+                              className={`${classes["form-inputs"]}`}
+                              type="text"
+                              placeholder="code"
+                            />
+                          </Form.Group>
                           <Form.Group className="mb-3" controlId="phone">
                             <Form.Label className={`${classes["form-label"]}`}>
                               Email Address*
@@ -47,20 +54,22 @@ class UserLogin extends Component {
                             </Form.Label>
                             <Form.Control
                               className={`${classes["form-inputs"]}`}
-                              type="email"
+                              type="password"
                               placeholder="Password"
                             />
                           </Form.Group>
-                          <Form.Text>
-                            <Link
-                              className={`${classes["forgot-link"]}`}
-                              to="/login"
-                            >
-                              Forgot Password?
-                            </Link>
-                          </Form.Text>
+                          <Form.Group className="mb-3" controlId="phone">
+                            <Form.Label className={`${classes["form-label"]}`}>
+                              Confirm Password*
+                            </Form.Label>
+                            <Form.Control
+                              className={`${classes["form-inputs"]}`}
+                              type="password"
+                              placeholder="Confirm Password"
+                            />
+                          </Form.Group>
                           <Button className={`${classes["auth-button"]}`}>
-                            LOGIN
+                            Reset Password
                           </Button>
                         </Form>
                       </Col>
@@ -77,4 +86,4 @@ class UserLogin extends Component {
   }
 }
 
-export default UserLogin;
+export default ResetPassword;
