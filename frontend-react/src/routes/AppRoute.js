@@ -23,51 +23,36 @@ class AppRoute extends Component {
     return (
       <Fragment>
         <Routes>
-          <Route exact path="/" element={<HomePage />} />
-          <Route exact path="*" element={<NotFoundPage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<NotFoundPage />} />
 
           {/* Start All Auth Route */}
-          <Route exact path="/login" element={<UserLoginPage />} />
-          <Route exact path="/register" element={<UserRegisterPage />} />
-          <Route
-            exact
-            path="/forgotpassword"
-            element={<ForgotPasswordPage />}
-          />
-          <Route
-            exact
-            path="/resetpassword/:id"
-            element={<ResetPasswordPage />}
-          />
-          <Route exact path="/profile" element={<ProfilePage />} />
+          <Route path="/login" element={<UserLoginPage />} />
+          <Route path="/register" element={<UserRegisterPage />} />
+          <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
+          <Route path="/resetpassword/:id" element={<ResetPasswordPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           {/* End All Auth Route */}
 
-          <Route exact path="/contact" element={<ContactPage />} />
-          <Route exact path="/about" element={<AboutPage />} />
-          <Route exact path="/privacy" element={<PrivacyPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
           <Route
-            exact
             path="/productdetails/:code"
             element={<ProductDetailsPage />}
           />
-          <Route exact path="/notification" element={<NotificationPage />} />
-          <Route exact path="/favourite" element={<FavoritePage />} />
-          <Route exact path="/cart" element={<CartPage />} />
+          <Route path="/notification" element={<NotificationPage />} />
+          <Route path="/favourite" element={<FavoritePage />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route
-            exact
             path="/productcategory/:category"
             element={<ProductCategoryPage />}
           />
           <Route
-            exact
             path="/productsubcategory/:category/:subcategory"
             element={<ProductSubCategoryPage />}
           />
-          <Route
-            exact
-            path="/productbysearch/:searchkey"
-            element={<SearchPage />}
-          />
+          <Route path="/productbysearch/:searchkey" element={<SearchPage />} />
         </Routes>
       </Fragment>
     );
