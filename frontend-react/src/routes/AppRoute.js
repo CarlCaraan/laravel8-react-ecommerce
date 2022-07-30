@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import UserLoginPage from "../pages/UserLoginPage";
 import ContactPage from "../pages/ContactPage";
@@ -21,35 +21,100 @@ import ProfilePage from "../pages/ProfilePage";
 class AppRoute extends Component {
   render() {
     return (
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="*" element={<NotFoundPage />} />
+      <Switch>
+        <Route
+          exact
+          path="/"
+          render={(props) => <HomePage {...props} key={Date.now()} />}
+        />
 
         {/* Start All Auth Route */}
-        <Route path="/login" element={<UserLoginPage />} />
-        <Route path="/register" element={<UserRegisterPage />} />
-        <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
-        <Route path="/resetpassword/:id" element={<ResetPasswordPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route
+          exact
+          path="/login"
+          render={(props) => <UserLoginPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/register"
+          render={(props) => <UserRegisterPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/forgotpassword"
+          render={(props) => <ForgotPasswordPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/resetpassword/:id"
+          render={(props) => <ResetPasswordPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/profile"
+          render={(props) => <ProfilePage {...props} key={Date.now()} />}
+        />
         {/* End All Auth Route */}
 
-        <Route path="/contact" element={<ContactPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/privacy" element={<PrivacyPage />} />
-        <Route path="/productdetails/:code" element={<ProductDetailsPage />} />
-        <Route path="/notification" element={<NotificationPage />} />
-        <Route path="/favourite" element={<FavoritePage />} />
-        <Route path="/cart" element={<CartPage />} />
         <Route
+          exact
+          path="/contact"
+          render={(props) => <ContactPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/about"
+          render={(props) => <AboutPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/privacy"
+          render={(props) => <PrivacyPage {...props} key={Date.now()} />}
+        />
+        <Route
+          path="/productdetails/:code"
+          render={(props) => <ProductDetailsPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/notification"
+          render={(props) => <NotificationPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/favourite"
+          render={(props) => <FavoritePage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
+          path="/cart"
+          render={(props) => <CartPage {...props} key={Date.now()} />}
+        />
+        <Route
+          exact
           path="/productcategory/:category"
-          element={<ProductCategoryPage />}
+          render={(props) => (
+            <ProductCategoryPage {...props} key={Date.now()} />
+          )}
         />
         <Route
+          exact
           path="/productsubcategory/:category/:subcategory"
-          element={<ProductSubCategoryPage />}
+          render={(props) => (
+            <ProductSubCategoryPage {...props} key={Date.now()} />
+          )}
         />
-        <Route path="/productbysearch/:searchkey" element={<SearchPage />} />
-      </Routes>
+        <Route
+          exact
+          path="/productbysearch/:searchkey"
+          render={(props) => <SearchPage {...props} key={Date.now()} />}
+        />
+
+        <Route
+          path="*"
+          render={(props) => <NotFoundPage {...props} key={Date.now()} />}
+        />
+      </Switch>
     );
   }
 }

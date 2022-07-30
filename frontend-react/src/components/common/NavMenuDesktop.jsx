@@ -8,7 +8,7 @@ import {
   Button,
   InputGroup,
 } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import classes from "./NavMenuDesktop.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -49,7 +49,7 @@ class NavMenuDesktop extends Component {
   }
   searchRedirect() {
     if (this.state.SearchRedirectStatus === true) {
-      return <Navigate to={"/productbysearch/" + this.state.SearchKey} />;
+      return <Redirect to={"/productbysearch/" + this.state.SearchKey} />;
     }
   }
 

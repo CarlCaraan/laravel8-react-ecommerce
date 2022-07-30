@@ -13,10 +13,14 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductDetailsController;
 use App\Http\Controllers\Admin\NotificationController;
 
+use App\Http\Controllers\User\AuthController;
+
+
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
 
+// ========= Start All React Routes =========
 // Get Visitor Route
 Route::get('/getvisitor', [VisitorController::class, 'GetVisitorDetails']);
 
@@ -45,3 +49,10 @@ Route::get('/notification', [NotificationController::class, 'NotificaitonHistory
 
 // Search Route 
 Route::get('/search/{key}', [ProductListController::class, 'ProductBySearch']);
+// ========= End All React Routes =========
+
+
+// ========= Start User Authentication API =========
+Route::post('/login', [AuthController::class, 'Login']);
+Route::post('/register', [AuthController::class, 'Register']);
+// ========= End User Authentication API =========
