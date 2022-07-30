@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\ProductDetailsController;
 use App\Http\Controllers\Admin\NotificationController;
 
 use App\Http\Controllers\User\AuthController;
+use App\Http\Controllers\User\ForgotController;
+use App\Http\Controllers\User\ResetController;
 
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -55,4 +57,6 @@ Route::get('/search/{key}', [ProductListController::class, 'ProductBySearch']);
 // ========= Start User Authentication API =========
 Route::post('/login', [AuthController::class, 'Login']);
 Route::post('/register', [AuthController::class, 'Register']);
+Route::post('/forgotpassword', [ForgotController::class, 'ForgotPassword']);
+Route::post('/resetpassword', [ResetController::class, 'ResetPassword']);
 // ========= End User Authentication API =========
