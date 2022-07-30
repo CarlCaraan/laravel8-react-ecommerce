@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card, Form, Button } from "react-bootstrap";
-import classes from "./ForgotPassword.module.css";
+import classes from "./ResetPassword.module.css";
 import { Link } from "react-router-dom";
 
 class ResetPassword extends Component {

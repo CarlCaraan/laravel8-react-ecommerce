@@ -54,7 +54,7 @@ class UserLogin extends Component {
                           <Form.Text>
                             <Link
                               className={`${classes["forgot-link"]}`}
-                              to="/login"
+                              to="/forgotpassword"
                             >
                               Forgot Password?
                             </Link>

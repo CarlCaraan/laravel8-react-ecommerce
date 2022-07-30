@@ -16,6 +16,7 @@ import SearchPage from "../pages/SearchPage";
 import UserRegisterPage from "../pages/UserRegisterPage";
 import ForgotPasswordPage from "../pages/ForgotPasswordPage";
 import ResetPasswordPage from "../pages/ResetPasswordPage";
+import ProfilePage from "../pages/ProfilePage";
 
 class AppRoute extends Component {
   render() {
@@ -38,6 +39,7 @@ class AppRoute extends Component {
             path="/resetpassword/:id"
             element={<ResetPasswordPage />}
           />
+          <Route exact path="/profile" element={<ProfilePage />} />
           {/* End All Auth Route */}
 
           <Route exact path="/contact" element={<ContactPage />} />
