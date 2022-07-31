@@ -1,5 +1,6 @@
 .auth-wrapper {
   background: #eff0f5;
+  font-family: "Roboto";
 }
 .auth-header-title {
   font-size: 22px;
@@ -12,10 +13,34 @@
 }
 
 .custom-card {
-  margin-top: 3.5rem;
   border: none !important;
   border-radius: 0 !important;
   padding: 0.6rem;
+}
+
+.user-name {
+  color: #424242;
+  font-size: 12px;
+}
+
+.verified-button {
+  background-color: #4caf50 !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  padding-inline: 5px !important;
+  padding-block: 2.5px !important;
+  border: none !important;
+  border-radius: 25px !important;
+}
+.verified-button:hover {
+  background-color: #4caf50 !important;
+  opacity: 0.9 !important;
+}
+
+.dashboard-info {
+  color: #424242 !important;
+  letter-spacing: -0.15px !important;
 }
 
 /* // X-Small devices (portrait phones, less than 576px) */
@@ -29,10 +54,10 @@
 /* // Medium devices (tablets, less than 992px) */
 @media (max-width: 991.98px) {
   .auth-header-title {
-    float: none;
+    float: none !important;
   }
   .custom-card {
-    margin-top: 0px;
+    margin-top: 0px !important;
   }
 }
 

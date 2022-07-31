@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card, Form, Button } from "react-bootstrap";
 import classes from "./UserLogin.module.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
 
@@ -12,6 +12,7 @@ class UserLogin extends Component {
       email: "",
       password: "",
       message: "",
+      loggedId: false,
     };
     this.inputEmail = this.inputEmail.bind(this);
     this.inputPassword = this.inputPassword.bind(this);
@@ -34,11 +35,19 @@ class UserLogin extends Component {
 
     axios
       .post(AppURL.UserLogin, data)
-      .then((response) => {})
+      .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        this.setState({ loggedIn: true });
+      })
       .catch((error) => {});
   }
 
   render() {
+    // Redirect After Login
+    if (this.state.loggedIn) {
+      return <Redirect to={"/profile"} />;
+    }
+
     return (
       <Fragment>
         <div className={`${classes["auth-wrapper"]}`}>
