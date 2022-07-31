@@ -2,8 +2,42 @@ import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card, Form, Button } from "react-bootstrap";
 import classes from "./UserLogin.module.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class UserLogin extends Component {
+  constructor() {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      message: "",
+    };
+    this.inputEmail = this.inputEmail.bind(this);
+    this.inputPassword = this.inputPassword.bind(this);
+    this.formSubmitHandler = this.formSubmitHandler.bind(this);
+  }
+
+  inputEmail(event) {
+    this.setState({ email: event.target.value });
+  }
+  inputPassword(event) {
+    this.setState({ password: event.target.value });
+  }
+
+  formSubmitHandler(event) {
+    event.preventDefault();
+    const data = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    axios
+      .post(AppURL.UserLogin, data)
+      .then((response) => {})
+      .catch((error) => {});
+  }
+
   render() {
     return (
       <Fragment>
@@ -30,8 +64,8 @@ class UserLogin extends Component {
                     <Row>
                       <Col></Col>
                       <Col xl={6}>
-                        <Form>
-                          <Form.Group className="mb-3" controlId="phone">
+                        <Form onSubmit={this.formSubmitHandler}>
+                          <Form.Group className="mb-3" controlId="email">
                             <Form.Label className={`${classes["form-label"]}`}>
                               Email Address*
                             </Form.Label>
@@ -39,16 +73,18 @@ class UserLogin extends Component {
                               className={`${classes["form-inputs"]}`}
                               type="email"
                               placeholder="Email Address"
+                              onChange={this.inputEmail}
                             />
                           </Form.Group>
-                          <Form.Group className="mb-3" controlId="phone">
+                          <Form.Group className="mb-3" controlId="password">
                             <Form.Label className={`${classes["form-label"]}`}>
                               Password*
                             </Form.Label>
                             <Form.Control
                               className={`${classes["form-inputs"]}`}
-                              type="email"
+                              type="password"
                               placeholder="Password"
+                              onChange={this.inputPassword}
                             />
                           </Form.Group>
                           <Form.Text>
@@ -59,7 +95,10 @@ class UserLogin extends Component {
                               Forgot Password?
                             </Link>
                           </Form.Text>
-                          <Button className={`${classes["auth-button"]}`}>
+                          <Button
+                            type="submit"
+                            className={`${classes["auth-button"]}`}
+                          >
                             LOGIN
                           </Button>
                         </Form>
