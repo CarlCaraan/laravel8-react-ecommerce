@@ -4,6 +4,13 @@ import classes from "./Profile.module.css";
 
 class Profile extends Component {
   render() {
+    let first_name;
+    let last_name;
+    if (this.props.user) {
+      first_name = this.props.user.first_name;
+      last_name = this.props.user.last_name;
+    }
+
     return (
       <Fragment>
         <div className={`${classes["auth-wrapper"]}`}>
@@ -11,7 +18,7 @@ class Profile extends Component {
             <Row>
               <Col className="mx-auto py-5" xl={2} lg={2} md={2} sm={12}>
                 <span className={`${classes["user-name"]}`}>
-                  Hello, Carl Caraan
+                  Hello, {first_name} {last_name}
                 </span>
                 <br />
                 <Button className={`${classes["verified-button"]}`}>

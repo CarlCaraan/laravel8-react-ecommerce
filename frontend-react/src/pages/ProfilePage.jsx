@@ -8,10 +8,12 @@ class ProfilePage extends Component {
     window.scroll(0, 0);
   }
   render() {
+    const User = this.props.user;
+
     return (
       <Fragment>
         <NavMenuDesktop />
-        <Profile />
+        <Profile user={User} />
         <FooterDesktop />
       </Fragment>
     );

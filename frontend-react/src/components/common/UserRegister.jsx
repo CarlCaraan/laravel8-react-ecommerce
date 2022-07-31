@@ -1,10 +1,71 @@
 import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card, Form, Button } from "react-bootstrap";
 import classes from "./UserRegister.module.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class UserRegister extends Component {
+  constructor() {
+    super();
+    this.state = {
+      first_name: "",
+      last_name: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
+      message: "",
+      loggedId: false,
+    };
+    this.inputFirstName = this.inputFirstName.bind(this);
+    this.inputLastName = this.inputLastName.bind(this);
+    this.inputEmail = this.inputEmail.bind(this);
+    this.inputPassword = this.inputPassword.bind(this);
+    this.inputPasswordConfirmation = this.inputPasswordConfirmation.bind(this);
+    this.formSubmitHandler = this.formSubmitHandler.bind(this);
+  }
+
+  inputFirstName(event) {
+    this.setState({ first_name: event.target.value });
+  }
+  inputLastName(event) {
+    this.setState({ last_name: event.target.value });
+  }
+  inputEmail(event) {
+    this.setState({ email: event.target.value });
+  }
+  inputPassword(event) {
+    this.setState({ password: event.target.value });
+  }
+  inputPasswordConfirmation(event) {
+    this.setState({ password_confirmation: event.target.value });
+  }
+
+  formSubmitHandler(event) {
+    event.preventDefault();
+    const data = {
+      first_name: this.state.first_name,
+      last_name: this.state.last_name,
+      email: this.state.email,
+      password: this.state.password,
+      password_confirmation: this.state.password_confirmation,
+    };
+
+    axios
+      .post(AppURL.UserRegister, data)
+      .then((response) => {
+        localStorage.setItem("token", response.data.token);
+        this.setState({ loggedIn: true });
+      })
+      .catch((error) => {});
+  }
+
   render() {
+    // Redirect After Login
+    if (this.state.loggedIn) {
+      return <Redirect to={"/profile"} />;
+    }
+
     return (
       <Fragment>
         <div className={`${classes["auth-wrapper"]}`}>
@@ -27,7 +88,7 @@ class UserRegister extends Component {
                     <Row>
                       <Col></Col>
                       <Col xl={8}>
-                        <Form>
+                        <Form onSubmit={this.formSubmitHandler}>
                           <Row>
                             <Col xl={6} lg={6} md={12} sm={12}>
                               <Form.Group className="mb-3" controlId="phone">
@@ -40,6 +101,7 @@ class UserRegister extends Component {
                                   className={`${classes["form-inputs"]}`}
                                   type="text"
                                   placeholder="First Name"
+                                  onChange={this.inputFirstName}
                                 />
                               </Form.Group>
                             </Col>
@@ -55,6 +117,7 @@ class UserRegister extends Component {
                                   className={`${classes["form-inputs"]}`}
                                   type="text"
                                   placeholder="Last Name"
+                                  onChange={this.inputLastName}
                                 />
                               </Form.Group>
                             </Col>
@@ -68,6 +131,7 @@ class UserRegister extends Component {
                               className={`${classes["form-inputs"]}`}
                               type="email"
                               placeholder="Email Address"
+                              onChange={this.inputEmail}
                             />
                           </Form.Group>
 
@@ -79,6 +143,7 @@ class UserRegister extends Component {
                               className={`${classes["form-inputs"]}`}
                               type="password"
                               placeholder="Password"
+                              onChange={this.inputPassword}
                             />
                           </Form.Group>
 
@@ -90,10 +155,14 @@ class UserRegister extends Component {
                               className={`${classes["form-inputs"]}`}
                               type="password"
                               placeholder="Confirm Password"
+                              onChange={this.inputPasswordConfirmation}
                             />
                           </Form.Group>
 
-                          <Button className={`${classes["auth-button"]}`}>
+                          <Button
+                            type="submit"
+                            className={`${classes["auth-button"]}`}
+                          >
                             REGISTER
                           </Button>
                         </Form>
