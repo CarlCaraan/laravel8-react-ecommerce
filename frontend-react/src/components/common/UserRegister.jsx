@@ -89,7 +89,11 @@ class UserRegister extends Component {
   render() {
     // Redirect After Register
     if (this.state.loggedIn) {
-      return <Redirect to={"/"} />;
+      return <Redirect to="/" />;
+    }
+    // Authorization
+    if (localStorage.getItem("token")) {
+      return <Redirect to="/" />;
     }
 
     return (

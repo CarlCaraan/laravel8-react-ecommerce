@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card, Button } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import classes from "./Profile.module.css";
 
 class Profile extends Component {
@@ -9,6 +10,11 @@ class Profile extends Component {
     if (this.props.user) {
       first_name = this.props.user.first_name;
       last_name = this.props.user.last_name;
+    }
+
+    // Authorization
+    if (!localStorage.getItem("token")) {
+      return <Redirect to="/login" />;
     }
 
     return (

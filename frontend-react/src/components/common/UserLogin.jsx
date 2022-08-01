@@ -46,7 +46,11 @@ class UserLogin extends Component {
   render() {
     // Redirect After Login
     if (this.state.loggedIn) {
-      return <Redirect to={"/"} />;
+      return <Redirect to="/" />;
+    }
+    // Authorization
+    if (localStorage.getItem("token")) {
+      return <Redirect to="/" />;
     }
 
     return (
