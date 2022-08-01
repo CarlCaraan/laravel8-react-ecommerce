@@ -12,18 +12,8 @@ class UserLogin extends Component {
       email: "",
       password: "",
       message: "",
-      loggedId: false,
+      loggedIn: false,
     };
-    this.inputEmail = this.inputEmail.bind(this);
-    this.inputPassword = this.inputPassword.bind(this);
-    this.formSubmitHandler = this.formSubmitHandler.bind(this);
-  }
-
-  inputEmail(event) {
-    this.setState({ email: event.target.value });
-  }
-  inputPassword(event) {
-    this.setState({ password: event.target.value });
   }
 
   formSubmitHandler(event) {
@@ -32,12 +22,12 @@ class UserLogin extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-
     axios
       .post(AppURL.UserLogin, data)
       .then((response) => {
         localStorage.setItem("token", response.data.token);
         this.setState({ loggedIn: true });
+        // this.props.setUser(response.data.user);
       })
       .catch((error) => {});
   }
@@ -45,7 +35,7 @@ class UserLogin extends Component {
   render() {
     // Redirect After Login
     if (this.state.loggedIn) {
-      return <Redirect to={"/profile"} />;
+      return <Redirect to={"/"} />;
     }
 
     return (
@@ -73,7 +63,7 @@ class UserLogin extends Component {
                     <Row>
                       <Col></Col>
                       <Col xl={6}>
-                        <Form onSubmit={this.formSubmitHandler}>
+                        <Form onSubmit={this.formSubmitHandler.bind(this)}>
                           <Form.Group className="mb-3" controlId="email">
                             <Form.Label className={`${classes["form-label"]}`}>
                               Email Address*
@@ -82,7 +72,9 @@ class UserLogin extends Component {
                               className={`${classes["form-inputs"]}`}
                               type="email"
                               placeholder="Email Address"
-                              onChange={this.inputEmail}
+                              onChange={(e) => {
+                                this.setState({ email: e.target.value });
+                              }}
                             />
                           </Form.Group>
                           <Form.Group className="mb-3" controlId="password">
@@ -93,7 +85,9 @@ class UserLogin extends Component {
                               className={`${classes["form-inputs"]}`}
                               type="password"
                               placeholder="Password"
-                              onChange={this.inputPassword}
+                              onChange={(e) => {
+                                this.setState({ password: e.target.value });
+                              }}
                             />
                           </Form.Group>
                           <Form.Text>

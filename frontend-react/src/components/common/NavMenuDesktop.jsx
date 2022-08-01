@@ -53,7 +53,46 @@ class NavMenuDesktop extends Component {
     }
   }
 
+  logout = () => {
+    localStorage.clear();
+  };
+
   render() {
+    let navigationLinks;
+    if (localStorage.getItem("token")) {
+      navigationLinks = (
+        <Fragment>
+          <Link className={`${classes["mini-nav-link"]}`} to="/">
+            wishlist
+          </Link>
+          <Link className={`${classes["mini-nav-link"]}`} to="/notification">
+            notifications
+          </Link>
+          <Link className={`${classes["mini-nav-link"]}`} to="/profile">
+            My Profile
+          </Link>
+          <Link
+            className={`${classes["mini-nav-link"]}`}
+            to="/"
+            onClick={this.logout}
+          >
+            Logout
+          </Link>
+        </Fragment>
+      );
+    } else {
+      navigationLinks = (
+        <Fragment>
+          <Link className={`${classes["mini-nav-link"]}`} to="/login">
+            login
+          </Link>
+          <Link className={`${classes["mini-nav-link"]}`} to="/register">
+            signup
+          </Link>
+        </Fragment>
+      );
+    }
+
     return (
       <Fragment>
         {/* Start React Toastify */}
@@ -86,18 +125,7 @@ class NavMenuDesktop extends Component {
                   <Link className={`${classes["mini-nav-link"]}`} to="/contact">
                     customer care
                   </Link>
-                  <Link className={`${classes["mini-nav-link"]}`} to="/">
-                    wishlist
-                  </Link>
-                  <Link
-                    className={`${classes["mini-nav-link"]}`}
-                    to="/notification"
-                  >
-                    notifications
-                  </Link>
-                  <Link className={`${classes["mini-nav-link"]}`} to="/login">
-                    login
-                  </Link>
+                  {navigationLinks}
                 </div>
               </Container>
             </Navbar>

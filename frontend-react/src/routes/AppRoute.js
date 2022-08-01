@@ -38,9 +38,7 @@ class AppRoute extends Component {
   }
 
   setUser = (user) => {
-    this.setState({
-      user: user,
-    });
+    this.setState({ user: user });
   };
 
   render() {
@@ -57,7 +55,14 @@ class AppRoute extends Component {
           <Route
             exact
             path="/login"
-            render={(props) => <UserLoginPage {...props} key={Date.now()} />}
+            render={(props) => (
+              <UserLoginPage
+                user={this.state.user}
+                setUser={this.setUser}
+                {...props}
+                key={Date.now()}
+              />
+            )}
           />
           <Route
             exact

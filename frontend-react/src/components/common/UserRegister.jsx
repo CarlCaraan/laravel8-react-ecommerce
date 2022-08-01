@@ -15,7 +15,7 @@ class UserRegister extends Component {
       password: "",
       password_confirmation: "",
       message: "",
-      loggedId: false,
+      loggedIn: false,
     };
     this.inputFirstName = this.inputFirstName.bind(this);
     this.inputLastName = this.inputLastName.bind(this);
@@ -63,7 +63,7 @@ class UserRegister extends Component {
   render() {
     // Redirect After Login
     if (this.state.loggedIn) {
-      return <Redirect to={"/profile"} />;
+      return <Redirect to={"/"} />;
     }
 
     return (
