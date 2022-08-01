@@ -61,7 +61,7 @@ class UserRegister extends Component {
   }
 
   render() {
-    // Redirect After Login
+    // Redirect After Register
     if (this.state.loggedIn) {
       return <Redirect to={"/"} />;
     }

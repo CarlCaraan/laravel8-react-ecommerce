@@ -21,7 +21,7 @@ class ForgotController extends Controller
 
         if (User::where('email', $email)->doesntExist()) {
             return response([
-                'message' => 'Invalid Email Address',
+                'message' => 'The email does not exist!',
             ], 401);
         }
 
