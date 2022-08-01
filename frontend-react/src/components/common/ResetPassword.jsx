@@ -49,6 +49,7 @@ class ResetPassword extends Component {
       .post(AppURL.UserResetPassword, data)
       .then((response) => {
         toast.success(response.data.message);
+        document.getElementById("formReset").reset();
       })
       .catch((error) => {
         if (this.state.token.length === 0) {
@@ -90,7 +91,10 @@ class ResetPassword extends Component {
                     <Row>
                       <Col></Col>
                       <Col xl={8}>
-                        <Form onSubmit={this.formSubmitHandler.bind(this)}>
+                        <Form
+                          id="formReset"
+                          onSubmit={this.formSubmitHandler.bind(this)}
+                        >
                           <Form.Group className="mb-3" controlId="phone">
                             <Form.Label className={`${classes["form-label"]}`}>
                               Pin Code*

@@ -4,6 +4,8 @@ import classes from "./UserLogin.module.css";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class UserLogin extends Component {
   constructor() {
@@ -29,7 +31,16 @@ class UserLogin extends Component {
         this.setState({ loggedIn: true });
         // this.props.setUser(response.data.user);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        if (this.state.email.length === 0) {
+          toast.error("Email field is required");
+        } else if (this.state.password.length === 0) {
+          toast.error("Password field is required");
+        } else {
+          toast.error(error.response.data.message);
+          document.getElementById("passwordField").value = "";
+        }
+      });
   }
 
   render() {
@@ -82,6 +93,7 @@ class UserLogin extends Component {
                               Password*
                             </Form.Label>
                             <Form.Control
+                              id="passwordField"
                               className={`${classes["form-inputs"]}`}
                               type="password"
                               placeholder="Password"
@@ -114,6 +126,21 @@ class UserLogin extends Component {
             </Row>
           </Container>
         </div>
+
+        {/* Start React Toastify */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover={false}
+          closeButton={false}
+        />
+        {/* End React Toastify */}
       </Fragment>
     );
   }
