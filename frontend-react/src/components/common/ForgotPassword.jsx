@@ -12,7 +12,6 @@ class ForgotPassword extends Component {
     super();
     this.state = {
       email: "",
-      message: "",
     };
   }
 
@@ -95,11 +94,12 @@ class ForgotPassword extends Component {
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
-          closeOnClick
+          closeOnClick={false}
           rtl={false}
           pauseOnFocusLoss
-          draggable
-          pauseOnHover
+          draggable={false}
+          pauseOnHover={false}
+          closeButton={false}
         />
         {/* End React Toastify */}
       </Fragment>

@@ -50,21 +50,13 @@ class Contact extends Component {
     let contactForm = document.getElementById("contactForm");
 
     // Validation
-    if (enteredMessage.length === 0) {
-      toast.error("Message field is Required!", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-      // alert("Please Write your Message");
-    } else if (enteredName.length === 0) {
+    if (enteredName.length === 0) {
       toast.error("Name field is Required!");
     } else if (enteredEmail.length === 0) {
       toast.error("Email field is Required");
+    } else if (enteredMessage.length === 0) {
+      toast.error("Message field is Required!");
+      // alert("Please Write your Message");
     } else if (!Validation.NameRegex.test(enteredName)) {
       toast.error("Invalid Name Characters");
     } else {
@@ -246,11 +238,12 @@ class Contact extends Component {
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
-          closeOnClick
+          closeOnClick={false}
           rtl={false}
           pauseOnFocusLoss
-          draggable
-          pauseOnHover
+          draggable={false}
+          pauseOnHover={false}
+          closeButton={false}
         />
         {/* End React Toastify */}
       </Fragment>
