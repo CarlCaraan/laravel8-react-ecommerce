@@ -52,13 +52,17 @@ class Contact extends Component {
     // Validation
     if (enteredName.length === 0) {
       toast.error("Name field is Required!");
+      sendBtn.innerHTML = "Sent";
     } else if (enteredEmail.length === 0) {
       toast.error("Email field is Required");
+      sendBtn.innerHTML = "Sent";
     } else if (enteredMessage.length === 0) {
       toast.error("Message field is Required!");
+      sendBtn.innerHTML = "Sent";
       // alert("Please Write your Message");
     } else if (!Validation.NameRegex.test(enteredName)) {
       toast.error("Invalid Name Characters");
+      sendBtn.innerHTML = "Sent";
     } else {
       // Inserting Data
       let ContactFormData = new FormData();

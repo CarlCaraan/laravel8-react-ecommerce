@@ -6,7 +6,6 @@ import axios from "axios";
 import AppURL from "../../api/AppURL";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ThemeConsumer } from "react-bootstrap/esm/ThemeProvider";
 
 class ResetPassword extends Component {
   constructor() {
