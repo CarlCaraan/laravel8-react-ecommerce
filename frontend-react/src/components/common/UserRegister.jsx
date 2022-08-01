@@ -4,6 +4,8 @@ import classes from "./UserRegister.module.css";
 import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 class UserRegister extends Component {
   constructor() {
@@ -57,7 +59,31 @@ class UserRegister extends Component {
         localStorage.setItem("token", response.data.token);
         this.setState({ loggedIn: true });
       })
-      .catch((error) => {});
+      .catch((error) => {
+        if (this.state.first_name.length === 0) {
+          toast.error("First Name field is required");
+        } else if (this.state.last_name.length === 0) {
+          toast.error("Last Name field is required");
+        } else if (this.state.email.length === 0) {
+          toast.error("Email field is required");
+        } else if (this.state.password.length === 0) {
+          toast.error("Password field is required");
+        } else if (this.state.password_confirmation.length === 0) {
+          toast.error("Password Confirmation field is required");
+        } else {
+          document.getElementById("passwordField").value = "";
+          document.getElementById("passwordConfirmationField").value = "";
+          if (this.state.password !== this.state.password_confirmation) {
+            toast.error(error.response.data.errors.password[0]);
+            document.getElementById("passwordField").value = "";
+            document.getElementById("passwordConfirmationField").value = "";
+          } else {
+            toast.error("Email already exists!");
+            document.getElementById("passwordField").value = "";
+            document.getElementById("passwordConfirmationField").value = "";
+          }
+        }
+      });
   }
 
   render() {
@@ -140,6 +166,7 @@ class UserRegister extends Component {
                               Password*
                             </Form.Label>
                             <Form.Control
+                              id="passwordField"
                               className={`${classes["form-inputs"]}`}
                               type="password"
                               placeholder="Password"
@@ -152,6 +179,7 @@ class UserRegister extends Component {
                               Confirm Password*
                             </Form.Label>
                             <Form.Control
+                              id="passwordConfirmationField"
                               className={`${classes["form-inputs"]}`}
                               type="password"
                               placeholder="Confirm Password"
@@ -175,6 +203,21 @@ class UserRegister extends Component {
             </Row>
           </Container>
         </div>
+
+        {/* Start React Toastify */}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable={false}
+          pauseOnHover={false}
+          closeButton={false}
+        />
+        {/* End React Toastify */}
       </Fragment>
     );
   }
