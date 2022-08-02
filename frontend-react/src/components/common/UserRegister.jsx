@@ -52,7 +52,6 @@ class UserRegister extends Component {
       password: this.state.password,
       password_confirmation: this.state.password_confirmation,
     };
-
     axios
       .post(AppURL.UserRegister, data)
       .then((response) => {
