@@ -2,7 +2,6 @@ import React, { Component, Fragment } from "react";
 import FooterDesktop from "../components/common/FooterDesktop";
 import NavMenuDesktop from "../components/common/NavMenuDesktop";
 import ProductDetails from "../components/ProductDetails/ProductDetails";
-import SuggestedProduct from "../components/ProductDetails/SuggestedProduct";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import AppURL from "../api/AppURL";
@@ -53,7 +52,6 @@ class ProductDetailsPage extends Component {
         <Fragment>
           <NavMenuDesktop />
           <ProductDetails data={this.state.ProductData} />
-          <SuggestedProduct />
           <FooterDesktop />
         </Fragment>
       );

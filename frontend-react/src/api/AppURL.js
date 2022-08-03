@@ -47,6 +47,11 @@ class AppURL {
   static UserRegister = this.BaseURL + "/register";
   static UserForgotPassword = this.BaseURL + "/forgotpassword";
   static UserResetPassword = this.BaseURL + "/resetpassword";
+
+  // Similar Product
+  static SimilarProduct(code) {
+    return this.BaseURL + "/similar/" + code;
+  }
 }
 
 export default AppURL;

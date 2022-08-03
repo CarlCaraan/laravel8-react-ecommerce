@@ -11,6 +11,7 @@ import {
 import classes from "./ProductDetails.module.css";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
+import SuggestedProduct from "./SuggestedProduct";
 
 class ProductDetails extends Component {
   constructor() {
@@ -162,7 +163,7 @@ class ProductDetails extends Component {
                         <InnerImageZoom
                           id="previewImage"
                           zoomType="hover"
-                          hideHint="true"
+                          hideHint={true}
                           src={this.state.previewImage}
                           zoomSrc={this.state.previewImage}
                           alt="image_main"
@@ -423,6 +424,8 @@ class ProductDetails extends Component {
           </Container>
         </div>
         {/* End Product Details */}
+
+        <SuggestedProduct subcategory={subcategory} />
       </Fragment>
     );
   }

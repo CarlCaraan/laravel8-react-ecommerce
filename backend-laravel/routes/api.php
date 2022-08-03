@@ -62,3 +62,6 @@ Route::post('/forgotpassword', [ForgotController::class, 'ForgotPassword']);
 Route::post('/resetpassword', [ResetController::class, 'ResetPassword']);
 Route::get('/user', [UserController::class, 'User'])->middleware('auth:api');
 // ========= End User Authentication API =========
+
+// Similar Product Route
+Route::get('/similar/{subcategory}', [ProductListController::class, 'SimilarProduct']);

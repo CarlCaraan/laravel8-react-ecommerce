@@ -40,4 +40,12 @@ class ProductListController extends Controller
             ->orWhere('brand', 'LIKE', "%{$key}%")->get();
         return $productList;
     } // End Method
+
+    public function SimilarProduct(Request $request)
+    {
+        $subcategory = $request->subcategory;
+        $productlist = ProductList::where('subcategory', $subcategory)->orderBy('id', 'desc')->limit(6)->get();
+
+        return $productlist;
+    } // End Method
 }
