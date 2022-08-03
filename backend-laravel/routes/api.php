@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductDetailsController;
+use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Admin\NotificationController;
 
 use App\Http\Controllers\User\AuthController;
@@ -65,3 +66,6 @@ Route::get('/user', [UserController::class, 'User'])->middleware('auth:api');
 
 // Similar Product Route
 Route::get('/similar/{subcategory}', [ProductListController::class, 'SimilarProduct']);
+
+// Product Review Route
+Route::get('/reviewlist/{id}', [ProductReviewController::class, 'ReviewList']);
