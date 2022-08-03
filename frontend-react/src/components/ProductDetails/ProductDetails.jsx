@@ -9,19 +9,25 @@ import {
   Button,
 } from "react-bootstrap";
 import classes from "./ProductDetails.module.css";
-import ReactDOM from "react-dom";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 
 class ProductDetails extends Component {
-  // constructor() {
-  //   super();
-  // }
-  imageOnHover(event) {
-    let imageSrc = event.target.getAttribute("src");
-    let previewImage = document.getElementById("previewImage");
-    ReactDOM.findDOMNode(previewImage).setAttribute("src", imageSrc);
+  constructor() {
+    super();
+    this.state = { previewImage: "0" };
   }
+
+  // imageOnHover(event) {
+  //   let imageSrc = event.target.getAttribute("src");
+  //   let previewImage = document.getElementById("previewImage");
+  //   ReactDOM.findDOMNode(previewImage).setAttribute("src", imageSrc);
+  // }
+
+  imageOnHover = (event) => {
+    let imageSrc = event.target.getAttribute("src");
+    this.setState({ previewImage: imageSrc });
+  };
 
   PriceOption(price, special_price) {
     if (special_price === "na") {
@@ -44,11 +50,15 @@ class ProductDetails extends Component {
     let ProductAllData = this.props.data;
 
     // Get Product List
+    let image = ProductAllData["productList"][0]["image"];
+    if (this.state.previewImage === "0") {
+      this.setState({ previewImage: image });
+    }
+
     let title = ProductAllData["productList"][0]["title"];
     let brand = ProductAllData["productList"][0]["brand"];
     let category = ProductAllData["productList"][0]["category"];
     let subcategory = ProductAllData["productList"][0]["subcategory"];
-    let image = ProductAllData["productList"][0]["image"];
     let price = ProductAllData["productList"][0]["price"];
     let special_price = ProductAllData["productList"][0]["special_price"];
     let product_code = ProductAllData["productList"][0]["product_code"];
@@ -153,9 +163,8 @@ class ProductDetails extends Component {
                           id="previewImage"
                           zoomType="hover"
                           hideHint="true"
-                          className="img-fluid w-100"
-                          src={image}
-                          zoomSrc={image}
+                          src={this.state.previewImage}
+                          zoomSrc={this.state.previewImage}
                           alt="image_main"
                         />
                         <Row className="pt-1 px-3">
