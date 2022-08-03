@@ -10,6 +10,8 @@ import {
 } from "react-bootstrap";
 import classes from "./ProductDetails.module.css";
 import ReactDOM from "react-dom";
+import InnerImageZoom from "react-inner-image-zoom";
+import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 
 class ProductDetails extends Component {
   // constructor() {
@@ -147,10 +149,13 @@ class ProductDetails extends Component {
                     <Row>
                       {/* Start Image Section */}
                       <Col xl={5} lg={5} md={12} sm={12}>
-                        <img
+                        <InnerImageZoom
                           id="previewImage"
+                          zoomType="hover"
+                          hideHint="true"
                           className="img-fluid w-100"
                           src={image}
+                          zoomSrc={image}
                           alt="image_main"
                         />
                         <Row className="pt-1 px-3">
