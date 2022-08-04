@@ -17,7 +17,15 @@ import ReviewList from "./ReviewList";
 class ProductDetails extends Component {
   constructor() {
     super();
-    this.state = { previewImage: "0" };
+    this.state = {
+      previewImage: "0",
+      isSize: null,
+      isColor: null,
+      color: "",
+      size: "",
+      quantity: "",
+      productCode: null,
+    };
   }
 
   // imageOnHover(event) {
@@ -29,6 +37,32 @@ class ProductDetails extends Component {
   imageOnHover = (event) => {
     let imageSrc = event.target.getAttribute("src");
     this.setState({ previewImage: imageSrc });
+  };
+
+  addToCart = () => {};
+
+  colorOnChange = (event) => {
+    let color = event.target.value;
+    // alert(color);
+    this.setState({
+      color: color,
+    });
+  };
+
+  sizeOnChange = (event) => {
+    let size = event.target.value;
+    // alert(size);
+    this.setState({
+      size: size,
+    });
+  };
+
+  quantityOnChange = (event) => {
+    let quantity = event.target.value;
+    // alert(quantity);
+    this.setState({
+      quantity: quantity,
+    });
   };
 
   PriceOption(price, special_price) {
@@ -110,6 +144,25 @@ class ProductDetails extends Component {
       SizeDiv = "";
     } else {
       SizeDiv = "d-none";
+    }
+
+    // If Condition
+    if (this.state.isSize === null) {
+      if (size !== "na") {
+        this.setState({ isSize: "YES" });
+      } else {
+        this.setState({ isSize: "NO" });
+      }
+    }
+    if (this.state.isColor === null) {
+      if (color !== "na") {
+        this.setState({ isColor: "YES" });
+      } else {
+        this.setState({ isColor: "NO" });
+      }
+    }
+    if (this.state.productCode === null) {
+      this.setState({ productCode: product_code });
     }
 
     return (
@@ -230,6 +283,7 @@ class ProductDetails extends Component {
                               </Form.Label>
                               <br />
                               <select
+                                onChange={this.colorOnChange}
                                 className={`${classes["custom-select"]} form-select`}
                               >
                                 <option value="na">Select</option>
@@ -248,6 +302,7 @@ class ProductDetails extends Component {
                               </Form.Label>
                               <br />
                               <select
+                                onChange={this.sizeOnChange}
                                 className={`${classes["custom-select"]} form-select`}
                               >
                                 <option value="na">Select</option>
@@ -264,6 +319,7 @@ class ProductDetails extends Component {
                             Quantity
                           </Form.Label>
                           <input
+                            onChange={this.quantityOnChange}
                             type="number"
                             className={`${classes["quantity-input"]} form-control`}
                             placeholder="0"

@@ -57,6 +57,9 @@ class AppURL {
   static ReviewList(id) {
     return this.BaseURL + "/reviewlist/" + id;
   }
+
+  // Add to Cart
+  static AddToCard = this.BaseURL + "/addtocart";
 }
 
 export default AppURL;
