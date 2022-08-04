@@ -1,0 +1,44 @@
+.custom-card {
+  border-radius: 0 !important;
+  border: 0 !important;
+}
+.card-body {
+  background: #eff0f5 !important;
+}
+/* ========= REVIEW SECTION ========= */
+.review-header {
+  background-color: #fafafa;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  font-weight: 600;
+  line-height: 3;
+}
+.review-body {
+  background-color: #fff;
+  color: #212121;
+  font-family: "Roboto";
+  font-size: 14px;
+  letter-spacing: normal;
+  text-align: start;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+}
+.review-name {
+  font-family: "Roboto";
+  font-size: 12px;
+  line-height: 13.8px;
+  color: #808080;
+}
+.review-text-body {
+  margin-top: 1rem;
+  font-family: "Roboto";
+  font-size: 14px;
+  line-height: 16.1px;
+  color: #212121;
+}
+.text-verified {
+  color: #4caf50;
+}

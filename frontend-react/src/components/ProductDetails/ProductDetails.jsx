@@ -12,6 +12,7 @@ import classes from "./ProductDetails.module.css";
 import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import SuggestedProduct from "./SuggestedProduct";
+import ReviewList from "./ReviewList";
 
 class ProductDetails extends Component {
   constructor() {
@@ -77,6 +78,7 @@ class ProductDetails extends Component {
     let color = ProductAllData["productDetails"][0]["color"];
     let size = ProductAllData["productDetails"][0]["size"];
     let seller = ProductAllData["productDetails"][0]["seller"];
+    let product_id = ProductAllData["productDetails"][0]["product_id"];
 
     // Color Div
     var ColorDiv = "d-none";
@@ -385,41 +387,7 @@ class ProductDetails extends Component {
             {/* End Product Description */}
 
             {/* Start Product Rating */}
-            <Card className={`${classes["custom-card"]}`}>
-              <Card.Body className={`${classes["card-body"]}`}>
-                <Row className="bg-white">
-                  <Col className={`${classes["review-header"]}`}>
-                    Ratings & Review of {title}
-                  </Col>
-                </Row>
-                <Row>
-                  <Col className={`${classes["review-body"]}`}>
-                    <i className="fas fa-star text-warning"></i>
-                    <i className="fas fa-star text-warning"></i>
-                    <i className="fas fa-star text-warning"></i>
-                    <i className="fas fa-star text-warning"></i>
-                    <i className="fas fa-star text-warning"></i>
-                    <div>
-                      <span className={`${classes["review-name"]}`}>
-                        Carl Caraan{" "}
-                        <span className={`${classes["text-verified"]}`}>
-                          <i className="fas fa-check-circle"></i> Verified
-                          Purchase
-                        </span>
-                      </span>
-                    </div>
-                    <div className={`${classes["review-text-body"]}`}>
-                      This is my first custom keyboard and I had fun building
-                      it! The build quality is solid and it is beginner
-                      friendly. It doesn’t include the tools needed to assemble
-                      it though. Make sure you have philips screwdriver and hex
-                      keys for the small screws. I also recommend buying other
-                      tools like a switch puller.
-                    </div>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
+            <ReviewList id={product_id} product_name={title} />
             {/* End Product Rating */}
           </Container>
         </div>

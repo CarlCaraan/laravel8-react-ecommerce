@@ -10,8 +10,6 @@ class SuggestedProduct extends Component {
     super(props);
     this.state = {
       ProductData: [],
-      isLoading: "",
-      mainDiv: "d-none",
     };
   }
 
@@ -24,18 +22,16 @@ class SuggestedProduct extends Component {
       .then((response) => {
         this.setState({
           ProductData: response.data,
-          isLoading: "d-none",
-          mainDiv: "",
         });
       })
       .catch((error) => {});
   }
 
   render() {
-    const CategoryLists = this.state.ProductData;
-    if (CategoryLists.length > 0) {
-      const MyView = CategoryLists.map((CategoryList, i) => {
-        if (CategoryList.special_price === "na") {
+    const SuggestedLists = this.state.ProductData;
+    if (SuggestedLists.length > 0) {
+      const MyView = SuggestedLists.map((SuggestedList, i) => {
+        if (SuggestedList.special_price === "na") {
           return (
             <Col
               key={i.toString()}
@@ -48,21 +44,21 @@ class SuggestedProduct extends Component {
             >
               <Link
                 className="custom-links"
-                to={"/productdetails/" + CategoryList.id}
+                to={"/productdetails/" + SuggestedList.id}
               >
                 <Card className="card-product">
                   <Card.Img
                     variant="top"
-                    src={CategoryList.image}
+                    src={SuggestedList.image}
                     alt="3b-button-3"
                   />
                   <Card.Body>
                     <span className="card-product-title">
-                      {CategoryList.title}
+                      {SuggestedList.title}
                     </span>
                     <br />
                     <span className="card-product-price">
-                      ₱{CategoryList.price}
+                      ₱{SuggestedList.price}
                     </span>
                     <br /> <br />
                   </Card.Body>
@@ -83,25 +79,25 @@ class SuggestedProduct extends Component {
             >
               <Link
                 className="custom-links"
-                to={"/productdetails/" + CategoryList.id}
+                to={"/productdetails/" + SuggestedList.id}
               >
                 <Card className="card-product">
                   <Card.Img
                     variant="top"
-                    src={CategoryList.image}
+                    src={SuggestedList.image}
                     alt="3b-button-3"
                   />
                   <Card.Body>
                     <span className="card-product-title">
-                      {CategoryList.title}
+                      {SuggestedList.title}
                     </span>
                     <br />
                     <span className="card-product-price">
-                      ₱{CategoryList.special_price}
+                      ₱{SuggestedList.special_price}
                     </span>
                     <br />
                     <strike className="card-product-discount">
-                      ₱{CategoryList.price}
+                      ₱{SuggestedList.price}
                     </strike>
                     <span className="card-product-discount-percent"> -71%</span>
                   </Card.Body>
@@ -134,7 +130,7 @@ class SuggestedProduct extends Component {
               <h2 className="section-header">You may also like</h2>
               {/* Start Product Card */}
               <div className="mx-2">
-                <Row>There is no similar product</Row>
+                <Row>There is no similar product.</Row>
               </div>
               {/* End Product Card */}
             </Container>
