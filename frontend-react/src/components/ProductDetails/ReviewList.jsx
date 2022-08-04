@@ -28,99 +28,109 @@ class ReviewList extends Component {
       const MyView = ReviewLists.map((ReviewList, i) => {
         if (ReviewList.reviewer_rating === "1") {
           return (
-            <Col key={i.toString()} className={`${classes["review-body"]}`}>
-              <i className="fas fa-star text-warning"></i>
+            <Row>
+              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+                <i className="fas fa-star text-warning"></i>
 
-              <div>
-                <span className={`${classes["review-name"]}`}>
-                  {ReviewList.reviewer_name}{" "}
-                  <span className={`${classes["text-verified"]}`}>
-                    <i className="fas fa-check-circle"></i> Verified Purchase
+                <div>
+                  <span className={`${classes["review-name"]}`}>
+                    {ReviewList.reviewer_name}{" "}
+                    <span className={`${classes["text-verified"]}`}>
+                      <i className="fas fa-check-circle"></i> Verified Purchase
+                    </span>
                   </span>
-                </span>
-              </div>
-              <div className={`${classes["review-text-body"]}`}>
-                {ReviewList.reviewer_comments}
-              </div>
-            </Col>
+                </div>
+                <div className={`${classes["review-text-body"]}`}>
+                  {ReviewList.reviewer_comments}
+                </div>
+              </Col>
+            </Row>
           );
         } else if (ReviewList.reviewer_rating === "2") {
           return (
-            <Col key={i.toString()} className={`${classes["review-body"]}`}>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <div>
-                <span className={`${classes["review-name"]}`}>
-                  {ReviewList.reviewer_name}{" "}
-                  <span className={`${classes["text-verified"]}`}>
-                    <i className="fas fa-check-circle"></i> Verified Purchase
+            <Row>
+              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <div>
+                  <span className={`${classes["review-name"]}`}>
+                    {ReviewList.reviewer_name}{" "}
+                    <span className={`${classes["text-verified"]}`}>
+                      <i className="fas fa-check-circle"></i> Verified Purchase
+                    </span>
                   </span>
-                </span>
-              </div>
-              <div className={`${classes["review-text-body"]}`}>
-                {ReviewList.reviewer_comments}
-              </div>
-            </Col>
+                </div>
+                <div className={`${classes["review-text-body"]}`}>
+                  {ReviewList.reviewer_comments}
+                </div>
+              </Col>
+            </Row>
           );
         } else if (ReviewList.reviewer_rating === "3") {
           return (
-            <Col key={i.toString()} className={`${classes["review-body"]}`}>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <div>
-                <span className={`${classes["review-name"]}`}>
-                  {ReviewList.reviewer_name}{" "}
-                  <span className={`${classes["text-verified"]}`}>
-                    <i className="fas fa-check-circle"></i> Verified Purchase
+            <Row>
+              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <div>
+                  <span className={`${classes["review-name"]}`}>
+                    {ReviewList.reviewer_name}{" "}
+                    <span className={`${classes["text-verified"]}`}>
+                      <i className="fas fa-check-circle"></i> Verified Purchase
+                    </span>
                   </span>
-                </span>
-              </div>
-              <div className={`${classes["review-text-body"]}`}>
-                {ReviewList.reviewer_comments}
-              </div>
-            </Col>
+                </div>
+                <div className={`${classes["review-text-body"]}`}>
+                  {ReviewList.reviewer_comments}
+                </div>
+              </Col>
+            </Row>
           );
         } else if (ReviewList.reviewer_rating === "4") {
           return (
-            <Col key={i.toString()} className={`${classes["review-body"]}`}>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <div>
-                <span className={`${classes["review-name"]}`}>
-                  {ReviewList.reviewer_name}{" "}
-                  <span className={`${classes["text-verified"]}`}>
-                    <i className="fas fa-check-circle"></i> Verified Purchase
+            <Row>
+              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <div>
+                  <span className={`${classes["review-name"]}`}>
+                    {ReviewList.reviewer_name}{" "}
+                    <span className={`${classes["text-verified"]}`}>
+                      <i className="fas fa-check-circle"></i> Verified Purchase
+                    </span>
                   </span>
-                </span>
-              </div>
-              <div className={`${classes["review-text-body"]}`}>
-                {ReviewList.reviewer_comments}
-              </div>
-            </Col>
+                </div>
+                <div className={`${classes["review-text-body"]}`}>
+                  {ReviewList.reviewer_comments}
+                </div>
+              </Col>
+            </Row>
           );
         } else if (ReviewList.reviewer_rating === "5") {
           return (
-            <Col key={i.toString()} className={`${classes["review-body"]}`}>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <i className="fas fa-star text-warning"></i>
-              <div>
-                <span className={`${classes["review-name"]}`}>
-                  {ReviewList.reviewer_name}{" "}
-                  <span className={`${classes["text-verified"]}`}>
-                    <i className="fas fa-check-circle"></i> Verified Purchase
+            <Row>
+              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <i className="fas fa-star text-warning"></i>
+                <div>
+                  <span className={`${classes["review-name"]}`}>
+                    {ReviewList.reviewer_name}{" "}
+                    <span className={`${classes["text-verified"]}`}>
+                      <i className="fas fa-check-circle"></i> Verified Purchase
+                    </span>
                   </span>
-                </span>
-              </div>
-              <div className={`${classes["review-text-body"]}`}>
-                {ReviewList.reviewer_comments}
-              </div>
-            </Col>
+                </div>
+                <div className={`${classes["review-text-body"]}`}>
+                  {ReviewList.reviewer_comments}
+                </div>
+              </Col>
+            </Row>
           );
         } else {
           return null;
@@ -135,7 +145,7 @@ class ReviewList extends Component {
                   Ratings & Review of {this.props.product_name}
                 </Col>
               </Row>
-              <Row>{MyView}</Row>
+              {MyView}
             </Card.Body>
           </Card>
         </Fragment>
