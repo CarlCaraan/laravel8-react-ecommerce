@@ -39,6 +39,7 @@ class ProductDetailsPage extends Component {
       .catch((error) => {});
   }
   render() {
+    const User = this.props.user;
     if (this.state.mainDiv === "d-none") {
       return (
         <Fragment>
@@ -51,7 +52,7 @@ class ProductDetailsPage extends Component {
       return (
         <Fragment>
           <NavMenuDesktop />
-          <ProductDetails data={this.state.ProductData} />
+          <ProductDetails user={User} data={this.state.ProductData} />
           <FooterDesktop />
         </Fragment>
       );

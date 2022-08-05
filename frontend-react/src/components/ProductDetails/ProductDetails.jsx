@@ -13,6 +13,9 @@ import InnerImageZoom from "react-inner-image-zoom";
 import "react-inner-image-zoom/lib/InnerImageZoom/styles.min.css";
 import SuggestedProduct from "./SuggestedProduct";
 import ReviewList from "./ReviewList";
+import cogoToast from "cogo-toast";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class ProductDetails extends Component {
   constructor() {
@@ -25,6 +28,7 @@ class ProductDetails extends Component {
       size: "",
       quantity: "",
       productCode: null,
+      addToCart: "Add To Cart",
     };
   }
 
@@ -39,7 +43,55 @@ class ProductDetails extends Component {
     this.setState({ previewImage: imageSrc });
   };
 
-  addToCart = () => {};
+  addToCart = () => {
+    let isSize = this.state.isSize;
+    let isColor = this.state.isColor;
+    let color = this.state.color;
+    let size = this.state.size;
+    let quantity = this.state.quantity;
+    let productCode = this.state.productCode;
+    let email = this.props.user.email;
+
+    // All Validation Toast
+    if (isColor === "YES" && color.length === 0) {
+      cogoToast.error("Please select color", { position: "top-right" });
+    } else if (isSize === "YES" && size.length === 0) {
+      cogoToast.error("Please select size", { position: "top-right" });
+    } else if (quantity.length === 0 || quantity === "0") {
+      cogoToast.error("Please select quantity", { position: "top-right" });
+    } else if (!localStorage.getItem("token")) {
+      cogoToast.warn("Please Login first to be able to add items.", {
+        position: "top-right",
+      });
+    } else {
+      this.setState({
+        addToCart: "Adding...",
+      });
+
+      let MyFormData = new FormData(); // object
+      MyFormData.append("color", color);
+      MyFormData.append("size", size);
+      MyFormData.append("quantity", quantity);
+      MyFormData.append("product_code", productCode);
+      MyFormData.append("email", email);
+      axios
+        .post(AppURL.AddToCart, MyFormData)
+        .then((response) => {
+          if (response.data === 1) {
+            cogoToast.success("Product added successfully", {
+              position: "top-right",
+            });
+            this.setState({ addToCart: "Added" });
+          } else {
+            cogoToast.warn("Something went wrong", {
+              position: "top-right",
+            });
+            this.setState({ addToCart: "Add to Cart" });
+          }
+        })
+        .catch((error) => {});
+    }
+  }; // End AddToCart Method
 
   colorOnChange = (event) => {
     let color = event.target.value;
@@ -347,9 +399,10 @@ class ProductDetails extends Component {
                             className="px-1 mb-2"
                           >
                             <Button
+                              onClick={this.addToCart}
                               className={`${classes["addtocart-button"]}`}
                             >
-                              Add to Cart
+                              {this.state.addToCart}
                             </Button>
                           </Col>
                         </Row>

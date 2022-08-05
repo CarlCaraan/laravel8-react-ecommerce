@@ -28,8 +28,8 @@ class ReviewList extends Component {
       const MyView = ReviewLists.map((ReviewList, i) => {
         if (ReviewList.reviewer_rating === "1") {
           return (
-            <Row>
-              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+            <Row key={i.toString()}>
+              <Col className={`${classes["review-body"]}`}>
                 <i className="fas fa-star text-warning"></i>
 
                 <div>
@@ -48,8 +48,8 @@ class ReviewList extends Component {
           );
         } else if (ReviewList.reviewer_rating === "2") {
           return (
-            <Row>
-              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+            <Row key={i.toString()}>
+              <Col className={`${classes["review-body"]}`}>
                 <i className="fas fa-star text-warning"></i>
                 <i className="fas fa-star text-warning"></i>
                 <div>
@@ -68,8 +68,8 @@ class ReviewList extends Component {
           );
         } else if (ReviewList.reviewer_rating === "3") {
           return (
-            <Row>
-              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+            <Row key={i.toString()}>
+              <Col className={`${classes["review-body"]}`}>
                 <i className="fas fa-star text-warning"></i>
                 <i className="fas fa-star text-warning"></i>
                 <i className="fas fa-star text-warning"></i>
@@ -89,8 +89,8 @@ class ReviewList extends Component {
           );
         } else if (ReviewList.reviewer_rating === "4") {
           return (
-            <Row>
-              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+            <Row key={i.toString()}>
+              <Col className={`${classes["review-body"]}`}>
                 <i className="fas fa-star text-warning"></i>
                 <i className="fas fa-star text-warning"></i>
                 <i className="fas fa-star text-warning"></i>
@@ -111,8 +111,8 @@ class ReviewList extends Component {
           );
         } else if (ReviewList.reviewer_rating === "5") {
           return (
-            <Row>
-              <Col key={i.toString()} className={`${classes["review-body"]}`}>
+            <Row key={i.toString()}>
+              <Col className={`${classes["review-body"]}`}>
                 <i className="fas fa-star text-warning"></i>
                 <i className="fas fa-star text-warning"></i>
                 <i className="fas fa-star text-warning"></i>

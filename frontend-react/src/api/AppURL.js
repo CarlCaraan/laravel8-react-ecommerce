@@ -59,7 +59,7 @@ class AppURL {
   }
 
   // Add to Cart
-  static AddToCard = this.BaseURL + "/addtocart";
+  static AddToCart = this.BaseURL + "/addtocart";
 }
 
 export default AppURL;
