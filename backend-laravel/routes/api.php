@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductDetailsController;
 use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Admin\ProductCartController;
+use App\Http\Controllers\Admin\FavouriteController;
 use App\Http\Controllers\Admin\NotificationController;
 
 use App\Http\Controllers\User\AuthController;
@@ -76,3 +77,6 @@ Route::post('/addtocart', [ProductCartController::class, 'AddToCart']);
 
 // Product Cart Count
 Route::get('/cartcount/{product_code}', [ProductCartController::class, 'CartCount']);
+
+// Favourite Route
+Route::get('/favourite/{product_code}/{email}', [FavouriteControlle::class, 'AddFavorite']);
