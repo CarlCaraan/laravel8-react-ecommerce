@@ -9,7 +9,7 @@ use App\Models\Favourite;
 
 class FavouriteController extends Controller
 {
-    public  function AddFavorite(Request $request)
+    public function AddFavorite(Request $request)
     {
         $product_code = $request->product_code;
         $email = $request->email;

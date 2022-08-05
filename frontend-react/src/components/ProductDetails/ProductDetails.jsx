@@ -17,6 +17,7 @@ import cogoToast from "cogo-toast";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
 import { Redirect } from "react-router-dom";
+import Spinner from "react-bootstrap/Spinner";
 
 class ProductDetails extends Component {
   constructor() {
@@ -31,6 +32,7 @@ class ProductDetails extends Component {
       productCode: null,
       addToCart: "Add To Cart",
       PageRefreshStatus: false,
+      addToFav: false,
     };
   }
 
@@ -93,9 +95,51 @@ class ProductDetails extends Component {
             this.setState({ PageRefreshStatus: true });
           }
         })
-        .catch((error) => {});
+        .catch((error) => {
+          cogoToast.warn("Something went wrong", {
+            position: "top-right",
+          });
+          this.setState({ addToCart: "Add to Cart" });
+          this.setState({ PageRefreshStatus: true });
+        });
     }
   }; // End AddToCart Method
+
+  addToFavourite = () => {
+    this.setState({ addToFav: true });
+    let product_code = this.state.productCode;
+    let email = this.props.user.email;
+
+    if (!localStorage.getItem("token")) {
+      this.setState({ addToFav: true });
+      cogoToast.warn("Please Login first to be able to add items.", {
+        position: "top-right",
+      });
+      this.setState({ addToFav: false });
+    } else {
+      axios
+        .get(AppURL.AddFavourite(product_code, email))
+        .then((response) => {
+          if (response.data !== null) {
+            cogoToast.success("Product added to Favourite", {
+              position: "top-right",
+            });
+            this.setState({ addToFav: false });
+          } else {
+            cogoToast.error("Something went wrong! Favourite", {
+              position: "top-right",
+            });
+            this.setState({ addToFav: false });
+          }
+        })
+        .catch((error) => {
+          cogoToast.error("Something went wrong! Favourite", {
+            position: "top-right",
+          });
+          this.setState({ addToFav: false });
+        });
+    }
+  }; // End addToFavourite Method
 
   colorOnChange = (event) => {
     let color = event.target.value;
@@ -320,8 +364,19 @@ class ProductDetails extends Component {
                         <div className={`${classes["product-name"]}`}>
                           {title}
                           <i
+                            onClick={this.addToFavourite}
                             className={`${classes["custom-icon"]} fas fa-heart float-end`}
-                          ></i>
+                          >
+                            {" "}
+                            {this.state.addToFav && (
+                              <Spinner
+                                size="sm"
+                                animation="border"
+                                role="status"
+                              />
+                            )}
+                          </i>
+
                           <br />
                           <div className={`${classes["brand-wrapper"]} mt-2`}>
                             Brand:{" "}
