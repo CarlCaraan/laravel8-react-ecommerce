@@ -7,11 +7,14 @@ import {
   FormControl,
   Button,
   InputGroup,
+  Badge,
 } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
 import classes from "./NavMenuDesktop.module.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AppURL from "../../api/AppURL";
+import axios from "axios";
 
 class NavMenuDesktop extends Component {
   constructor() {
@@ -19,10 +22,18 @@ class NavMenuDesktop extends Component {
     this.state = {
       SearchKey: "",
       SearchRedirectStatus: false,
+      cartCount: 0,
     };
     this.SearchOnChange = this.SearchOnChange.bind(this);
     this.searchButtonHandler = this.searchButtonHandler.bind(this);
     this.searchRedirect = this.searchRedirect.bind(this);
+  }
+
+  componentDidMount() {
+    let product_code = this.props.product_code;
+    axios.get(AppURL.CartCount(product_code)).then((response) => {
+      this.setState({ cartCount: response.data });
+    });
   }
 
   SearchOnChange(event) {
@@ -52,13 +63,13 @@ class NavMenuDesktop extends Component {
       return <Redirect to={"/productbysearch/" + this.state.SearchKey} />;
     }
   }
-
   logout = () => {
     localStorage.clear();
   };
 
   render() {
     let navigationLinks;
+    let addToCartButton;
     if (localStorage.getItem("token")) {
       navigationLinks = (
         <Fragment>
@@ -80,6 +91,16 @@ class NavMenuDesktop extends Component {
           </Link>
         </Fragment>
       );
+      addToCartButton = (
+        <Fragment>
+          <Link to="/cart" className={`${classes["nav-cart"]}`}>
+            <i className="fas fa-shopping-cart"></i>
+            <Badge bg="warning" pill className={`${classes["custom-badge"]}`}>
+              {this.state.cartCount}
+            </Badge>
+          </Link>
+        </Fragment>
+      );
     } else {
       navigationLinks = (
         <Fragment>
@@ -88,6 +109,16 @@ class NavMenuDesktop extends Component {
           </Link>
           <Link className={`${classes["mini-nav-link"]}`} to="/register">
             signup
+          </Link>
+        </Fragment>
+      );
+      addToCartButton = (
+        <Fragment>
+          <Link to="/cart" className={`${classes["nav-cart"]}`}>
+            <i className="fas fa-shopping-cart"></i>
+            <Badge bg="warning" pill className={`${classes["custom-badge"]}`}>
+              0
+            </Badge>
           </Link>
         </Fragment>
       );
@@ -172,9 +203,7 @@ class NavMenuDesktop extends Component {
                         </Button>
                       </InputGroup>
                     </Form>
-                    <Link to="/cart" className={`${classes["nav-cart"]}`}>
-                      <i className="fas fa-shopping-cart"></i>
-                    </Link>
+                    {addToCartButton}
                     <div className={`${classes["nav-cash-in"]}`}>
                       <img
                         className="img-fluid"

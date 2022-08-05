@@ -60,6 +60,11 @@ class AppURL {
 
   // Add to Cart
   static AddToCart = this.BaseURL + "/addtocart";
+
+  // Cart Count
+  static CartCount(product_code) {
+    return this.BaseURL + "/cartcount/" + product_code;
+  }
 }
 
 export default AppURL;

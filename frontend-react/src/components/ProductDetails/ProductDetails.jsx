@@ -16,6 +16,7 @@ import ReviewList from "./ReviewList";
 import cogoToast from "cogo-toast";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import { Redirect } from "react-router-dom";
 
 class ProductDetails extends Component {
   constructor() {
@@ -29,6 +30,7 @@ class ProductDetails extends Component {
       quantity: "",
       productCode: null,
       addToCart: "Add To Cart",
+      PageRefreshStatus: false,
     };
   }
 
@@ -82,11 +84,13 @@ class ProductDetails extends Component {
               position: "top-right",
             });
             this.setState({ addToCart: "Added" });
+            this.setState({ PageRefreshStatus: true });
           } else {
             cogoToast.warn("Something went wrong", {
               position: "top-right",
             });
             this.setState({ addToCart: "Add to Cart" });
+            this.setState({ PageRefreshStatus: true });
           }
         })
         .catch((error) => {});
@@ -115,6 +119,13 @@ class ProductDetails extends Component {
     this.setState({
       quantity: quantity,
     });
+  };
+
+  PageRefresh = () => {
+    if (this.state.PageRefreshStatus === true) {
+      let URL = window.location;
+      return <Redirect to={URL} />;
+    }
   };
 
   PriceOption(price, special_price) {
@@ -503,6 +514,8 @@ class ProductDetails extends Component {
         {/* End Product Details */}
 
         <SuggestedProduct subcategory={subcategory} />
+
+        {this.PageRefresh()}
       </Fragment>
     );
   }

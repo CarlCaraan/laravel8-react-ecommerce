@@ -53,8 +53,20 @@
   margin-left: 2rem;
   font-size: 1.7rem;
 }
+.nav-cart:hover {
+  color: var(--secondary-app-color);
+  opacity: 0.9;
+}
 .nav-cash-in {
   margin-left: 3rem;
+}
+.custom-badge {
+  font-size: 11px !important;
+  margin-top: -2px !important;
+  margin-left: -5px !important;
+  position: absolute !important;
+  padding-inline: 6px !important;
+  background: var(--primary-app-color);
 }
 /* ========= MINI NAVBAR ========= */
 .nav-mini {
