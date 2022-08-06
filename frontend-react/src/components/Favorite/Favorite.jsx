@@ -3,6 +3,9 @@ import { Container, Row, Col, Card, Breadcrumb, Button } from "react-bootstrap";
 import classes from "./Favorite.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import cogoToast from "cogo-toast";
+import Spinner from "react-bootstrap/Spinner";
+import { Redirect } from "react-router-dom";
 
 class Favorite extends Component {
   constructor() {
@@ -11,6 +14,8 @@ class Favorite extends Component {
       ProductData: [],
       isLoading: "",
       mainDiv: "d-none",
+      removeToFav: false,
+      PageRefreshStatus: false,
     };
   }
 
@@ -28,7 +33,41 @@ class Favorite extends Component {
       .catch((error) => {});
   }
 
+  removeItem = (event) => {
+    this.setState({ removeToFav: true });
+    let product_code = event.target.getAttribute("data-code");
+    let email = this.props.user.email;
+
+    axios
+      .get(AppURL.FavouriteRemove(product_code, email))
+      .then((response) => {
+        cogoToast.success("Product removed Successfully", {
+          position: "top-right",
+        });
+        this.setState({ removeToFav: false });
+        this.setState({ PageRefreshStatus: true });
+      })
+      .catch((error) => {
+        cogoToast.error("Something went wrong!", {
+          position: "top-right",
+        });
+        this.setState({ removeToFav: false });
+        this.setState({ PageRefreshStatus: true });
+      });
+  }; // End RemoveItem
+
+  PageRefresh = () => {
+    if (this.state.PageRefreshStatus === true) {
+      let URL = window.location;
+      return <Redirect to={URL} />;
+    }
+  };
+
   render() {
+    // Authorization
+    if (!localStorage.getItem("token")) {
+      return <Redirect to="/login" />;
+    }
     const FavouriteLists = this.state.ProductData;
     const MyView = FavouriteLists.map((FavouriteList, i) => {
       return (
@@ -53,8 +92,15 @@ class Favorite extends Component {
               </span>
               <br />
               <div className="float-end">
-                <Button className={`${classes["custom-button"]}`}>
-                  <i className="fas fa-heart"></i>
+                <Button
+                  onClick={this.removeItem}
+                  data-code={FavouriteList.product_code}
+                  className={`${classes["custom-button"]}`}
+                >
+                  <i className="fas fa-heart"></i>{" "}
+                  {this.state.removeToFav && (
+                    <Spinner size="sm" animation="border" role="status" />
+                  )}
                 </Button>
               </div>
             </Card.Body>
@@ -207,6 +253,8 @@ class Favorite extends Component {
             {/* End Product Card */}
           </Container>
         </div>
+
+        {this.PageRefresh()}
       </Fragment>
     );
   }
