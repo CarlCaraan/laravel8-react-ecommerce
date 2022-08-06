@@ -130,7 +130,13 @@ class AppRoute extends Component {
           <Route
             exact
             path="/favourite"
-            render={(props) => <FavoritePage {...props} key={Date.now()} />}
+            render={(props) => (
+              <FavoritePage
+                user={this.state.user}
+                {...props}
+                key={Date.now()}
+              />
+            )}
           />
           <Route
             exact

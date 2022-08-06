@@ -17,6 +17,9 @@
   color: #000 !important;
   cursor: default;
 }
+.product-container {
+  background: #eff0f5;
+}
 .custom-button {
   background-color: #f7f7f7 !important;
   color: var(--primary-app-color) !important;

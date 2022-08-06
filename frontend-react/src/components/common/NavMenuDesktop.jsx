@@ -73,7 +73,7 @@ class NavMenuDesktop extends Component {
     if (localStorage.getItem("token")) {
       navigationLinks = (
         <Fragment>
-          <Link className={`${classes["mini-nav-link"]}`} to="/">
+          <Link className={`${classes["mini-nav-link"]}`} to="/favourite">
             wishlist
           </Link>
           <Link className={`${classes["mini-nav-link"]}`} to="/notification">
