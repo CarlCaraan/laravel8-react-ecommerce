@@ -90,6 +90,14 @@ class AppURL {
   static RemoveCartList(id) {
     return this.BaseURL + "/removecartlist/" + id;
   }
+
+  // CartItem Plus and Minus
+  static CartItemPlus(id, quantity, price) {
+    return this.BaseURL + "/cartitemplus/" + id + "/" + quantity + "/" + price;
+  }
+  static CartItemMinus(id, quantity, price) {
+    return this.BaseURL + "/cartitemminus/" + id + "/" + quantity + "/" + price;
+  }
 }
 
 export default AppURL;

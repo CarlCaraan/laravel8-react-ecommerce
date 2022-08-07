@@ -108,16 +108,17 @@ class Cart extends Component {
           <Col xl={4} lg={3} md={12} sm={12}>
             <Row>
               <Col>
-                <Form.Group className={`${classes["choose-color-wrapper"]}`}>
+                <Form.Group>
                   <Form.Label className={`${classes["form-label"]}`}>
                     Quantity
                   </Form.Label>
-                  <input
-                    type="number"
-                    className={`${classes["quantity-input"]} form-control w-100`}
-                    placeholder="0"
-                    min="0"
-                  ></input>
+                  <br />
+                  <Button className={`${classes["custom-increment-btn"]} me-1`}>
+                    <i className="fas fa-plus"></i>
+                  </Button>
+                  <Button className={`${classes["custom-increment-btn"]}`}>
+                    <i className="fas fa-minus"></i>
+                  </Button>
                 </Form.Group>
               </Col>
               <Col>
@@ -128,7 +129,7 @@ class Cart extends Component {
               </Col>
             </Row>
           </Col>
-          <hr />
+          <hr className="mt-3" />
         </Row>
       );
     });
@@ -168,30 +169,30 @@ class Cart extends Component {
                   <Card.Body>
                     {/* Start Skeleton Placeholder */}
                     <div className={`${this.state.isLoading} ph-item`}>
-                      <div class="ph-col-2">
-                        <div class="ph-picture"></div>
+                      <div className="ph-col-2">
+                        <div className="ph-picture"></div>
                       </div>
                       <div className="ph-col-10">
-                        <div class="ph-row">
-                          <div class="ph-col-4 big"></div>
-                          <div class="ph-col-4 empty big"></div>
-                          <div class="ph-col-4 big"></div>
+                        <div className="ph-row">
+                          <div className="ph-col-4 big"></div>
+                          <div className="ph-col-4 empty big"></div>
+                          <div className="ph-col-4 big"></div>
 
-                          <div class="ph-col-4"></div>
-                          <div class="ph-col-4 empty"></div>
-                          <div class="ph-col-4 "></div>
-                          <div class="ph-col-4"></div>
-                          <div class="ph-col-4 empty"></div>
-                          <div class="ph-col-4 "></div>
-                          <div class="ph-col-4"></div>
-                          <div class="ph-col-4 empty"></div>
-                          <div class="ph-col-4 "></div>
+                          <div className="ph-col-4"></div>
+                          <div className="ph-col-4 empty"></div>
+                          <div className="ph-col-4 "></div>
+                          <div className="ph-col-4"></div>
+                          <div className="ph-col-4 empty"></div>
+                          <div className="ph-col-4 "></div>
+                          <div className="ph-col-4"></div>
+                          <div className="ph-col-4 empty"></div>
+                          <div className="ph-col-4 "></div>
 
-                          <div class="ph-col-4"></div>
-                          <div class="ph-col-6 empty"></div>
+                          <div className="ph-col-4"></div>
+                          <div className="ph-col-6 empty"></div>
 
-                          <div class="ph-col-4"></div>
-                          <div class="ph-col-6 empty"></div>
+                          <div className="ph-col-4"></div>
+                          <div className="ph-col-6 empty"></div>
                         </div>
                       </div>
                     </div>

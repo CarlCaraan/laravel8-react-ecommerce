@@ -69,7 +69,7 @@
 }
 .custom-icon {
   color: var(--primary-app-color);
-  margin-top: 2.5rem;
+  margin-top: 2.2rem;
 }
 .product-image {
   float: right;
@@ -98,6 +98,19 @@
 .checkout-button:focus {
   outline: none !important;
   box-shadow: none !important;
+}
+.custom-increment-btn {
+  background-color: var(--primary-app-color);
+  border: none;
+  border-radius: 0;
+  font-size: 12px;
+}
+.custom-increment-btn:hover {
+  background-color: var(--primary-app-color);
+  opacity: 0.9;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 /* ========= BOOTSTRAP BREAKPOINTS ========= */
