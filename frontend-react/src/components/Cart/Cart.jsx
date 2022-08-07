@@ -11,6 +11,8 @@ import {
 import classes from "./Cart.module.css";
 import axios from "axios";
 import AppURL from "../../api/AppURL";
+import cogoToast from "cogo-toast";
+import { Redirect } from "react-router-dom";
 
 class Cart extends Component {
   constructor() {
@@ -35,11 +37,41 @@ class Cart extends Component {
       .catch((error) => {});
   }
 
+  removeItem = (id) => {
+    axios
+      .get(AppURL.RemoveCartList(id))
+      .then((response) => {
+        if (response.data === 1) {
+          cogoToast.success("Cart Item removed Successfully", {
+            position: "top-right",
+          });
+          this.setState({
+            PageRefreshStatus: true,
+          });
+        } else {
+          cogoToast.error("Something went wrong!", {
+            position: "top-right",
+          });
+          this.setState({
+            PageRefreshStatus: true,
+          });
+        }
+      })
+      .catch((error) => {});
+  };
+
+  PageRefresh = () => {
+    if (this.state.PageRefreshStatus === true) {
+      let URL = window.location;
+      return <Redirect to={URL} />;
+    }
+  };
+
   render() {
     const CartLists = this.state.ProductData;
     const MyView = CartLists.map((CartList, i) => {
       return (
-        <Row key={i.toString()}>
+        <Row className={this.state.mainDiv} key={i.toString()}>
           <Col xl={2} lg={3} md={12} sm={12}>
             <img
               className={`${classes["product-image"]}`}
@@ -89,7 +121,10 @@ class Cart extends Component {
                 </Form.Group>
               </Col>
               <Col>
-                <i className={`${classes["custom-icon"]} fas fa-trash`}></i>
+                <i
+                  onClick={() => this.removeItem(CartList.id)}
+                  className={`${classes["custom-icon"]} fas fa-trash`}
+                ></i>
               </Col>
             </Row>
           </Col>
@@ -131,9 +166,38 @@ class Cart extends Component {
                     </h1>
                   </Card.Header>
                   <Card.Body>
-                    {/* Start Product List */}
+                    {/* Start Skeleton Placeholder */}
+                    <div className={`${this.state.isLoading} ph-item`}>
+                      <div class="ph-col-2">
+                        <div class="ph-picture"></div>
+                      </div>
+                      <div className="ph-col-10">
+                        <div class="ph-row">
+                          <div class="ph-col-4 big"></div>
+                          <div class="ph-col-4 empty big"></div>
+                          <div class="ph-col-4 big"></div>
+
+                          <div class="ph-col-4"></div>
+                          <div class="ph-col-4 empty"></div>
+                          <div class="ph-col-4 "></div>
+                          <div class="ph-col-4"></div>
+                          <div class="ph-col-4 empty"></div>
+                          <div class="ph-col-4 "></div>
+                          <div class="ph-col-4"></div>
+                          <div class="ph-col-4 empty"></div>
+                          <div class="ph-col-4 "></div>
+
+                          <div class="ph-col-4"></div>
+                          <div class="ph-col-6 empty"></div>
+
+                          <div class="ph-col-4"></div>
+                          <div class="ph-col-6 empty"></div>
+                        </div>
+                      </div>
+                    </div>
+                    {/* End Skeleton Placeholder */}
+
                     {MyView}
-                    {/* End Product List */}
                   </Card.Body>
                 </Card>
               </Col>
@@ -170,6 +234,8 @@ class Cart extends Component {
         </div>
 
         {/* End Cart Section */}
+
+        {this.PageRefresh()}
       </Fragment>
     );
   }

@@ -72,7 +72,7 @@ Route::get('/similar/{subcategory}', [ProductListController::class, 'SimilarProd
 // Product Review Route
 Route::get('/reviewlist/{id}', [ProductReviewController::class, 'ReviewList']);
 
-// Product Cart Route
+// Add Product Cart Route
 Route::post('/addtocart', [ProductCartController::class, 'AddToCart']);
 
 // Product Cart Count
@@ -89,3 +89,10 @@ Route::get('/favouriteremove/{product_code}/{email}', [FavouriteController::clas
 
 // Cart List Route
 Route::get('/cartlist/{email}', [ProductCartController::class, 'CartList']);
+
+// Remove Cart Route
+Route::get('/removecartlist/{id}', [ProductCartController::class, 'RemoveCartList']);
+
+// Cart Item Plus and Minus
+Route::get('/cartitemplus/{id}/{quantity}/{price}', [ProductCartController::class, 'CartItemPlus']);
+Route::get('/cartitemminus/{id}/{quantity}/{price}', [ProductCartController::class, 'CartItemMinus']);
