@@ -73,6 +73,7 @@
 }
 .product-image {
   float: right;
+  margin-bottom: 1rem;
 }
 .vat-text {
   float: right;

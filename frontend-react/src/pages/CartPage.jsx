@@ -8,10 +8,11 @@ class CartPage extends Component {
     window.scroll(0, 0);
   }
   render() {
+    const User = this.props.user;
     return (
       <Fragment>
         <NavMenuDesktop />
-        <Cart />
+        <Cart user={User} />
         <FooterDesktop />
       </Fragment>
     );

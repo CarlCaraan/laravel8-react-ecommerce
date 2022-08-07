@@ -9,9 +9,95 @@ import {
   Button,
 } from "react-bootstrap";
 import classes from "./Cart.module.css";
+import axios from "axios";
+import AppURL from "../../api/AppURL";
 
 class Cart extends Component {
+  constructor() {
+    super();
+    this.state = {
+      ProductData: [],
+      isLoading: "",
+      mainDiv: "d-none",
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get(AppURL.CartList(this.props.user.email))
+      .then((response) => {
+        this.setState({
+          ProductData: response.data,
+          isLoading: "d-none",
+          mainDiv: "",
+        });
+      })
+      .catch((error) => {});
+  }
+
   render() {
+    const CartLists = this.state.ProductData;
+    const MyView = CartLists.map((CartList, i) => {
+      return (
+        <Row key={i.toString()}>
+          <Col xl={2} lg={3} md={12} sm={12}>
+            <img
+              className={`${classes["product-image"]}`}
+              src={CartList.image}
+              alt="product1"
+              width="100px"
+            />
+          </Col>
+          <Col xl={6} lg={6} md={12} sm={12}>
+            <div>
+              <span className={`${classes["product-name"]}`}>
+                {CartList.product_name}
+              </span>
+              <br />
+              <span className={`${classes["product-quantity"]}`}>
+                Quantity: {CartList.quantity}
+              </span>
+              <br />
+              <span className={`${classes["product-price"]}`}>
+                Price:{" "}
+                <span className={`${classes["orange-text"]}`}>
+                  {CartList.unit_price}
+                </span>
+              </span>
+              <br />
+              <span className={`${classes["product-price"]}`}>
+                Total Price:{" "}
+                <span className={`${classes["orange-text"]}`}>
+                  {CartList.total_price}
+                </span>
+              </span>
+            </div>
+          </Col>
+          <Col xl={4} lg={3} md={12} sm={12}>
+            <Row>
+              <Col>
+                <Form.Group className={`${classes["choose-color-wrapper"]}`}>
+                  <Form.Label className={`${classes["form-label"]}`}>
+                    Quantity
+                  </Form.Label>
+                  <input
+                    type="number"
+                    className={`${classes["quantity-input"]} form-control w-100`}
+                    placeholder="0"
+                    min="0"
+                  ></input>
+                </Form.Group>
+              </Col>
+              <Col>
+                <i className={`${classes["custom-icon"]} fas fa-trash`}></i>
+              </Col>
+            </Row>
+          </Col>
+          <hr />
+        </Row>
+      );
+    });
+
     return (
       <Fragment>
         {/* Start Breadcrumb */}
@@ -46,118 +132,7 @@ class Cart extends Component {
                   </Card.Header>
                   <Card.Body>
                     {/* Start Product List */}
-                    <Row>
-                      <Col xl={2} lg={3} md={12} sm={12}>
-                        <img
-                          className={`${classes["product-image"]}`}
-                          src="https://ph-live.slatic.net/p/5d06e3914395b4e093e535e26e7d95d7.jpg"
-                          alt="product1"
-                          width="100px"
-                        />
-                      </Col>
-                      <Col xl={6} lg={6} md={12} sm={12}>
-                        <div className="mt-3">
-                          <span className={`${classes["product-name"]}`}>
-                            IDOBAO ID80 CRYSTAL KEYBOARD KIT（GASKET MOUNT
-                            VERSION)
-                          </span>
-                          <br />
-                          <span className={`${classes["product-quantity"]}`}>
-                            Quantity: 1
-                          </span>
-                          <br />
-                          <span className={`${classes["product-price"]}`}>
-                            Price:{" "}
-                            <span className={`${classes["orange-text"]}`}>
-                              15,990
-                            </span>
-                          </span>
-                        </div>
-                      </Col>
-                      <Col xl={4} lg={3} md={12} sm={12}>
-                        <Row>
-                          <Col>
-                            <Form.Group
-                              className={`${classes["choose-color-wrapper"]}`}
-                            >
-                              <Form.Label
-                                className={`${classes["form-label"]}`}
-                              >
-                                Quantity
-                              </Form.Label>
-                              <input
-                                type="number"
-                                className={`${classes["quantity-input"]} form-control w-100`}
-                                placeholder="0"
-                                min="0"
-                              ></input>
-                            </Form.Group>
-                          </Col>
-                          <Col>
-                            <i
-                              className={`${classes["custom-icon"]} fas fa-trash`}
-                            ></i>
-                          </Col>
-                        </Row>
-                      </Col>
-                      <hr />
-                    </Row>
-                    <Row>
-                      <Col xl={2} lg={3} md={12} sm={12}>
-                        <img
-                          className={`${classes["product-image"]}`}
-                          src="https://ph-live.slatic.net/p/5d06e3914395b4e093e535e26e7d95d7.jpg"
-                          alt="product1"
-                          width="100px"
-                        />
-                      </Col>
-                      <Col xl={6} lg={6} md={12} sm={12}>
-                        <div className="mt-3">
-                          <span className={`${classes["product-name"]}`}>
-                            IDOBAO ID80 CRYSTAL KEYBOARD KIT（GASKET MOUNT
-                            VERSION)
-                          </span>
-                          <br />
-                          <span className={`${classes["product-quantity"]}`}>
-                            Quantity: 1
-                          </span>
-                          <br />
-                          <span className={`${classes["product-price"]}`}>
-                            Price:{" "}
-                            <span className={`${classes["orange-text"]}`}>
-                              15,990
-                            </span>
-                          </span>
-                        </div>
-                      </Col>
-                      <Col xl={4} lg={3} md={12} sm={12}>
-                        <Row>
-                          <Col>
-                            <Form.Group
-                              className={`${classes["choose-color-wrapper"]}`}
-                            >
-                              <Form.Label
-                                className={`${classes["form-label"]}`}
-                              >
-                                Quantity
-                              </Form.Label>
-                              <input
-                                type="number"
-                                className={`${classes["quantity-input"]} form-control w-100`}
-                                placeholder="0"
-                                min="0"
-                              ></input>
-                            </Form.Group>
-                          </Col>
-                          <Col>
-                            <i
-                              className={`${classes["custom-icon"]} fas fa-trash`}
-                            ></i>
-                          </Col>
-                        </Row>
-                      </Col>
-                      <hr />
-                    </Row>
+                    {MyView}
                     {/* End Product List */}
                   </Card.Body>
                 </Card>

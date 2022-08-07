@@ -141,7 +141,9 @@ class AppRoute extends Component {
           <Route
             exact
             path="/cart"
-            render={(props) => <CartPage {...props} key={Date.now()} />}
+            render={(props) => (
+              <CartPage user={this.state.user} {...props} key={Date.now()} />
+            )}
           />
           <Route
             exact
