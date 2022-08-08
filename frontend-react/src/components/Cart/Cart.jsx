@@ -58,7 +58,7 @@ class Cart extends Component {
         }
       })
       .catch((error) => {});
-  };
+  }; // End removeItem Method
 
   PageRefresh = () => {
     if (this.state.PageRefreshStatus === true) {
@@ -67,9 +67,60 @@ class Cart extends Component {
     }
   };
 
+  ItemPlus = (id, quantity, price) => {
+    axios
+      .get(AppURL.CartItemPlus(id, quantity, price))
+      .then((response) => {
+        if (response.data === 1) {
+          cogoToast.success("Item Quantity Increased", {
+            position: "top-right",
+          });
+          this.setState({
+            PageRefreshStatus: true,
+          });
+        } else {
+          cogoToast.error("Something went wrong!", {
+            position: "top-right",
+          });
+          this.setState({
+            PageRefreshStatus: true,
+          });
+        }
+      })
+      .catch((error) => {});
+  }; // End ItemPlus Method
+
+  ItemMinus = (id, quantity, price) => {
+    axios
+      .get(AppURL.CartItemMinus(id, quantity, price))
+      .then((response) => {
+        if (response.data === 1) {
+          cogoToast.success("Item Quantity Decreased", {
+            position: "top-right",
+          });
+          this.setState({
+            PageRefreshStatus: true,
+          });
+        } else {
+          cogoToast.error("Something went wrong!", {
+            position: "top-right",
+          });
+          this.setState({
+            PageRefreshStatus: true,
+          });
+        }
+      })
+      .catch((error) => {});
+  }; // End ItemMinus Method
+
   render() {
     const CartLists = this.state.ProductData;
+    let totalPriceSum = 0;
+    let totalItems = 0;
+
     const MyView = CartLists.map((CartList, i) => {
+      totalPriceSum = totalPriceSum + parseInt(CartList.total_price);
+      totalItems = totalItems + 1;
       return (
         <Row className={this.state.mainDiv} key={i.toString()}>
           <Col xl={2} lg={3} md={12} sm={12}>
@@ -91,14 +142,14 @@ class Cart extends Component {
               </span>
               <br />
               <span className={`${classes["product-price"]}`}>
-                Price:{" "}
+                Price: ₱
                 <span className={`${classes["orange-text"]}`}>
                   {CartList.unit_price}
                 </span>
               </span>
               <br />
               <span className={`${classes["product-price"]}`}>
-                Total Price:{" "}
+                Total Price: ₱
                 <span className={`${classes["orange-text"]}`}>
                   {CartList.total_price}
                 </span>
@@ -113,10 +164,28 @@ class Cart extends Component {
                     Quantity
                   </Form.Label>
                   <br />
-                  <Button className={`${classes["custom-increment-btn"]} me-1`}>
+                  <Button
+                    onClick={() =>
+                      this.ItemPlus(
+                        CartList.id,
+                        CartList.quantity,
+                        CartList.unit_price
+                      )
+                    }
+                    className={`${classes["custom-increment-btn"]} me-1`}
+                  >
                     <i className="fas fa-plus"></i>
                   </Button>
-                  <Button className={`${classes["custom-increment-btn"]}`}>
+                  <Button
+                    onClick={() =>
+                      this.ItemMinus(
+                        CartList.id,
+                        CartList.quantity,
+                        CartList.unit_price
+                      )
+                    }
+                    className={`${classes["custom-increment-btn"]}`}
+                  >
                     <i className="fas fa-minus"></i>
                   </Button>
                 </Form.Group>
@@ -210,23 +279,61 @@ class Cart extends Component {
                     </h1>
                   </Card.Header>
                   <Card.Body>
-                    <span className={`${classes["product-total-items"]}`}>
-                      Total Items: 05
-                    </span>
-                    <br />
-                    <span className={`${classes["product-total-price"]}`}>
-                      Total Price:{" "}
-                      <span className={`${classes["orange-text"]}`}>
-                        15,990
+                    <Form>
+                      <Form.Group className="mb-2">
+                        <Form.Control
+                          className={`${classes["checkout-custom-input"]}`}
+                          type="text"
+                          placeholder="City"
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-2">
+                        <Form.Select
+                          aria-label="payment"
+                          className={`${classes["checkout-custom-input"]} text-muted`}
+                        >
+                          <option disabled selected>
+                            Select Payment Method
+                          </option>
+                          <option value="1">Cash on Delivery</option>
+                          <option value="2">Stripe</option>
+                        </Form.Select>
+                      </Form.Group>
+                      <Form.Group className="mb-2">
+                        <Form.Control
+                          className={`${classes["checkout-custom-input"]}`}
+                          type="text"
+                          placeholder="Full Name"
+                        />
+                      </Form.Group>
+                      <Form.Group className="mb-2">
+                        <Form.Control
+                          className={`${classes["checkout-custom-input"]}`}
+                          type="text"
+                          placeholder="Address"
+                          as="textarea"
+                          rows={2}
+                        />
+                      </Form.Group>
+
+                      <span className={`${classes["product-total-items"]}`}>
+                        Total Items: {totalItems}
                       </span>
-                    </span>
-                    <hr />
-                    <p className={`${classes["vat-text"]}`}>
-                      VAT included, where applicable
-                    </p>
-                    <Button className={`${classes["checkout-button"]}`}>
-                      PROCEED TO CHECKOUT
-                    </Button>
+                      <br />
+                      <span className={`${classes["product-total-price"]}`}>
+                        Total Price: ₱
+                        <span className={`${classes["orange-text"]}`}>
+                          {totalPriceSum}
+                        </span>
+                      </span>
+                      <hr />
+                      <p className={`${classes["vat-text"]}`}>
+                        VAT included, where applicable
+                      </p>
+                      <Button className={`${classes["checkout-button"]}`}>
+                        PROCEED TO CHECKOUT
+                      </Button>
+                    </Form>
                   </Card.Body>
                 </Card>
               </Col>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductCart;
 use App\Models\ProductList;
+use App\Models\CartOrder;
 
 class ProductCartController extends Controller
 {
@@ -98,5 +99,55 @@ class ProductCartController extends Controller
             ]
         );
         return $result;
+    } // End Method
+
+    public function CartOrder(Request $request)
+    {
+        $city = $request->input('city');
+        $paymentMethod = $request->input('payment_method');
+        $yourName = $request->input('name');
+        $email = $request->input('email');
+        $DeliveryAddress = $request->input('delivery_address');
+        $invoice_no = $request->input('invoice_no');
+        $DeliveryCharge = $request->input('delivery_charge');
+
+        date_default_timezone_set("Asia/Manila");
+        $request_time = date('h:i:sa');
+        $request_date = date('d-m-Y');
+
+
+        $CartLists = ProductCart::where('email', $email)->get();
+        foreach ($CartLists as $CartList) {
+            $cartInsertDeleteResult = "";
+            $resultInsert = CartOrder::insert([
+                'invoice_no' => "Easy" . $invoice_no,
+                'product_name' => $CartList['product_name'],
+                'product_code' => $CartList['product_code'],
+                'size' => $CartList['size'],
+                'color' => $CartList['color'],
+                'quantity' => $CartList['quantity'],
+                'unit_price' => $CartList['unit_price'],
+                'total_price' => $CartList['total_price'],
+                'email' => $CartList['email'],
+                'name' => $yourName,
+                'payment_method' => $paymentMethod,
+                'delivery_address' => $DeliveryAddress,
+                'city' => $city,
+                'delivery_charge' => $DeliveryCharge,
+                'order_date' => $request_date,
+                'order_time' => $request_time,
+                'order_status' => "Pending",
+            ]);
+
+            if ($resultInsert === 1) {
+                $resultDelete = ProductCart::where('id', $CartList['id'])->delete();
+                if ($resultDelete == 1) {
+                    $cartInsertDeleteResult = 1;
+                } else {
+                    $cartInsertDeleteResult = 0;
+                }
+            }
+        } // End Forearch
+        return $cartInsertDeleteResult;
     } // End Method
 }

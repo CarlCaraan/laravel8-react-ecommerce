@@ -96,3 +96,6 @@ Route::get('/removecartlist/{id}', [ProductCartController::class, 'RemoveCartLis
 // Cart Item Plus and Minus
 Route::get('/cartitemplus/{id}/{quantity}/{price}', [ProductCartController::class, 'CartItemPlus']);
 Route::get('/cartitemminus/{id}/{quantity}/{price}', [ProductCartController::class, 'CartItemMinus']);
+
+// Cart Place Order Route
+Route::post('/cartorder', [ProductCartController::class, 'CartOrder']);
