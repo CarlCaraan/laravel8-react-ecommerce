@@ -434,7 +434,6 @@ class Cart extends Component {
             </Row>
           </Container>
         </div>
-
         {/* End Cart Section */}
 
         {this.PageRefresh()}

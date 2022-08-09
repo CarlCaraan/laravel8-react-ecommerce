@@ -169,7 +169,13 @@ class AppRoute extends Component {
           <Route
             exact
             path="/orderlist"
-            render={(props) => <OrderListPage {...props} key={Date.now()} />}
+            render={(props) => (
+              <OrderListPage
+                user={this.state.user}
+                {...props}
+                key={Date.now()}
+              />
+            )}
           />
 
           <Route

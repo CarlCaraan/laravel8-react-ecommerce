@@ -7,11 +7,13 @@ class OrderListPage extends Component {
   componentDidMount() {
     window.scroll(0, 0);
   }
+
   render() {
+    const User = this.props.user;
     return (
       <Fragment>
         <NavMenuDesktop />
-        <OrderList />
+        <OrderList user={User} />
         <FooterDesktop />
       </Fragment>
     );
