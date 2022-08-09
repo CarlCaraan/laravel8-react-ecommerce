@@ -19,6 +19,7 @@ import ResetPasswordPage from "../pages/ResetPasswordPage";
 import ProfilePage from "../pages/ProfilePage";
 import axios from "axios";
 import AppURL from "../api/AppURL";
+import OrderListPage from "../pages/OrderListPage";
 
 class AppRoute extends Component {
   constructor() {
@@ -163,6 +164,12 @@ class AppRoute extends Component {
             exact
             path="/productbysearch/:searchkey"
             render={(props) => <SearchPage {...props} key={Date.now()} />}
+          />
+
+          <Route
+            exact
+            path="/orderlist"
+            render={(props) => <OrderListPage {...props} key={Date.now()} />}
           />
 
           <Route

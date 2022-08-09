@@ -139,7 +139,7 @@ class ProductCartController extends Controller
                 'order_status' => "Pending",
             ]);
 
-            if ($resultInsert === 1) {
+            if ($resultInsert == 1) {
                 $resultDelete = ProductCart::where('id', $CartList['id'])->delete();
                 if ($resultDelete == 1) {
                     $cartInsertDeleteResult = 1;

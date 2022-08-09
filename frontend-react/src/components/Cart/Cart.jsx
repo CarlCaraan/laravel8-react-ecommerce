@@ -21,6 +21,13 @@ class Cart extends Component {
       ProductData: [],
       isLoading: "",
       mainDiv: "d-none",
+      confirmBtn: "PROCEED TO CHECKOUT",
+      city: "",
+      payment: "",
+      name: "",
+      address: "",
+      PageRefreshStatus: false,
+      PageRedirectStatus: false,
     };
   }
 
@@ -112,6 +119,86 @@ class Cart extends Component {
       })
       .catch((error) => {});
   }; // End ItemMinus Method
+
+  cityOnChange = (event) => {
+    let enteredCity = event.target.value;
+    this.setState({ city: enteredCity });
+  };
+  paymentMethodOnChange = (event) => {
+    let enteredPaymentMethod = event.target.value;
+    this.setState({ payment: enteredPaymentMethod });
+  };
+  nameOnChange = (event) => {
+    let enteredName = event.target.value;
+    this.setState({ name: enteredName });
+  };
+  addressOnChange = (event) => {
+    let enteredAddress = event.target.value;
+    this.setState({ address: enteredAddress });
+  };
+
+  confirmOnClick = () => {
+    let city = this.state.city;
+    let payment = this.state.payment;
+    let name = this.state.name;
+    let address = this.state.address;
+    let email = this.props.user.email;
+
+    if (city.length === 0) {
+      cogoToast.error("City field is required!", {
+        position: "top-right",
+      });
+    } else if (payment.length === 0) {
+      cogoToast.error("Payment Method field is required!", {
+        position: "top-right",
+      });
+    } else if (name.length === 0) {
+      cogoToast.error("Name field is required!", {
+        position: "top-right",
+      });
+    } else if (address.length === 0) {
+      cogoToast.error("Address field is required!", {
+        position: "top-right",
+      });
+    } else {
+      let invoice = new Date().getTime();
+      let MyFormData = new FormData();
+      MyFormData.append("city", city);
+      MyFormData.append("payment_method", payment);
+      MyFormData.append("name", name);
+      MyFormData.append("delivery_address", address);
+      MyFormData.append("email", email);
+      MyFormData.append("invoice_no", invoice);
+      MyFormData.append("delivery_charge", "00");
+
+      axios
+        .post(AppURL.CartOrder, MyFormData)
+        .then((response) => {
+          if (response.data === 1) {
+            cogoToast.success("Order Request Recieved", {
+              position: "top-right",
+            });
+            this.setState({
+              PageRedirectStatus: true,
+            });
+          } else {
+            cogoToast.error("Something went wrong!", {
+              position: "top-right",
+            });
+            this.setState({
+              PageRefreshStatus: true,
+            });
+          }
+        })
+        .catch((error) => {});
+    }
+  }; // End Confirm onclick Method
+
+  PageRedirect = () => {
+    if (this.state.PageRedirectStatus === true) {
+      return <Redirect to="/orderlist" />;
+    }
+  };
 
   render() {
     const CartLists = this.state.ProductData;
@@ -282,6 +369,7 @@ class Cart extends Component {
                     <Form>
                       <Form.Group className="mb-2">
                         <Form.Control
+                          onChange={this.cityOnChange}
                           className={`${classes["checkout-custom-input"]}`}
                           type="text"
                           placeholder="City"
@@ -291,6 +379,7 @@ class Cart extends Component {
                         <Form.Select
                           aria-label="payment"
                           className={`${classes["checkout-custom-input"]} text-muted`}
+                          onChange={this.paymentMethodOnChange}
                         >
                           <option disabled selected>
                             Select Payment Method
@@ -304,6 +393,7 @@ class Cart extends Component {
                           className={`${classes["checkout-custom-input"]}`}
                           type="text"
                           placeholder="Full Name"
+                          onChange={this.nameOnChange}
                         />
                       </Form.Group>
                       <Form.Group className="mb-2">
@@ -313,6 +403,7 @@ class Cart extends Component {
                           placeholder="Address"
                           as="textarea"
                           rows={2}
+                          onChange={this.addressOnChange}
                         />
                       </Form.Group>
 
@@ -330,8 +421,11 @@ class Cart extends Component {
                       <p className={`${classes["vat-text"]}`}>
                         VAT included, where applicable
                       </p>
-                      <Button className={`${classes["checkout-button"]}`}>
-                        PROCEED TO CHECKOUT
+                      <Button
+                        onClick={this.confirmOnClick}
+                        className={`${classes["checkout-button"]}`}
+                      >
+                        {this.state.confirmBtn}
                       </Button>
                     </Form>
                   </Card.Body>
@@ -344,6 +438,7 @@ class Cart extends Component {
         {/* End Cart Section */}
 
         {this.PageRefresh()}
+        {this.PageRedirect()}
       </Fragment>
     );
   }
