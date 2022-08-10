@@ -99,6 +99,7 @@ Route::get('/cartitemminus/{id}/{quantity}/{price}', [ProductCartController::cla
 
 // Cart Place Order Route
 Route::post('/cartorder', [ProductCartController::class, 'CartOrder']);
+Route::get('/orderlistbyuser/{email}', [ProductCartController::class, 'OrderListByUser']);
 
 // Order List
 Route::post('/postreview', [ProductReviewController::class, 'PostReview']);

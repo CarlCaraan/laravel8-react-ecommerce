@@ -126,22 +126,6 @@
   margin-bottom: 0px;
   padding: 0;
 }
-.modal-title {
-  color: #202020;
-  font-family: "Roboto";
-  font-size: 14px;
-  line-height: 19.6px;
-  text-align: start;
-  letter-spacing: normal;
-}
-.modal-body {
-  color: #888888;
-  font-family: "Roboto";
-  font-size: 12px;
-  line-height: 19.6px;
-  text-align: start;
-  letter-spacing: normal;
-}
 .modal-button {
   border-radius: 2px !important;
   color: #fff;

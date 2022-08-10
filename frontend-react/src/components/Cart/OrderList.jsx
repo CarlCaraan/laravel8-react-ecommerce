@@ -12,6 +12,7 @@ import {
   Modal,
 } from "react-bootstrap";
 import classes from "./OrderList.module.css";
+import cogoToast from "cogo-toast";
 
 class OrderList extends Component {
   constructor() {
@@ -21,12 +22,14 @@ class OrderList extends Component {
       isLoading: "",
       mainDiv: "d-none",
 
+      name: "",
+      rating: "",
+      comment: "",
+      product_name: "",
+      product_code: "",
+
       // Modal
-      show: false,
-      NotificationData: [],
-      notificationTitle: "",
-      notificationMessage: "",
-      notificationDate: "",
+      ReviewModal: false,
     };
   }
 
@@ -44,20 +47,85 @@ class OrderList extends Component {
       .catch((error) => {});
   }
 
-  handleClose = () => {
-    this.setState({ show: false });
-  };
-  handleShow = (event) => {
-    this.setState({ show: true });
-    let nTitle = event.target.getAttribute("data-title");
-    let nMessage = event.target.getAttribute("data-message");
-    let nDate = event.target.getAttribute("data-date");
+  ReviewModalOpen = (product_code, product_name) => {
     this.setState({
-      notificationTitle: nTitle,
-      notificationMessage: nMessage,
-      notificationDate: nDate,
+      ReviewModal: true,
+      product_code: product_code,
+      product_name: product_name,
     });
   };
+  ReviewModalClose = () => {
+    this.setState({ ReviewModal: false });
+  };
+
+  nameOnChange = (event) => {
+    let enteredName = event.target.value;
+    this.setState({ name: enteredName });
+  };
+  ratingOnChange = (event) => {
+    let enteredRating = event.target.value;
+    this.setState({ rating: enteredRating });
+  };
+  commentOnChange = (event) => {
+    let enteredComment = event.target.value;
+    this.setState({ comment: enteredComment });
+  };
+
+  PostReview = () => {
+    let product_code = this.state.product_code;
+    let product_name = this.state.product_name;
+    let rating = this.state.rating;
+    let comment = this.state.comment;
+    let name = this.state.name;
+
+    if (name.length === 0) {
+      cogoToast.error("Name field is required!", {
+        position: "top-right",
+      });
+    } else if (rating.length === 0) {
+      cogoToast.error("Rating field is required!", {
+        position: "top-right",
+      });
+    } else if (comment.length === 0) {
+      cogoToast.error("Comment field is required!", {
+        position: "top-right",
+      });
+    } else if (comment.length > 50) {
+      cogoToast.error("Comment can't exceed more tha 50 characters!", {
+        position: "top-right",
+      });
+    } else {
+      let MyFormData = new FormData();
+      MyFormData.append("product_code", product_code);
+      MyFormData.append("product_name", product_name);
+      MyFormData.append("reviewer_name", name);
+      MyFormData.append("reviewer_photo", "");
+      MyFormData.append("reviewer_rating", rating);
+      MyFormData.append("reviewer_comments", comment);
+
+      axios
+        .post(AppURL.PostReview, MyFormData)
+        .then((response) => {
+          if (response.data === 1) {
+            cogoToast.success("Review submitted successfully", {
+              position: "top-right",
+            });
+            this.ReviewModalClose();
+          } else {
+            cogoToast.error("Something went wrong!", {
+              position: "top-right",
+            });
+            this.ReviewModalClose();
+          }
+        })
+        .catch((error) => {
+          cogoToast.error("Something went wrong!", {
+            position: "top-right",
+          });
+          this.ReviewModalClose();
+        });
+    }
+  }; // End Post Review Method
 
   render() {
     const OrderLists = this.state.ProductData;
@@ -112,11 +180,16 @@ class OrderList extends Component {
               </Col>
               <Col>
                 <Button
-                  onClick={this.handleShow}
+                  onClick={this.ReviewModalOpen.bind(
+                    this,
+                    OrderList.product_code,
+                    OrderList.product_name
+                  )}
                   className={`${classes["custom-review-btn"]} mt-2`}
                 >
                   Write a Review
                 </Button>
+                <span>{OrderList.product_code}</span>
               </Col>
             </Row>
           </Col>
@@ -198,7 +271,7 @@ class OrderList extends Component {
         {/* End Cart Section */}
 
         {/* Start Modal */}
-        <Modal show={this.state.show} onHide={this.handleClose}>
+        <Modal show={this.state.ReviewModal} onHide={this.ReviewModalClose}>
           <Modal.Header closeButton>
             <h6 className={`${classes["modal-header"]}`}>
               Write a Review
@@ -206,19 +279,56 @@ class OrderList extends Component {
             </h6>
           </Modal.Header>
           <Modal.Body>
-            <h6 className={`${classes["modal-title"]}`}>
-              {this.state.notificationTitle}
-            </h6>
-            <p className={`${classes["modal-body"]}`}>
-              {this.state.notificationMessage}
-            </p>
+            <Form>
+              <Form.Group className="mb-2">
+                <Form.Label>Full Name</Form.Label>
+                <Form.Control
+                  onChange={this.nameOnChange}
+                  className={`${classes["checkout-custom-input"]}`}
+                  type="text"
+                  placeholder="Name"
+                />
+              </Form.Group>
+              <Form.Group className="mb-2">
+                <Form.Label>Product Rating</Form.Label>
+                <Form.Select
+                  aria-label="rating"
+                  className={`${classes["checkout-custom-input"]} text-muted`}
+                  onChange={this.ratingOnChange}
+                >
+                  <option defaultValue="">Select Product Rating</option>
+                  <option value="1">Very Poor</option>
+                  <option value="2">Poor</option>
+                  <option value="3">Satisfied</option>
+                  <option value="4">Very Satisfied</option>
+                  <option value="5">Excellent</option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group className="mb-2">
+                <Form.Label>Comment</Form.Label>
+                <Form.Control
+                  className={`${classes["checkout-custom-input"]}`}
+                  type="text"
+                  placeholder="Message"
+                  as="textarea"
+                  rows={2}
+                  onChange={this.commentOnChange}
+                />
+              </Form.Group>
+            </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button
               className={`${classes["modal-button"]}`}
-              onClick={this.handleClose}
+              onClick={this.ReviewModalClose}
             >
               Close
+            </Button>
+            <Button
+              className={`${classes["modal-button"]}`}
+              onClick={this.PostReview}
+            >
+              Post
             </Button>
           </Modal.Footer>
         </Modal>
