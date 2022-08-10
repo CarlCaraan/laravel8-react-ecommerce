@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Col, Container, Row, Card, Button } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import classes from "./Profile.module.css";
 
 class Profile extends Component {
@@ -30,6 +30,20 @@ class Profile extends Component {
                 <Button className={`${classes["verified-button"]}`}>
                   <i className="fas fa-check-circle"></i> Verified Account
                 </Button>
+                <br />
+                <img
+                  src="https://scontent.fmnl25-2.fna.fbcdn.net/v/t39.30808-6/286403778_7489545294454202_202744171965679819_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=174925&_nc_eui2=AeHVZ6zrwnHIJg8pEdo7fJitVddww6fyeCtV13DDp_J4K_zcszUa3eQ544GMlLTXH4RKptVncR7uVe0Ck8lhpJVB&_nc_ohc=rXWdCgOY-5cAX9oeQGl&_nc_ht=scontent.fmnl25-2.fna&oh=00_AT8ISptR0HUDqzXXXYiYzJelmsmG3kl2SYhFFMGuh4toUA&oe=62F894D2"
+                  alt="profile"
+                  className="img-fluid mt-3 img-thumbnail"
+                  width="100px"
+                  height="100"
+                />
+                <br />
+                <Link to="orderlist">
+                  <small className={`${classes["mypurchase-button"]}`}>
+                    My Purchase
+                  </small>
+                </Link>
               </Col>
               <Col className="mx-auto py-5" xl={10} lg={10} md={10} sm={12}>
                 <Row>

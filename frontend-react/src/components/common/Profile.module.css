@@ -37,6 +37,21 @@
   background-color: #4caf50 !important;
   opacity: 0.9 !important;
 }
+.mypurchase-button {
+  background-color: var(--primary-app-color) !important;
+  color: #fff !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  padding-inline: 5px !important;
+  padding-block: 2.5px !important;
+  border: none !important;
+  border-radius: 25px !important;
+  cursor: pointer;
+}
+.mypurchase-button:hover {
+  background-color: var(--primary-app-color) !important;
+  opacity: 0.9 !important;
+}
 
 .dashboard-info {
   color: #424242 !important;
