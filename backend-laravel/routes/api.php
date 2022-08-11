@@ -69,9 +69,6 @@ Route::get('/user', [UserController::class, 'User'])->middleware('auth:api');
 // Similar Product Route
 Route::get('/similar/{subcategory}', [ProductListController::class, 'SimilarProduct']);
 
-// Product Review Route
-Route::get('/reviewlist/{id}', [ProductReviewController::class, 'ReviewList']);
-
 // Add Product Cart Route
 Route::post('/addtocart', [ProductCartController::class, 'AddToCart']);
 
@@ -101,5 +98,8 @@ Route::get('/cartitemminus/{id}/{quantity}/{price}', [ProductCartController::cla
 Route::post('/cartorder', [ProductCartController::class, 'CartOrder']);
 Route::get('/orderlistbyuser/{email}', [ProductCartController::class, 'OrderListByUser']);
 
-// Order List
+// Post Review 
 Route::post('/postreview', [ProductReviewController::class, 'PostReview']);
+
+// Product Review Route
+Route::get('/reviewlist/{product_code}', [ProductReviewController::class, 'ReviewList']);

@@ -219,7 +219,7 @@ class ProductDetails extends Component {
     let color = ProductAllData["productDetails"][0]["color"];
     let size = ProductAllData["productDetails"][0]["size"];
     let seller = ProductAllData["productDetails"][0]["seller"];
-    let product_id = ProductAllData["productDetails"][0]["product_id"];
+    // let product_id = ProductAllData["productDetails"][0]["product_id"];
 
     // Color Div
     var ColorDiv = "d-none";
@@ -562,7 +562,7 @@ class ProductDetails extends Component {
             {/* End Product Description */}
 
             {/* Start Product Rating */}
-            <ReviewList id={product_id} product_name={title} />
+            <ReviewList product_code={product_code} product_name={title} />
             {/* End Product Rating */}
           </Container>
         </div>

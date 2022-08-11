@@ -54,8 +54,8 @@ class AppURL {
   }
 
   // Review List
-  static ReviewList(id) {
-    return this.BaseURL + "/reviewlist/" + id;
+  static ReviewList(product_code) {
+    return this.BaseURL + "/reviewlist/" + product_code;
   }
 
   // Add to Cart

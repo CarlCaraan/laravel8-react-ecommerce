@@ -11,9 +11,9 @@ class ReviewList extends Component {
   }
 
   componentDidMount() {
-    let id = this.props.id;
+    let product_code = this.props.product_code;
     axios
-      .get(AppURL.ReviewList(id))
+      .get(AppURL.ReviewList(product_code))
       .then((response) => {
         this.setState({
           ReviewData: response.data,
