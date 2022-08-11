@@ -33,6 +33,8 @@ class ProductDetails extends Component {
       addToCart: "Add To Cart",
       PageRefreshStatus: false,
       addToFav: false,
+      buyNow: "Buy Now",
+      PageRedirectStatus: false,
     };
   }
 
@@ -104,6 +106,70 @@ class ProductDetails extends Component {
         });
     }
   }; // End AddToCart Method
+
+  buyNowHandler = () => {
+    let isSize = this.state.isSize;
+    let isColor = this.state.isColor;
+    let color = this.state.color;
+    let size = this.state.size;
+    let quantity = this.state.quantity;
+    let productCode = this.state.productCode;
+    let email = this.props.user.email;
+
+    // All Validation Toast
+    if (isColor === "YES" && color.length === 0) {
+      cogoToast.error("Please select color", { position: "top-right" });
+    } else if (isSize === "YES" && size.length === 0) {
+      cogoToast.error("Please select size", { position: "top-right" });
+    } else if (quantity.length === 0 || quantity === "0") {
+      cogoToast.error("Please select quantity", { position: "top-right" });
+    } else if (!localStorage.getItem("token")) {
+      cogoToast.warn("Please Login first to be able to add items.", {
+        position: "top-right",
+      });
+    } else {
+      this.setState({
+        buyNow: "Buying...",
+      });
+
+      let MyFormData = new FormData(); // object
+      MyFormData.append("color", color);
+      MyFormData.append("size", size);
+      MyFormData.append("quantity", quantity);
+      MyFormData.append("product_code", productCode);
+      MyFormData.append("email", email);
+      axios
+        .post(AppURL.AddToCart, MyFormData)
+        .then((response) => {
+          if (response.data === 1) {
+            cogoToast.success("Product added successfully", {
+              position: "top-right",
+            });
+            this.setState({ buyNow: "Purchased" });
+            this.setState({ PageRedirectStatus: true });
+          } else {
+            cogoToast.warn("Something went wrong", {
+              position: "top-right",
+            });
+            this.setState({ buyNow: "Purchased" });
+            this.setState({ PageRedirectStatus: true });
+          }
+        })
+        .catch((error) => {
+          cogoToast.warn("Something went wrong", {
+            position: "top-right",
+          });
+          this.setState({ buyNow: "Purchased" });
+          this.setState({ PageRedirectStatus: true });
+        });
+    }
+  }; // End buyNowHandler
+
+  PageRedirect = () => {
+    if (this.state.PageRedirectStatus === true) {
+      return <Redirect to="/cart" />;
+    }
+  };
 
   addToFavourite = () => {
     this.setState({ addToFav: true });
@@ -453,8 +519,11 @@ class ProductDetails extends Component {
                             sm={12}
                             className="px-1 mb-2"
                           >
-                            <Button className={`${classes["buy-button"]}`}>
-                              Buy Now
+                            <Button
+                              onClick={this.buyNowHandler}
+                              className={`${classes["buy-button"]}`}
+                            >
+                              {this.state.buyNow}
                             </Button>
                           </Col>
                           <Col
@@ -571,6 +640,7 @@ class ProductDetails extends Component {
         <SuggestedProduct subcategory={subcategory} />
 
         {this.PageRefresh()}
+        {this.PageRedirect()}
       </Fragment>
     );
   }
