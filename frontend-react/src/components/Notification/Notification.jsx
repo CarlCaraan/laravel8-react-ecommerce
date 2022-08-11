@@ -9,6 +9,7 @@ import {
   Modal,
   Button,
 } from "react-bootstrap";
+import { Redirect } from "react-router-dom";
 import AppURL from "../../api/AppURL";
 import NotificationLoading from "../PlaceHolder/NotificationLoading";
 import classes from "./Notification.module.css";
@@ -56,6 +57,10 @@ class Notification extends Component {
   };
 
   render() {
+    // Authorization
+    if (!localStorage.getItem("token")) {
+      return <Redirect to="/login" />;
+    }
     const NotificationLists = this.state.NotificationData;
     const MyView = NotificationLists.map((NotificationList, i) => {
       return (

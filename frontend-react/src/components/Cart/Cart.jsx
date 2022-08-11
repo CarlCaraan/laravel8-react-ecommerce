@@ -201,6 +201,10 @@ class Cart extends Component {
   };
 
   render() {
+    // Authorization
+    if (!localStorage.getItem("token")) {
+      return <Redirect to="/login" />;
+    }
     const CartLists = this.state.ProductData;
     let totalPriceSum = 0;
     let totalItems = 0;
