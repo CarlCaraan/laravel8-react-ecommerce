@@ -44,6 +44,16 @@
                                     </div>
                                     @endif
                                     <!-- End Validation Message -->
+
+                                    <!-- Start Success Message -->
+                                    @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible show fade">
+                                        {{ session('success') }}
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    @endif
+                                    <!-- End Success Message -->
+
                                     <div class="text-center">
                                         <h3 class="">Sign in</h3>
                                         <p>Don't have an account yet? <a href="{{ route('register') }}">Sign up here</a>
