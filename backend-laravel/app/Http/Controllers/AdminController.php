@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Auth;
 use Illuminate\Support\Facades\Session;
 use Exception;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -15,6 +17,13 @@ class AdminController extends Controller
         Session::flush();
         return Redirect()->route('login');
     } // End Method
+
+    public function ChangePasswordLogout()
+    {
+        Auth::logout();
+        Session::flush();
+        return redirect()->route('login')->with('success', 'User Password Updated Successfully');
+    }
 
     public function UserProfile()
     {
@@ -62,8 +71,46 @@ class AdminController extends Controller
                 'alert-type' => 'error'
             );
         }
-
-
         return redirect()->route('user.profile')->with($notification);
+    } // End Method
+
+    public function ChangePassword()
+    {
+        return view('backend.admin.change_password');
+    } // End Method
+
+    public function ChangePasswordUpdate(Request $request)
+    {
+        $validateData = $request->validate(
+            [
+                'oldpassword' => 'required',
+                'password' => 'required|confirmed',
+            ],
+            // ~Custom Error messages
+            [
+                'oldpassword.required' => 'Current Password field is required!',
+            ]
+        );
+
+        $hashedPassword = Auth::user()->password;
+        if (Hash::check($request->oldpassword, $hashedPassword)) {
+            $user = User::find(Auth::id());
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            $notification = array(
+                'message' => 'User Password Updated Successfully',
+                'alert-type' => 'info',
+            );
+
+            return redirect()->route('password.logout');
+        } else {
+            $notification = array(
+                'message' => 'Current Password Incorrect!',
+                'alert-type' => 'error',
+            );
+
+            return redirect()->back()->with($notification);
+        }
     } // End Method
 }
