@@ -89,6 +89,9 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input name="first_name" type="text" class="form-control" value="{{ $adminData->first_name }}" disabled />
+                                            @error('first_name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -97,6 +100,9 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input name="last_name" type="text" class="form-control" value="{{ $adminData->last_name }}" disabled />
+                                            @error('last_name')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -105,6 +111,9 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input name="email" type="text" class="form-control" value="{{ $adminData->email }}" disabled />
+                                            @error('email')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -113,6 +122,9 @@
                                         </div>
                                         <div class="col-sm-9 text-secondary">
                                             <input name="profile_photo_path" class="form-control" type="file" id="image" disabled />
+                                            @error('profile_photo_path')
+                                            <span class="text-danger">{{ $message }}</span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="row mb-3">
