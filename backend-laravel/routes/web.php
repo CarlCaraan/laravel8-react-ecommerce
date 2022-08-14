@@ -20,7 +20,7 @@ Route::middleware([
 });
 
 // Logout Route
-Route::get('/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+Route::get('admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
 Route::get('/password/logout', [AdminController::class, 'ChangePasswordLogout'])->name('password.logout');
 
 // ========= All Admin ROUTES =========
@@ -34,4 +34,6 @@ Route::prefix('admin')->group(function () {
 // ========= Category Route =========
 Route::prefix('category')->group(function () {
     Route::get('/all', [CategoryController::class, 'AllCategory'])->name('all.category');
+    Route::get('/add', [CategoryController::class, 'AddCategory'])->name('add.category');
+    Route::post('/store', [CategoryController::class, 'StoreCategory'])->name('store.category');
 });

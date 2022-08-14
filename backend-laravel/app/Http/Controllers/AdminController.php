@@ -103,7 +103,7 @@ class AdminController extends Controller
                 'alert-type' => 'info',
             );
 
-            return redirect()->route('password.logout');
+            return redirect()->route('password.logout')->with($notification);
         } else {
             $notification = array(
                 'message' => 'Current Password Incorrect!',
