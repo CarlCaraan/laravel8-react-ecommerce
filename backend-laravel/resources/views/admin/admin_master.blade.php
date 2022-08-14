@@ -24,10 +24,13 @@
     <link rel="stylesheet" href="{{ asset('backend/assets/css/dark-theme.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/semi-dark.css') }}" />
     <link rel="stylesheet" href="{{ asset('backend/assets/css/header-colors.css') }}" />
-    <title>Lazapee | Dashboard</title>
+    <title>@yield('title')</title>
 
     <!-- Toastr CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+    <!-- Datatable Css -->
+    <link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -100,6 +103,15 @@
                 break;
         }
         @endif
+    </script>
+
+    <!-- Datatable JS -->
+    <script src="{{ asset('backend/assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/plugins/datatable/js/dataTables.bootstrap5.min.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        });
     </script>
 </body>
 
