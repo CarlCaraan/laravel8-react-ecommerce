@@ -44,4 +44,5 @@ Route::prefix('category')->group(function () {
 // ========= SubCategory Route =========
 Route::prefix('subcategory')->group(function () {
     Route::get('/all', [CategoryController::class, 'AllSubCategory'])->name('all.subcategory');
+    Route::get('/add', [CategoryController::class, 'AddSubCategory'])->name('add.subcategory');
 });
