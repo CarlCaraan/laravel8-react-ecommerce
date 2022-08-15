@@ -38,8 +38,8 @@
                                 <td><img src="{{ $item->category_image }}" alt="image" width="80px"></td>
                                 <td>{{ $item->category_name }}</td>
                                 <td>
-                                    <a href="" class="btn btn-info text-white">Edit</a>
-                                    <a href="" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('edit.category', $item->id) }}" class="btn btn-info text-white">Edit</a>
+                                    <a href="{{ route('delete.category', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
