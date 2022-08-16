@@ -46,15 +46,16 @@ class CategoryController extends Controller
                 'category_name' => 'required',
             ],
             [
-                'category_name.required' => 'Category Nama is required!',
+                'category_name.required' => 'Category Name is required!',
             ]
         );
 
+        // Working with Image
         $image = $request->file('category_image');
         $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
         Image::make($image)->resize(128, 128)->save('upload/category/' . $name_gen);
-
         $save_url = 'http://127.0.0.1:8000/upload/category/' . $name_gen;
+
         Category::insert([
             'category_name' => $request->category_name,
             'category_image' => $save_url,
@@ -84,15 +85,16 @@ class CategoryController extends Controller
                     'category_name' => 'required',
                 ],
                 [
-                    'category_name.required' => 'Category Nama is required!',
+                    'category_name.required' => 'Category Name is required!',
                 ]
             );
 
+            // Working with Image
             $image = $request->file('category_image');
             $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
             Image::make($image)->resize(128, 128)->save('upload/category/' . $name_gen);
-
             $save_url = 'http://127.0.0.1:8000/upload/category/' . $name_gen;
+
             Category::findOrFail($category_id)->update([
                 'category_name' => $request->category_name,
                 'category_image' => $save_url,
@@ -142,5 +144,75 @@ class CategoryController extends Controller
     {
         $category = Category::latest()->get();
         return view('backend.subcategory.subcategory_add', compact('category'));
+    } // End Method
+
+    public function StoreSubCategory(Request $request)
+    {
+        $request->validate(
+            [
+                'category_name' => 'required',
+                'subcategory_name' => 'required',
+            ],
+            [
+                'category_name.required' => 'Category Name is required!',
+                'subcategory_name.required' => 'SubCategory Name is required!',
+            ]
+        );
+
+        Subcategory::insert([
+            'category_name' => $request->category_name,
+            'subcategory_name' => $request->subcategory_name,
+        ]);
+
+        $notification = array(
+            'message' => 'SubCategory Inserted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.subcategory')->with($notification);
+    } // End Method
+
+    public function EditSubCategory($id)
+    {
+        $category = Category::orderBy('category_name', 'ASC')->get();
+        $subcategory = SubCategory::findOrFail($id);
+        return view('backend.subcategory.subcategory_edit', compact('category', 'subcategory'));
+    } // End Method
+
+    public function UpdateSubCategory(Request $request)
+    {
+        $request->validate(
+            [
+                'category_name' => 'required',
+                'subcategory_name' => 'required',
+            ],
+            [
+                'category_name.required' => 'Category Name is required!',
+                'subcategory_name.required' => 'SubCategory Name is required!',
+            ]
+        );
+
+        $subcategory_id = $request->id;
+        Subcategory::findOrFail($subcategory_id)->update([
+            'category_name' => $request->category_name,
+            'subcategory_name' => $request->subcategory_name,
+        ]);
+
+        $notification = array(
+            'message' => 'SubCategory Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.subcategory')->with($notification);
+    } // End Method
+
+    public function DeleteSubCategory($id)
+    {
+        SubCategory::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'SubCategory Deleted Successfuly',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all.subcategory')->with($notification);
     } // End Method
 }
