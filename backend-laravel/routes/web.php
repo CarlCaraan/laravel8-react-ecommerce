@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SliderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -49,4 +50,11 @@ Route::prefix('subcategory')->group(function () {
     Route::get('/edit/{id}', [CategoryController::class, 'EditSubCategory'])->name('edit.subcategory');
     Route::post('/update', [CategoryController::class, 'UpdateSubCategory'])->name('update.subcategory');
     Route::get('/delete/{id}', [CategoryController::class, 'DeleteSubCategory'])->name('delete.subcategory');
+});
+
+// ========= Slider Route =========
+Route::prefix('slider')->group(function () {
+    Route::get('/all', [SliderController::class, 'GetAllSlider'])->name('all.slider');
+    Route::get('/add', [SliderController::class, 'AddSlider'])->name('add.slider');
+    Route::post('/add', [SliderController::class, 'StoreSlider'])->name('store.slider');
 });
