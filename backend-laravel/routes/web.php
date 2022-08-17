@@ -57,4 +57,7 @@ Route::prefix('slider')->group(function () {
     Route::get('/all', [SliderController::class, 'GetAllSlider'])->name('all.slider');
     Route::get('/add', [SliderController::class, 'AddSlider'])->name('add.slider');
     Route::post('/add', [SliderController::class, 'StoreSlider'])->name('store.slider');
+    Route::get('/edit/{id}', [SliderController::class, 'EditSlider'])->name('edit.slider');
+    Route::post('/update', [SliderController::class, 'UpdateSlider'])->name('update.slider');
+    Route::get('/delete/{id}', [SliderController::class, 'DeleteSlider'])->name('delete.slider');
 });

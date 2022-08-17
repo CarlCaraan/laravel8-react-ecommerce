@@ -36,8 +36,8 @@
                                 <td>{{ $key+1 }}</td>
                                 <td><img src="{{ $item->slider_image }}" alt="image" width="80px"></td>
                                 <td>
-                                    <a href="{{ route('edit.category', $item->id) }}" class="btn btn-info text-white">Edit</a>
-                                    <a href="{{ route('delete.category', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
+                                    <a href="{{ route('edit.slider', $item->id) }}" class="btn btn-info text-white">Edit</a>
+                                    <a href="{{ route('delete.slider', $item->id) }}" id="delete" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
