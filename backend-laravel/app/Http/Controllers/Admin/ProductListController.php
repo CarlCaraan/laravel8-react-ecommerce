@@ -48,4 +48,11 @@ class ProductListController extends Controller
 
         return $productlist;
     } // End Method
+
+    // ========= BACKEND PRODUCT LIST =========
+    public function GetAllProduct()
+    {
+        $products = ProductList::latest()->get();
+        return view('backend.product.product_all', compact('products'));
+    } // End Method
 }

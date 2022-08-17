@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\ProductListController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -60,4 +61,9 @@ Route::prefix('slider')->group(function () {
     Route::get('/edit/{id}', [SliderController::class, 'EditSlider'])->name('edit.slider');
     Route::post('/update', [SliderController::class, 'UpdateSlider'])->name('update.slider');
     Route::get('/delete/{id}', [SliderController::class, 'DeleteSlider'])->name('delete.slider');
+});
+
+// ========= Product Route =========
+Route::prefix('product')->group(function () {
+    Route::get('/all', [ProductListController::class, 'GetAllProduct'])->name('all.product');
 });
