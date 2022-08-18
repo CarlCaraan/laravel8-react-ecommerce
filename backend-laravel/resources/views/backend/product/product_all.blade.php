@@ -22,7 +22,7 @@
         <div class="container">
             <div class="main-body">
                 <div class="table-responsive">
-                    <table id="datatable" class="table table-striped table-bordered bg-white border" style="width:100%">
+                    <table class="table table-striped table-bordered bg-white border" style="width:100%">
                         <thead>
                             <tr>
                                 <th>SL</th>
@@ -49,6 +49,11 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <!-- Start Pagination -->
+                    {{ $products->links('vendor.pagination.custom') }}
+                    <!-- End Pagination -->
+
                 </div>
             </div>
         </div>

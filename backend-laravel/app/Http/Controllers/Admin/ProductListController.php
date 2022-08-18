@@ -52,7 +52,7 @@ class ProductListController extends Controller
     // ========= BACKEND PRODUCT LIST =========
     public function GetAllProduct()
     {
-        $products = ProductList::latest()->get();
+        $products = ProductList::latest()->paginate(5);
         return view('backend.product.product_all', compact('products'));
     } // End Method
 }
