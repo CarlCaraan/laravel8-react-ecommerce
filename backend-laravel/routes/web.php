@@ -67,4 +67,7 @@ Route::prefix('slider')->group(function () {
 Route::prefix('product')->group(function () {
     Route::get('/all', [ProductListController::class, 'GetAllProduct'])->name('all.product');
     Route::get('/add', [ProductListController::class, 'AddProduct'])->name('add.product');
+    Route::post('/store', [ProductListController::class, 'StoreProduct'])->name('store.product');
+    Route::get('/edit/{id}', [ProductListController::class, 'EditProduct'])->name('edit.product');
+    Route::post('/update', [ProductListController::class, 'UpdateProduct'])->name('update.product');
 });

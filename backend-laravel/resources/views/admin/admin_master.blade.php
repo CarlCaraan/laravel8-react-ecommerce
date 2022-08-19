@@ -31,6 +31,9 @@
 
     <!-- Datatable Css -->
     <link href="{{ asset('backend/assets/plugins/datatable/css/dataTables.bootstrap5.min.css') }}" rel="stylesheet" />
+
+    <!-- Tag Input Elements CSS -->
+    <link href="{{ asset('backend/assets/plugins/input-tags/css/tagsinput.css') }}" rel="stylesheet" />
 </head>
 
 <body>
@@ -143,6 +146,9 @@
             });
         });
     </script>
+
+    <!-- Input Tag Element JS -->
+    <script src="{{ asset('backend/assets/plugins/input-tags/js/tagsinput.js') }}"></script>
 </body>
 
 </html>

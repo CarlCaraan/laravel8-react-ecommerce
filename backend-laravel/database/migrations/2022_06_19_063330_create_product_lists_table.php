@@ -23,7 +23,7 @@ class CreateProductListsTable extends Migration
             $table->string('subcategory');
             $table->string('remark');
             $table->string('brand');
-            $table->string('star');
+            $table->string('star')->nullable();
             $table->string('product_code');
             $table->timestamps();
         });
