@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductListController;
+use App\Http\Controllers\Admin\ContactController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,3 +73,7 @@ Route::prefix('product')->group(function () {
     Route::post('/update', [ProductListController::class, 'UpdateProduct'])->name('update.product');
     Route::get('/delete/{id}', [ProductListController::class, 'DeleteProduct'])->name('delete.product');
 });
+
+// Contact Message Route
+Route::get('/all/message', [ContactController::class, 'GetAllMessage'])->name('contact.message');
+Route::get('/delete/message/{id}', [ContactController::class, 'DeleteMessage'])->name('delete.message');
