@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\ProductReviewController;
+use App\Http\Controllers\Admin\SiteInfoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -77,3 +79,10 @@ Route::prefix('product')->group(function () {
 // Contact Message Route
 Route::get('/all/message', [ContactController::class, 'GetAllMessage'])->name('contact.message');
 Route::get('/delete/message/{id}', [ContactController::class, 'DeleteMessage'])->name('delete.message');
+
+// Product Review Route
+Route::get('/all/review', [ProductReviewController::class, 'GetAllReview'])->name('all.review');
+
+// Site Info Controller Route
+Route::get('/all/siteinfo', [SiteInfoController::class, 'AllSiteInfo'])->name('all.siteinfo');
+Route::post('/update/siteinfo', [SiteInfoController::class, 'UpdateSiteInfo'])->name('update.siteinfo');
