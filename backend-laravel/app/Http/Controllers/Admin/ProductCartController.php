@@ -164,4 +164,54 @@ class ProductCartController extends Controller
         $orders = CartOrder::where('order_status', 'Pending')->orderBy('id', 'DESC')->get();
         return view('backend.orders.pending_orders', compact('orders'));
     } // End Method
+    public function ProcessingOrder()
+    {
+        $orders = CartOrder::where('order_status', 'Processing')->orderBy('id', 'DESC')->get();
+        return view('backend.orders.processing_orders', compact('orders'));
+    } // End Method
+    public function Completedorder()
+    {
+        $orders = CartOrder::where('order_status', 'Complete')->orderBy('id', 'DESC')->get();
+        return view('backend.orders.complete_orders', compact('orders'));
+    } // End Method
+
+    public function OrderDetails($id)
+    {
+        $order = CartOrder::findOrFail($id);
+        return view('backend.orders.order_details', compact('order'));
+    } // End Method
+
+    public function PendingToProcessing($id)
+    {
+        CartOrder::findOrFail($id)->update([
+            'order_status' => 'Processing',
+        ]);
+        $notification = array(
+            'message' => 'Order Processing Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('pending.order')->with($notification);
+    } // End Method
+
+    public function ProcessingToCompleted($id)
+    {
+        CartOrder::findOrFail($id)->update([
+            'order_status' => 'Complete',
+        ]);
+        $notification = array(
+            'message' => 'Order Completed Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('processing.order')->with($notification);
+    } // End Method
+
+    public function DeleteOrder($id)
+    {
+        CartOrder::find($id)->delete();
+        $notification = array(
+            'message' => 'Order Deleted Successfully',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('completed.order')->with($notification);
+    } // End Method
 }

@@ -385,9 +385,7 @@ class Cart extends Component {
                           className={`${classes["checkout-custom-input"]} text-muted`}
                           onChange={this.paymentMethodOnChange}
                         >
-                          <option disabled selected>
-                            Select Payment Method
-                          </option>
+                          <option disabled>Select Payment Method</option>
                           <option value="1">Cash on Delivery</option>
                           <option value="2">Stripe</option>
                         </Form.Select>
