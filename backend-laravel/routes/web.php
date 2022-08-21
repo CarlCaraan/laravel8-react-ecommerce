@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductListController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Admin\SiteInfoController;
+use App\Http\Controllers\Admin\ProductCartController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -86,3 +87,8 @@ Route::get('/all/review', [ProductReviewController::class, 'GetAllReview'])->nam
 // Site Info Controller Route
 Route::get('/all/siteinfo', [SiteInfoController::class, 'AllSiteInfo'])->name('all.siteinfo');
 Route::post('/update/siteinfo', [SiteInfoController::class, 'UpdateSiteInfo'])->name('update.siteinfo');
+
+// ========= Order Route =========
+Route::prefix('order')->group(function () {
+    Route::get('/pending', [ProductCartController::class, 'PendingOrder'])->name('pending.order');
+});
