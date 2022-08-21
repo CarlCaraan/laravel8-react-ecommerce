@@ -21,7 +21,7 @@
         <li class="menu-label">Site Management</li>
         <li>
             <a href="javascript:;" class="has-arrow">
-                <div class="parent-icon"><i class='bx bx-cart'></i>
+                <div class="parent-icon"><i class='bx bx-grid-alt'></i>
                 </div>
                 <div class="menu-title">Category</div>
             </a>
@@ -34,7 +34,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-bookmark-heart'></i>
+                <div class="parent-icon"><i class='bx bx-server'></i>
                 </div>
                 <div class="menu-title">Sub Category</div>
             </a>
@@ -47,7 +47,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-repeat"></i>
+                <div class="parent-icon"><i class="bx bx-dock-top"></i>
                 </div>
                 <div class="menu-title">Slider</div>
             </a>
@@ -60,7 +60,7 @@
         </li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-repeat"></i>
+                <div class="parent-icon"><i class="bx bx-cart"></i>
                 </div>
                 <div class="menu-title">Product</div>
             </a>
@@ -74,7 +74,7 @@
 
         <li>
             <a href="{{ route('contact.message') }}">
-                <div class="parent-icon"><i class="bx bx-donate-blood"></i>
+                <div class="parent-icon"><i class="bx bx-message"></i>
                 </div>
                 <div class="menu-title">Contact Message</div>
             </a>
@@ -82,7 +82,7 @@
 
         <li>
             <a href="{{ route('all.review') }}">
-                <div class="parent-icon"><i class="bx bx-donate-blood"></i>
+                <div class="parent-icon"><i class="bx bx-news"></i>
                 </div>
                 <div class="menu-title">Product Review</div>
             </a>
@@ -90,7 +90,7 @@
 
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"> <i class="bx bx-donate-blood"></i>
+                <div class="parent-icon"> <i class="bx bx-info-circle"></i>
                 </div>
                 <div class="menu-title">Site Info</div>
             </a>
@@ -104,7 +104,7 @@
         <li class="menu-label">Customer Order</li>
         <li>
             <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class='bx bx-message-square-edit'></i>
+                <div class="parent-icon"><i class='bx bx-cart-alt'></i>
                 </div>
                 <div class="menu-title">Manage Order</div>
             </a>
@@ -114,19 +114,6 @@
                 <li> <a href="{{ route('processing.order') }}"><i class="bx bx-right-arrow-alt"></i>Processing Order</a>
                 </li>
                 <li> <a href="{{ route('completed.order') }}"><i class="bx bx-right-arrow-alt"></i>Completed Order</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="has-arrow" href="javascript:;">
-                <div class="parent-icon"><i class="bx bx-grid-alt"></i>
-                </div>
-                <div class="menu-title">Tables</div>
-            </a>
-            <ul>
-                <li> <a href="table-basic-table.html"><i class="bx bx-right-arrow-alt"></i>Basic Table</a>
-                </li>
-                <li> <a href="table-datatable.html"><i class="bx bx-right-arrow-alt"></i>Data Table</a>
                 </li>
             </ul>
         </li>
