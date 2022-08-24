@@ -194,6 +194,7 @@ class OrderList extends Component {
                 >
                   Write a Review
                 </Button>
+                <br />
                 <span>{OrderList.product_code}</span>
               </Col>
             </Row>

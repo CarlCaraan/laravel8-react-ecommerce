@@ -41,10 +41,11 @@ class Profile extends Component {
                   height="100"
                 />
                 <br />
-                <Link to="orderlist">
-                  <small className={`${classes["mypurchase-button"]}`}>
-                    My Purchase
-                  </small>
+                <Link
+                  className={`${classes["mypurchase-button"]}`}
+                  to="orderlist"
+                >
+                  <small>My Purchase</small>
                 </Link>
               </Col>
               <Col className="mx-auto py-5" xl={10} lg={10} md={10} sm={12}>
@@ -56,7 +57,7 @@ class Profile extends Component {
                   </Col>
                 </Row>
                 <Row>
-                  <Col xl={4} lg={2} md={2} sm={12}>
+                  <Col xl={4} lg={12} md={12} sm={12}>
                     <Card className={`${classes["custom-card"]}`}>
                       <Card.Body>
                         <p>Personal Profile</p>
@@ -72,7 +73,7 @@ class Profile extends Component {
                       </Card.Body>
                     </Card>
                   </Col>
-                  <Col xl={8} lg={10} md={10} sm={12}>
+                  <Col xl={8} lg={12} md={12} sm={12}>
                     <Card className={`${classes["custom-card"]}`}>
                       <Card.Body>
                         <p>Address Book</p>
