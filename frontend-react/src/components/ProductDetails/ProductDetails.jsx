@@ -18,6 +18,7 @@ import axios from "axios";
 import AppURL from "../../api/AppURL";
 import { Redirect } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
+import ReactHtmlParser from "react-html-parser";
 
 class ProductDetails extends Component {
   constructor() {
@@ -623,7 +624,7 @@ class ProductDetails extends Component {
                 </Row>
                 <Row>
                   <Col className={`${classes["description-body"]}`}>
-                    {long_description}
+                    {ReactHtmlParser(long_description)}
                   </Col>
                 </Row>
               </Card.Body>
